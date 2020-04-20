@@ -20,3 +20,11 @@ selbst machen oder Angular?
 * Highscore-System
 * Turniere
 * Dark-Mode
+
+## Farben:
+* 003049
+* D62828
+* 071013
+* F1FAEE
+* FFA400
+* 708D81
