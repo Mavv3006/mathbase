@@ -22,9 +22,9 @@ selbst machen oder Angular?
 * Dark-Mode
 
 ## Farben:
-* 003049
-* D62828
-* 071013
-* F1FAEE
-* FFA400
-* 708D81
+* 003049: Blau
+* D62828: Rot
+* 071013: Schwarz
+* FFFFFF: Weiß
+* FFA400: Orange
+* 708D81: Grün-Cyan
