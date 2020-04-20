@@ -24,7 +24,7 @@ selbst machen oder Angular?
 ## Farben:
 * 003049: Blau
 * D62828: Rot
-* 071013: Schwarz
+* 000000: Schwarz
 * FFFFFF: Weiß
 * FFA400: Orange
 * 708D81: Grün-Cyan
