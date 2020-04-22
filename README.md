@@ -28,3 +28,6 @@ selbst machen oder Angular?
 * FFFFFF: Weiß
 * FFA400: Orange
 * 708D81: Grün-Cyan
+
+## Datenbank
+Bitte bei jeder Änderung, die lokal an der Datenbank gemacht werden (hinzufügen, ändern oder löschen von Tabellen) einen Export hinzufügen, damit immer alle den aktuellen Stand haben. Der Export kann gerne den bisher vorhandenen überschreiben.
