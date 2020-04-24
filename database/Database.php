@@ -19,7 +19,7 @@ abstract class Database
      *
      * @return PDO An active connection
      */
-    protected function connect(): PDO
+    private function connect(): PDO
     {
         try {
             $this->connection = new PDO("mysql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
@@ -36,5 +36,22 @@ abstract class Database
             printf($e->getMessage());
         }
         return $this->connection;
+    }
+
+
+    public function query_by_id(int $id): PDOStatement
+    {
+        $query = "
+            SELECT *
+            FROM " . $this->tablename . " t
+            WHERE t.id = ?;
+        ";
+
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindParam(1, $id);
+
+        $stmt->execute();
+
+        return $stmt;
     }
 }
