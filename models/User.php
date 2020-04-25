@@ -2,9 +2,9 @@
 
 class User implements Model
 {
-    private $id;
-    private $username;
-    private $email;
+    private int $id;
+    private string $username;
+    private string $email;
 
     /**
      * User constructor.
@@ -22,13 +22,15 @@ class User implements Model
 
     /**
      * Creates an User from a database query.
-     * 
+     *
      * @param PDOStatement $stmt The PDOStatement returned from the database query
      * @return User The User corresponding to the PDOStatement
      */
     public static function from_pdo_statement(PDOStatement $stmt): User
     {
-        if ($stmt->rowCount > 1) throw new Exception("Too many users have the same username", 1);
+        if ($stmt->rowCount() > 1) {
+            // TODO: throw TooManyDatabaseResultsException
+        }
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -2,7 +2,7 @@
 
 class TaskViewModel extends ViewModel
 {
-
+    private TaskDatabase $database;
 
     /**
      * TaskViewModel constructor.
@@ -21,17 +21,38 @@ class TaskViewModel extends ViewModel
     public function get_by_id(int $id): Task
     {
         $stmt = $this->database->query_by_id($id);
+        $task_array = $this->fetchData($stmt);
+
+    }
+
+    protected function fetchData(PDOStatement $stmt): array
+    {
         $task_array = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $task = Task::from_pdo_statement($row);
             array_push($task_array, $task);
         }
+        return $task_array;
+    }
 
-        if (count($task_array) == 1) {
-            return $task_array[0];
+    /**
+     * Returns only one Task from an array of Tasks.
+     *
+     * @param array $array An array with Tasks
+     * @return Task Returns only one Task. If there are more or less than one element in the array the method
+     * throws an exception
+     */
+    protected function returnModel(array $array): Task
+    {
+        $count = count($array);
+
+        if ($count == 0) {
+            // TODO: throw NoDatabaseEntryFoundException
+        } else if ($count == 1) {
+            return $array[0];
         } else {
-            // throw  irgendeinen Error;
+            // TODO: throw DatabaseException
         }
     }
 }

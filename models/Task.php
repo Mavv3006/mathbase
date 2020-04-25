@@ -2,12 +2,12 @@
 
 class Task implements Model
 {
-    private $id;
-    private $user_id;
-    private $description;
-    private $solution;
-    private $created_at;
-    private $updated_at;
+    private int $id;
+    private int $user_id;
+    private string $description;
+    private string $solution;
+    private string $created_at;
+    private string $updated_at;
 
     /**
      * Task constructor

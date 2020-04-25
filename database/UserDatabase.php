@@ -7,8 +7,8 @@ class UserDatabase extends Database
      */
     public function __construct()
     {
+        parent::__construct();
         $this->tablename = "users";
-        $this->connection = $this->connect();
     }
 
     /**

@@ -1,17 +1,71 @@
 <?php
+
 abstract class Database
 {
-    private $connection;
-    private $tablename;
+    protected PDO $connection;
+    protected string $tablename;
 
-    private $hostname = "localhost";
-    private $password = "root";
-    private $username = "";
-    private $dbName = "mathbase";
+    private string $hostname = "localhost";
+    private string $password = "root";
+    private string $username = "";
+    private string $dbName = "mathbase";
 
+
+    /**
+     * Database constructor.
+     */
     public function __construct()
     {
         $this->connection = $this->connect();
+    }
+
+
+    /**
+     * Queries the database for every entry in the table.
+     *
+     * @return PDOStatement The Statement returned from querying the database
+     */
+    public function query_all(): PDOStatement
+    {
+        $query = "
+            SELECT *
+            FROM
+                " . $this->tablename . " t
+            ORDER BY
+                t.id;
+        ";
+        return $this->prepareStatement($query);
+    }
+
+    public function query_by_id(int $id): PDOStatement
+    {
+        $query = "
+            SELECT *
+            FROM " . $this->tablename . " t
+            WHERE t.id = ?;
+        ";
+
+        return $this->prepareStatement($query, $id);
+    }
+
+
+    /**
+     * Prepares and executes an SQL query. If provided it also binds parameters.
+     *
+     * @param string $query The SQL query to execute
+     * @param mixed ...$parameters An array with the parameters to bind
+     * @return PDOStatement The Statement retuned from querying the database
+     */
+    protected function prepareStatement(string $query, ...$parameters): PDOStatement
+    {
+        $stmt = $this->connection->prepare($query);
+
+        for ($i = 0; $i < count($parameters); $i++) {
+            $stmt->bindParam($i, $parameters[$i]);
+        }
+
+        $stmt->execute();
+        return $stmt;
     }
 
     /**
@@ -36,22 +90,5 @@ abstract class Database
             printf($e->getMessage());
         }
         return $this->connection;
-    }
-
-
-    public function query_by_id(int $id): PDOStatement
-    {
-        $query = "
-            SELECT *
-            FROM " . $this->tablename . " t
-            WHERE t.id = ?;
-        ";
-
-        $stmt = $this->connection->prepare($query);
-        $stmt->bindParam(1, $id);
-
-        $stmt->execute();
-
-        return $stmt;
     }
 }
