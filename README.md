@@ -24,5 +24,8 @@ selbst machen oder Angular?
 ## Farben
 ![Farben](/assets/colors.png)
 
+## Design
+[Liegt auf Figma](https://www.figma.com/file/nf1VZQWZQop2JShdxD4DIq/mathbase)
+
 ## Datenbank
 Bitte bei jeder Änderung, die lokal an der Datenbank gemacht wird (hinzufügen, ändern oder löschen von Tabellen), einen Export hinzufügen, damit immer alle den aktuellen Stand haben. Der Export kann gerne den bisher vorhandenen überschreiben.
