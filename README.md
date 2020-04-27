@@ -1,4 +1,4 @@
-# mathbase
+# Mathbase
 ## Technologie
 selbst machen oder Angular?
 
