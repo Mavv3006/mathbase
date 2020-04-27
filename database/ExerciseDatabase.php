@@ -1,6 +1,6 @@
 <?php
 
-class TaskDatabase extends Database
+class ExerciseDatabase extends Database
 {
     /**
      * TaskDatabase constructor.

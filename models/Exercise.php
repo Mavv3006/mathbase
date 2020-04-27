@@ -1,6 +1,6 @@
 <?php
 
-class Task implements Model
+class Exercise implements Model
 {
     private int $id;
     private int $user_id;
@@ -10,14 +10,14 @@ class Task implements Model
     private string $updated_at;
 
     /**
-     * Task constructor
+     * Exersise constructor
      *
-     * @param integer $id The ID of the Task
-     * @param integer $user_id The ID of the user who created the Task
-     * @param string $description The description of the Task
-     * @param string $solution The solution of the Task
-     * @param string $created_at The date and time the Task was created at
-     * @param string $updated_at The date and time the Task was last updated
+     * @param integer $id The ID of the Exersise
+     * @param integer $user_id The ID of the user who created the Exersise
+     * @param string $description The description of the Exersise
+     * @param string $solution The solution of the Exersise
+     * @param string $created_at The date and time the Exersise was created at
+     * @param string $updated_at The date and time the Exersise was last updated
      */
     public function __construct(int $id, int $user_id, string $description, string $solution, string $created_at, string $updated_at)
     {
@@ -39,7 +39,7 @@ class Task implements Model
     {
         $taskArray = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $task = new Task(
+            $task = new Exercise(
                 $row['id'],
                 $row['user_id'],
                 $row['description'],
@@ -61,7 +61,7 @@ class Task implements Model
     }
 
     /**
-     * @return integer The ID of the User who created the Task
+     * @return integer The ID of the User who created the Exersise
      */
     public function get_user_id(): int
     {
@@ -69,7 +69,7 @@ class Task implements Model
     }
 
     /**
-     * @return string The description of the Task
+     * @return string The description of the Exersise
      */
     public function get_description(): string
     {
@@ -77,7 +77,7 @@ class Task implements Model
     }
 
     /**
-     * @return string The solution of the Task
+     * @return string The solution of the Exersise
      */
     public function get_solution(): string
     {

@@ -1,28 +1,28 @@
 <?php
 
-class TaskViewModel extends ViewModel
+class ExerciseViewModel extends ViewModel
 {
-    private TaskDatabase $database;
+    private ExerciseDatabase $database;
 
     /**
      * TaskViewModel constructor.
      */
     public function __construct()
     {
-        $this->database = new TaskDatabase();
+        $this->database = new ExerciseDatabase();
     }
 
     /**
-     * Queries the database and returns the Task with the given ID
+     * Queries the database and returns the Exercise with the given ID
      *
-     * @param integer $id The ID of the Task in the database
-     * @return Task The queried Task
+     * @param integer $id The ID of the Exercise in the database
+     * @return Exercise The queried Exercise
      */
-    public function get_by_id(int $id): Task
+    public function get_by_id(int $id): Exercise
     {
         $stmt = $this->database->query_by_id($id);
         $task_array = $this->fetchData($stmt);
-
+        return $this->returnModel($task_array);
     }
 
     protected function fetchData(PDOStatement $stmt): array
@@ -30,20 +30,20 @@ class TaskViewModel extends ViewModel
         $task_array = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $task = Task::from_pdo_statement($row);
+            $task = Exercise::from_pdo_statement($row);
             array_push($task_array, $task);
         }
         return $task_array;
     }
 
     /**
-     * Returns only one Task from an array of Tasks.
+     * Returns only one Exercise from an array of Tasks.
      *
      * @param array $array An array with Tasks
-     * @return Task Returns only one Task. If there are more or less than one element in the array the method
+     * @return Exercise Returns only one Exercise. If there are more or less than one element in the array the method
      * throws an exception
      */
-    protected function returnModel(array $array): Task
+    protected function returnModel(array $array): Exercise
     {
         $count = count($array);
 
