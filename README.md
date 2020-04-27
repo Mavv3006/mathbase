@@ -1,8 +1,8 @@
 # mathbase
-## Technologie:
+## Technologie
 selbst machen oder Angular?
 
-## Muss:
+## Muss
 * User können Aufgaben hochladen (Text), Antwort wird mit angegeben (als Zahl)
 * User können Aufgaben beantworten
 * Userverwaltung
@@ -11,7 +11,7 @@ selbst machen oder Angular?
     * Schwierigkeitsgrad als Schulklassenstufe (1., 2., Studium)
 * Userrollen (Admin, User)
 
-## Optional:
+## Optional
 * Textsuche
 * Auswertungen/Statistiken
 * Komplexere Antworten zulassen
@@ -21,13 +21,8 @@ selbst machen oder Angular?
 * Turniere
 * Dark-Mode
 
-## Farben:
-* 003049: Blau
-* D62828: Rot
-* 000000: Schwarz
-* FFFFFF: Weiß
-* FFA400: Orange
-* 708D81: Grün-Cyan
+## Farben
+![Farben](/assets/colors.png)
 
 ## Datenbank
-Bitte bei jeder Änderung, die lokal an der Datenbank gemacht werden (hinzufügen, ändern oder löschen von Tabellen) einen Export hinzufügen, damit immer alle den aktuellen Stand haben. Der Export kann gerne den bisher vorhandenen überschreiben.
+Bitte bei jeder Änderung, die lokal an der Datenbank gemacht wird (hinzufügen, ändern oder löschen von Tabellen), einen Export hinzufügen, damit immer alle den aktuellen Stand haben. Der Export kann gerne den bisher vorhandenen überschreiben.
