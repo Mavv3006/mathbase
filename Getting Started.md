@@ -10,6 +10,10 @@ Sollte eine ältere Version installiert sein, kann [hier](https://www.php.net/do
 
 Erscheint eine Fehlermeldung mit dem Hinweis, dass `php` nicht gefunden wurde, kann es sein, dass die Umgebungsvariable nicht gesetzt ist. Dies muss dann noch manuell nachgeholt werden. Eine Anleitung findet man [hier](https://www.java.com/de/download/help/path.xml). Wurde XAMPP standardmäßig installiert, lautet die einzufügende Umgebungsvariable `C:\xampp\php`. Abschließend sollte ein Neustart erfolgen.
 
+## FileZilla Client installieren
+Um Dateien per FTP hochzuladen kann FileZilla verwendet werden. Das Programm kann [hier](https://filezilla-project.org/) runtergeladen werden.
+Zum Anmelden Server, Benutzername und Passwort eingeben und auf `Verbinden` klicken. Alle Dateien im Ordner `www` sind online.
+
 ## Entwicklungsumgebung einrichten
 Um an diesem Projekt mitzuarbeiten, wird empfohlen entweder Visual Studio Code (VS Code) oder JetBrains PhpStorm zu verwenden.
 
