@@ -8,7 +8,7 @@ abstract class Database
     private string $hostname = "localhost";
     private string $password = "root";
     private string $username = "";
-    private string $dbName = "mathbase";
+    private string $dbName = "mathbase_mathbase";
 
 
     /**
@@ -76,7 +76,7 @@ abstract class Database
     private function connect(): PDO
     {
         try {
-            $this->connection = new PDO("pgsql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
+            $this->connection = new PDO("mysql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection Error: " . $e->getMessage();
