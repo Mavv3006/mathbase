@@ -19,10 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `mathbase`
+-- Datenbank: `mathbase_mathbase`
 --
-CREATE DATABASE IF NOT EXISTS `mathbase` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `mathbase`;
+CREATE DATABASE IF NOT EXISTS `mathbase_mathbase` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `mathbase_mathbase`;
 
 -- --------------------------------------------------------
 
@@ -36,6 +36,7 @@ CREATE TABLE `exercise`
     `user_id`     int(11)      NOT NULL,
     `description` text         NOT NULL,
     `solution`    varchar(255) NOT NULL,
+    `title`       varchar(255) NOT NULL,
     `created_at`  datetime DEFAULT current_timestamp(),
     `updated_at`  datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE = InnoDB

@@ -1,5 +1,7 @@
 <?php
 
+include_once('Database.php');
+
 class ExerciseDatabase extends Database
 {
     /**
@@ -8,6 +10,6 @@ class ExerciseDatabase extends Database
     public function __construct()
     {
         parent::__construct();
-        $this->tablename = "tasks";
+        $this->tablename = "exercise";
     }
 }

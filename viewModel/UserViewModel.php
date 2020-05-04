@@ -59,7 +59,7 @@ class UserViewModel extends ViewModel
         $user_array = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $user = User::from_pdo_statement($stmt);
+            $user = User::from_pdo_statement($row);
             array_push($user_array, $user);
         }
         return $user_array;

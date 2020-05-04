@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title><?=$site_name?></title>
-    <link rel="stylesheet" href="/css/materialize.css">
+    <link rel="stylesheet" href="../css/materialize.css">
     <meta charset="UTF-8">
     <meta name="description" content="Lernplattform für Mathe">
     <meta name="keywords" content="Mathe, Mathematik, Lernen, Üben, Schule">

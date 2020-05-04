@@ -17,7 +17,7 @@ abstract class Database
     public function __construct()
     {
         $configs = require_once('../config/config.php');
-        $this->hostname = $configs['hostname'];
+        $this->hostname = $configs['host'];
         $this->password = $configs['password'];
         $this->username = $configs['username'];
         $this->dbName = $configs['dbName'];
@@ -48,10 +48,18 @@ abstract class Database
         $query = "
             SELECT *
             FROM " . $this->tablename . " t
-            WHERE t.id = ?;
+            WHERE t.id = :id;
         ";
 
-        return $this->prepareStatement($query, $id);
+        // return $this->prepareStatement($query, $id);
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+
+        return $stmt;
     }
 
 
@@ -65,6 +73,8 @@ abstract class Database
     protected function prepareStatement(string $query, ...$parameters): PDOStatement
     {
         $stmt = $this->connection->prepare($query);
+
+        var_dump($parameters);
 
         for ($i = 0; $i < count($parameters); $i++) {
             $stmt->bindParam($i, $parameters[$i]);
@@ -82,7 +92,7 @@ abstract class Database
     private function connect(): PDO
     {
         try {
-            $this->connection = new PDO("pgsql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
+            $this->connection = new PDO("mysql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection Error: " . $e->getMessage();
