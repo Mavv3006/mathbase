@@ -5,10 +5,10 @@ abstract class Database
     protected PDO $connection;
     protected string $tablename;
 
-    private string $hostname = "localhost";
-    private string $password = "root";
-    private string $username = "";
-    private string $dbName = "mathbase";
+    private string $hostname;
+    private string $password;
+    private string $username;
+    private string $dbName;
 
 
     /**
@@ -16,6 +16,12 @@ abstract class Database
      */
     public function __construct()
     {
+        $configs = require_once('../config/config.php');
+        $this->hostname = $configs['hostname'];
+        $this->password = $configs['password'];
+        $this->username = $configs['username'];
+        $this->dbName = $configs['dbName'];
+
         $this->connection = $this->connect();
     }
 
