@@ -5,7 +5,7 @@
 -- Dumped from database version 12.2
 -- Dumped by pg_dump version 12.2
 
--- Started on 2020-04-27 20:16:35
+-- Started on 2020-05-04 14:48:32
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -114,7 +114,8 @@ CREATE TABLE public.users (
     id integer NOT NULL,
     username character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
-    password character varying(255) NOT NULL
+    password character varying(255) NOT NULL,
+    picture character varying(255)
 );
 
 
@@ -246,7 +247,7 @@ ALTER TABLE ONLY public.exercise
     ADD CONSTRAINT exercise_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
--- Completed on 2020-04-27 20:16:35
+-- Completed on 2020-05-04 14:48:32
 
 --
 -- PostgreSQL database dump complete
