@@ -5,10 +5,10 @@ abstract class Database
     protected PDO $connection;
     protected string $tablename;
 
-    private string $hostname = "localhost";
-    private string $password = "root";
-    private string $username = "";
-    private string $dbName = "mathbase_mathbase";
+    private string $hostname;
+    private string $password;
+    private string $username;
+    private string $dbName;
 
 
     /**
@@ -16,6 +16,12 @@ abstract class Database
      */
     public function __construct()
     {
+        $configs = require_once('../config/config.php');
+        $this->hostname = $configs['hostname'];
+        $this->password = $configs['password'];
+        $this->username = $configs['username'];
+        $this->dbName = $configs['dbName'];
+
         $this->connection = $this->connect();
     }
 
@@ -76,7 +82,7 @@ abstract class Database
     private function connect(): PDO
     {
         try {
-            $this->connection = new PDO("mysql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
+            $this->connection = new PDO("pgsql:host=" . $this->hostname . ";dbname=" . $this->dbName . ";charset=utf8", $this->username, $this->password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Connection Error: " . $e->getMessage();
