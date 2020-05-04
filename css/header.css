@@ -1,0 +1,38 @@
+#nav-mobile{
+    font-weight: bold;
+}
+
+.logo-wrapper{
+    display: inline-block;
+    height: 100%;
+}
+
+#header-logo{
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo-text{
+    margin-left: 50px;
+    font-size: 38px;
+}
+
+#mb-two{
+    color: #ffa400;
+}
+
+#login-button{
+    background-color: #003049;
+    box-shadow: none;
+}
+
+.avatar{
+    height: 36px;
+    width: 36px;
+    border-radius: 36px;
+    margin-top: 14px;
+    margin-right: 20px;
+    background-color: white;
+}
