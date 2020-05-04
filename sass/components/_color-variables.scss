@@ -330,6 +330,34 @@ $shades: (
   "transparent":  transparent
 );
 
+$mb-prussian-blue: (
+  "base": #003049
+);
+
+$mb-orange: (
+  "base": #ffa400
+);
+
+$mb-maximum-red: (
+  "base": #d62828
+);
+
+$mb-black: (
+  "base": #000000
+);
+
+$mb-grey: (
+  "base": #7e7d7d
+);
+
+$mb-white: (
+  "base": #ffffff
+);
+
+$mb-grey-blue: (
+  "base": #708d81
+);
+
 $colors: (
   "materialize-red": $materialize-red,
   "red": $red,
@@ -351,7 +379,14 @@ $colors: (
   "brown": $brown,
   "blue-grey": $blue-grey,
   "grey": $grey,
-  "shades": $shades
+  "shades": $shades,
+  "mb-prussian-blue": $mb-prussian-blue,
+  "mb-orange": $mb-orange,
+  "mb-maximum-red": $mb-maximum-red,
+  "mb-black": $mb-black,
+  "mb-grey": $mb-grey,
+  "mb-white": $mb-white,
+  "mb-grey-blue": $mb-grey-blue
 ) !default;
 
 
