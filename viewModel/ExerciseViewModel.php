@@ -9,7 +9,7 @@ class ExerciseViewModel extends ViewModel
     private ExerciseDatabase $database;
 
     /**
-     * TaskViewModel constructor.
+     * ExerciseViewModel constructor.
      */
     public function __construct()
     {

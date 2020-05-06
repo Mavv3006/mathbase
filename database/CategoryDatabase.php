@@ -2,14 +2,14 @@
 
 include_once('Database.php');
 
-class ExerciseDatabase extends Database
+class CategoryDatabase extends Database
 {
     /**
-     * ExerciseDatabase constructor.
+     * CategoryDatabase constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->tablename = "exercise";
+        $this->tablename = "categories";
     }
 }

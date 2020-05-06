@@ -16,7 +16,8 @@ abstract class Database
      */
     public function __construct()
     {
-        $configs = require_once('../config/config.php');
+        require_once('../config/config.php');
+        $configs = get_config_array();
         $this->hostname = $configs['host'];
         $this->password = $configs['password'];
         $this->username = $configs['username'];

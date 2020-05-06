@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+
 <head>
-    <title><?=$site_name?></title>
+    <title><?= $site_name ?></title>
     <link rel="stylesheet" href="../css/materialize.css">
+    <?php if (isset($stylesheet_path)) echo '<link rel="stylesheet" href="' . $stylesheet_path . '">' ?>
     <meta charset="UTF-8">
     <meta name="description" content="Lernplattform für Mathe">
     <meta name="keywords" content="Mathe, Mathematik, Lernen, Üben, Schule">

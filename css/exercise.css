@@ -1,0 +1,71 @@
+
+:root {
+    --dark-blue-color: #003049;
+    --orange-color: #FFA400;
+    --grey-color: #7E7D7D;
+    --red-color: #D62828;
+}
+
+.content {
+    width: 76.5%;
+    margin: auto;
+}
+
+
+h1, .username, .category {
+    color: var(--dark-blue-color);
+}
+
+.category, .difficulty {
+    display: inline;
+}
+
+
+.edit_icon {
+    width: 55px;
+    height: 55px;
+    background-color: var(--orange-color);
+    color: white;
+    border-radius: 4px;
+    padding: 9px;
+}
+
+.edit_icon i {
+    width: 37px;
+    height: 37px;
+    font-size: 37px;
+}
+
+hr {
+    color: var(--grey-color);
+}
+
+.difficulty {
+    color: var(--red-color);
+    margin-left: 15px;;
+}
+
+
+.description {
+    width: 47%;
+    background-color: lightgreen;
+}
+
+
+.exercise-picture {
+    width: 389px;
+    height: 246px;
+}
+
+.input-field input[type=text]:focus+label {
+    color: var(--dark-blue-color) !important;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid var(--dark-blue-color) !important;
+    box-shadow: 0 1px 0 0 var(--dark-blue-color) !important;
+}
+
+.input-field {
+    width: 344px;
+}
