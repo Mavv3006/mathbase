@@ -33,21 +33,26 @@ include_once("../html/head.php");
 
 <body>
 
-    <div class="content">
-        <div>
+    <div class="container">
+        <div class="header">
             <h1><?= $exercise->get_title() ?></h1>
-            <div class="edit_icon">
+            <div class="edit_icon waves-effect waves-light btn">
                 <i class="material-icons">create</i>
             </div>
         </div>
 
         <hr>
-        
-        <h5 class="category"><?= $category->get_description() ?> - <?= $subcategory->get_description() ?></h5>
-        <h6 class="difficulty"><?= $difficulty->get_description() ?></h6>
-        <p class="username"><?= $user->get_username() ?></p>
 
-        <p class="description"><?= $exercise->get_description() ?></p>
+        <div class="sub-header">
+            <h5 class="category"><?= $category->get_description() ?> - <?= $subcategory->get_description() ?></h5>
+            <h6 class="difficulty"><?= $difficulty->get_description() ?></h6>
+            <h6 class="username">von <?= $user->get_username() ?></h6>
+        </div>
+
+        <div class="row">
+            <p class="description col s12 l8"><?= $exercise->get_description() ?></p>
+            <p class="exercise-picture col s12 l4">Bild der Übung</p>
+        </div>
 
         <?php
 
@@ -55,12 +60,21 @@ include_once("../html/head.php");
 
         ?>
 
-
         <form action="" method="post">
             <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
-            <div class="input-field">
-                <input type="text" name="solution" id="solution">
-                <label for="solution">Antwort</label>
+            <div>
+                <div class="input-field">
+                    <input type="text" name="solution" id="solution">
+                    <label for="solution">Antwort</label>
+                </div>
+                <span class="icon">
+                    <span class="done-icon ">
+                        <i class="material-icons done">done</i>
+                    </span>
+                    <span class="clear-icon">
+                        <i class="material-icons clear">clear</i>
+                    </span>
+                </span>
             </div>
             <button type="submit" class="waves-effect waves-light btn">Überprüfen</button>
             <button class="waves-effect btn-flat">Lösung anzeigen</button>
@@ -71,6 +85,7 @@ include_once("../html/head.php");
         // include footer
 
         ?>
+
     </div>
 
     <script src="../js/bin/materialize.min.js"></script>

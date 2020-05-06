@@ -4,11 +4,12 @@
     --orange-color: #FFA400;
     --grey-color: #7E7D7D;
     --red-color: #D62828;
+    --black-color: #000000;
+    --green-color: #42FF00;
 }
 
-.content {
-    width: 76.5%;
-    margin: auto;
+.container .header , .container .sub-header{
+    position: relative;
 }
 
 
@@ -20,6 +21,10 @@ h1, .username, .category {
     display: inline;
 }
 
+h1 {
+    display: inline;
+}
+
 
 .edit_icon {
     width: 55px;
@@ -28,6 +33,10 @@ h1, .username, .category {
     color: white;
     border-radius: 4px;
     padding: 9px;
+    right: 0px;
+    top: 10px;
+    display: inline-block;
+    position: absolute;
 }
 
 .edit_icon i {
@@ -45,16 +54,20 @@ hr {
     margin-left: 15px;;
 }
 
-
-.description {
-    width: 47%;
-    background-color: lightgreen;
+.username {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    display: inline-block;
+    margin-top: 0;
 }
 
 
-.exercise-picture {
-    width: 389px;
-    height: 246px;
+.description {
+    text-align: justify;
+    line-height: 28px;
+    color: var(--black-color);
+    padding-left: 0 !important;
 }
 
 .input-field input[type=text]:focus+label {
@@ -67,5 +80,30 @@ hr {
 }
 
 .input-field {
+    padding-left: 0 !important;
     width: 344px;
+    display: inline-block;
+}
+
+.input-field.col label {
+    left: 0 !important;
+}
+
+.done-icon, .clear-icon {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.done-icon i, .clear-icon i{
+    font-size: 40px;
+}
+
+.clear {
+    color: var(--red-color);
+}
+
+.done {
+    color: var(--green-color);
 }
