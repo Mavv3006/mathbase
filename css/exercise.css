@@ -30,13 +30,16 @@ h1 {
     width: 55px;
     height: 55px;
     background-color: var(--orange-color);
-    color: white;
     border-radius: 4px;
     padding: 9px;
     right: 0px;
     top: 10px;
     display: inline-block;
     position: absolute;
+}
+
+.edit_icon a  {
+    color: white;
 }
 
 .edit_icon i {

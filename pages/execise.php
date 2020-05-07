@@ -37,7 +37,10 @@ include_once("../html/head.php");
         <div class="header">
             <h1><?= $exercise->get_title() ?></h1>
             <div class="edit_icon waves-effect waves-light btn">
-                <i class="material-icons">create</i>
+                <a href="../index.php">
+                    <!--TODO update link -->
+                    <i class="material-icons">create</i>
+                </a>
             </div>
         </div>
 
@@ -60,12 +63,13 @@ include_once("../html/head.php");
 
         ?>
 
-        <form action="" method="post">
-            <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+        <form action="" method="post" name="solutionForm">
+            <input type="hidden" name="id" value="<?= $_GET['id'] ?>" >
+            <input type="hidden" name="correct_solution" value="<?= $exercise->get_solution() ?>" >
             <div>
                 <div class="input-field">
                     <input type="text" name="solution" id="solution">
-                    <label for="solution">Antwort</label>
+                    <label for="solution" id="solution_label">Antwort</label>
                 </div>
                 <span class="icon">
                     <span class="done-icon ">
@@ -77,7 +81,7 @@ include_once("../html/head.php");
                 </span>
             </div>
             <button type="submit" class="waves-effect waves-light btn">Überprüfen</button>
-            <button class="waves-effect btn-flat">Lösung anzeigen</button>
+            <div class="waves-effect btn-flat" id="show_solution">Lösung anzeigen</div>
         </form>
 
         <?php
@@ -89,5 +93,17 @@ include_once("../html/head.php");
     </div>
 
     <script src="../js/bin/materialize.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+
+    <script>
+        $('#show_solution').on('click', function() {
+            let value = document.getElementById('solution').value;
+            let id = document.solutionForm.elements['id'].value;
+            let solution = document.solutionForm.elements['correct_solution'].value
+            console.log(solution);
+            document.getElementById('solution_label').className = "active";
+            document.getElementById('solution').value = solution;
+        });
+    </script>
 
 </body>
