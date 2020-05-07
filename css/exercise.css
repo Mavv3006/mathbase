@@ -110,3 +110,7 @@ hr {
 .done {
     color: var(--green-color);
 }
+
+.display_none {
+    display: none;
+}
