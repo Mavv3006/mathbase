@@ -19,7 +19,7 @@
     font-size: 38px;
 }
 
-#mb-two{
+#mb-orange{
     color: #ffa400;
 }
 
@@ -28,11 +28,17 @@
     box-shadow: none;
 }
 
-.avatar{
+.avatar-container{
     height: 36px;
     width: 36px;
     border-radius: 36px;
     margin-top: 14px;
     margin-right: 20px;
-    background-color: white;
+}
+
+.avatar{
+    height: 36px;
+    width: 36px;
+    border-radius: 36px;
+    padding: 0px;
 }

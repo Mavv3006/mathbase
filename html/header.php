@@ -4,12 +4,12 @@
         <a href="#" class="brand-logo logo-wrapper">
             <img id="header-logo" src="/assets/logo/logo.svg"/>
             <div class="logo-text">
-                Math<span id="mb-two">base</span>
+                Math<span id="mb-orange">base</span>
             </div>
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <?php 
-            if(true){
+            if(false){
             ?>
                 <li><a class="waves-effect btn" id="login-button">Einloggen</a></li>
                 <li><a class="waves-effect waves-light btn">Registrieren</a></li>
@@ -17,8 +17,12 @@
             }else{
             ?>
                 <li><a class="waves-effect waves-light btn">Aufgabe erstellen</a></li>
-                <li id="avatar">
-                    <a class="avatar"></a>
+                <li>
+                    <div class="avatar-container">
+                        <a class="avatar" href="#">
+                            <img class="avatar" src="/assets/pp_default.svg">
+                        </a>
+                    </div>
                 </li>
             <?php
             }
