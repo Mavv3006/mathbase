@@ -1,6 +1,6 @@
-<header>
+<head>
     <link rel="stylesheet" href="/css/header.css"/>
-</header>
+</head>
 <body>
     <nav>
         <div class="nav-wrapper">
