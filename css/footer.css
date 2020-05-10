@@ -1,5 +1,15 @@
 .page-footer{
-    background-color: var(--mb-grey);
+    background-color: rgba(126,125,125,1);
+    padding: 0;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    z-index: 100;
+    
+}
+.container{
+    color: rgba(255,255,255,1);
 }
 .footer-copyright{
     left: 1.67%;
