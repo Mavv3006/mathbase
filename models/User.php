@@ -5,6 +5,7 @@ class User implements Model
     private int $id;
     private string $username;
     private string $email;
+    private string $picture;
 
     /**
      * User constructor.
@@ -23,21 +24,16 @@ class User implements Model
     /**
      * Creates an User from a database query.
      *
-     * @param PDOStatement $stmt The PDOStatement returned from the database query
+     * @param array $stmt The array returned from the database query
      * @return User The User corresponding to the PDOStatement
      */
-    public static function from_pdo_statement(PDOStatement $stmt): User
+    public static function from_pdo_statement(array $row): User
     {
-        if ($stmt->rowCount() > 1) {
-            // TODO: throw TooManyDatabaseResultsException
-        }
-
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
         return new User(
             $row['id'],
             $row['username'],
             $row['email'],
+            $row['picture']
         );
     }
 
