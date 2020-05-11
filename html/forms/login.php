@@ -1,7 +1,3 @@
-<?php
-$site_name = "Mathbase";
-include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
-?>
 <head>
     <link rel="stylesheet" href="/css/forms.css" />
 </head>
@@ -45,6 +41,3 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
         var instances = M.Modal.init(elems, '');
     });
 </script>
-
-<script src="../js/bin/materialize.min.js"></script>
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
