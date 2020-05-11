@@ -1,0 +1,27 @@
+#profile{
+    padding-top: 30px;
+}
+
+#profile-title{
+    font-size: 40px;
+    font-weight: normal;
+    margin-left: 5%;
+}
+
+#profile-avatar-container{
+
+}
+
+#profile-avatar{
+    float: left;
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+}
+
+#avatar-button{
+    display: block;
+    padding-top: 32px;
+    margin-left: 130px;
+    font-weight: bold;
+}
