@@ -1,0 +1,116 @@
+
+:root {
+    --dark-blue-color: #003049;
+    --orange-color: #FFA400;
+    --grey-color: #7E7D7D;
+    --red-color: #D62828;
+    --black-color: #000000;
+    --green-color: #42FF00;
+}
+
+.container .header , .container .sub-header{
+    position: relative;
+}
+
+
+h1, .username, .category {
+    color: var(--dark-blue-color);
+}
+
+.category, .difficulty {
+    display: inline;
+}
+
+h1 {
+    display: inline;
+}
+
+
+.edit_icon {
+    width: 55px;
+    height: 55px;
+    background-color: var(--orange-color);
+    border-radius: 4px;
+    padding: 9px;
+    right: 0px;
+    top: 10px;
+    display: inline-block;
+    position: absolute;
+}
+
+.edit_icon a  {
+    color: white;
+}
+
+.edit_icon i {
+    width: 37px;
+    height: 37px;
+    font-size: 37px;
+}
+
+hr {
+    color: var(--grey-color);
+}
+
+.difficulty {
+    color: var(--red-color);
+    margin-left: 15px;;
+}
+
+.username {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    display: inline-block;
+    margin-top: 0;
+}
+
+
+.description {
+    text-align: justify;
+    line-height: 28px;
+    color: var(--black-color);
+    padding-left: 0 !important;
+}
+
+.input-field input[type=text]:focus+label {
+    color: var(--dark-blue-color) !important;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid var(--dark-blue-color) !important;
+    box-shadow: 0 1px 0 0 var(--dark-blue-color) !important;
+}
+
+.input-field {
+    padding-left: 0 !important;
+    width: 344px;
+    display: inline-block;
+}
+
+.input-field.col label {
+    left: 0 !important;
+}
+
+.done-icon, .clear-icon {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.done-icon i, .clear-icon i{
+    font-size: 40px;
+}
+
+.clear {
+    color: var(--red-color);
+}
+
+.done {
+    color: var(--green-color);
+}
+
+.display_none {
+    display: none;
+}

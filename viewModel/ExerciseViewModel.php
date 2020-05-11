@@ -1,11 +1,15 @@
 <?php
 
+include_once ('ViewModel.php');
+include_once ('../models/Exercise.php');
+include_once ('../database/ExerciseDatabase.php');
+
 class ExerciseViewModel extends ViewModel
 {
     private ExerciseDatabase $database;
 
     /**
-     * TaskViewModel constructor.
+     * ExerciseViewModel constructor.
      */
     public function __construct()
     {
