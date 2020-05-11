@@ -2,9 +2,11 @@
 $site_name = "Mathbase";
 include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
 ?>
-
+<head>
+    <link rel="stylesheet" href="/css/login.css" />
+</head>
 <!-- Modal Structure -->
-<div id="modal1" class="modal card white ">
+<div id="modalLogin" class="modal card white ">
     <div class="modal-content card-content">
         <span class="card-title mb-prussian-blue-text">
             <h2>Einloggen</h2>
@@ -21,7 +23,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
                 <label for="password">Passwort</label>
             </div>
 
-            <p style="padding-bottom: 19px">
+            <p>
                 <a href="#">
                     Ich habe mein Passwort vergessen...
                 </a>
@@ -29,10 +31,12 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
 
             <button class="btn waves-effect waves-light" type="submit" name="action">Einloggen</button>
 
+            <p>
+                <a href="#">
+                Noch kein Mitglied? <b>Jetzt registrieren!</b>
+                </a>
+            </p>
         </form>
-    </div>
-    <div class="card-action">
-        <a href="#">Noch kein Mitglied? <b>Jetzt registrieren!</b></a>
     </div>
 </div>
 <script>

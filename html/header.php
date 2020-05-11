@@ -16,7 +16,7 @@
                     <?php
                     if (true) {
                     ?>
-                        <li><a class="waves-effect btn modal-trigger" id="login-button" href="#modal1">Einloggen</a></li>
+                        <li><a class="waves-effect btn modal-trigger" id="login-button" href="#modalLogin">Einloggen</a></li>
                         <li><a class="waves-effect waves-light btn">Registrieren</a></li>
                     <?php
                     } else {
