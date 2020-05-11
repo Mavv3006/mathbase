@@ -1,0 +1,16 @@
+p{
+    padding-top: 19px;
+    padding-bottom: 19px;
+}
+
+a{
+    color: #003049;
+}
+
+#modalLogin,#modalRegister{
+    width: 385px;
+    overflow: hidden;
+}
+.btn{
+    font-weight: bold;
+}
