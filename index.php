@@ -1,12 +1,13 @@
 <?php
     $site_name = "Mathbase";
-    include 'html/head.php';
+    include  $_SERVER['DOCUMENT_ROOT'] .'/html/head.php';
 ?>
 
 <body>
 <?php include 'html/header.php'; ?>
-Hallo und Herzlich Willkommen bei Mathbase!
 
 <?php include 'html/forms/login.php';?>
 
+<?php include $_SERVER['DOCUMENT_ROOT'] .'/html/forms/login.php';?>
+<?php include $_SERVER['DOCUMENT_ROOT'] .'/html/footer.php';?>
 </body>
