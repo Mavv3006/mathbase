@@ -3,7 +3,7 @@ $site_name = "Mathbase";
 include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
 ?>
 <head>
-    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
 </head>
 <!-- Modal Structure -->
 <div id="modalLogin" class="modal card white ">

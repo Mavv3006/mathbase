@@ -17,7 +17,7 @@
                     if (true) {
                     ?>
                         <li><a class="waves-effect btn modal-trigger" id="login-button" href="#modalLogin">Einloggen</a></li>
-                        <li><a class="waves-effect waves-light btn">Registrieren</a></li>
+                        <li><a class="waves-effect waves-light btn modal-trigger" href="#modalRegister">Registrieren</a></li>
                     <?php
                     } else {
                     ?>
@@ -38,5 +38,6 @@
     </div>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/login.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/register.php'; ?>
 
 </body>
