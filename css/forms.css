@@ -11,3 +11,6 @@ a{
     width: 385px;
     overflow: hidden;
 }
+.btn{
+    font-weight: bold;
+}
