@@ -1,5 +1,6 @@
 #profile{
     padding-top: 30px;
+    float: left;
 }
 
 #profile-title{
@@ -18,9 +19,21 @@
 
 #avatar-button-container{
     padding-top: 32px;
+    margin-left: 20px;
 }
 
 #avatar-button{
     margin-left: 20px;
     font-weight: bold;
+}
+
+.profile-input{
+    float: left;
+}
+
+.edit-button{
+    width: 55px;
+    height: 55px;
+   
+    float: right;
 }
