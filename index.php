@@ -4,8 +4,7 @@
 ?>
 
 <body>
-Hallo und Herzlich Willkommen bei Mathbase!
 
 <?php include $_SERVER['DOCUMENT_ROOT'] .'/html/forms/login.php';?>
-
+<?php include $_SERVER['DOCUMENT_ROOT'] .'/html/footer.php';?>
 </body>
