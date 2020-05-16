@@ -17,7 +17,7 @@ class ExerciseViewModel extends ViewModel
     }
 
     /**
-     * Queries the database and returns the Exercise with the given ID
+     * Queries the database and returns the Exercise with the given ID.
      *
      * @param integer $id The ID of the Exercise in the database
      * @return Exercise The queried Exercise
@@ -27,6 +27,17 @@ class ExerciseViewModel extends ViewModel
         $stmt = $this->database->query_by_id($id);
         $task_array = $this->fetchData($stmt);
         return $this->returnModel($task_array);
+    }
+
+    /**
+     * Queries the database and returns all the Exercises.
+     *
+     * @return array An Array of Exercises
+     */
+    public function get_all():array
+    {
+        $stmt = $this->database->query_all();
+        return $this->fetchData($stmt);
     }
 
     protected function fetchData(PDOStatement $stmt): array

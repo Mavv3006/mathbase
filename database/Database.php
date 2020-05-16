@@ -75,8 +75,6 @@ abstract class Database
     {
         $stmt = $this->connection->prepare($query);
 
-        var_dump($parameters);
-
         for ($i = 0; $i < count($parameters); $i++) {
             $stmt->bindParam($i, $parameters[$i]);
         }
