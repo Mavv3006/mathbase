@@ -32,7 +32,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
             $category = $categoryViewModel->get_by_id($exercise->get_category());
             $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
         ?>
-            <a href="<?= $_SERVER['DOCUMENT_ROOT'] . '/pages/exercise.php?id=' . $exercise->get_id() ?>">
+            <a href=" <?= '/pages/exercise.php?id=' . $exercise->get_id() ?>">
                 <div class="exercise hoverable">
                     <p class="category col-content">
                         <span class="main_category"><?= $category->get_description() ?></span>
