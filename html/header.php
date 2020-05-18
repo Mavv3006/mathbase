@@ -38,24 +38,9 @@
                     ?>
                 </ul>
             </div>
-
-            <!-- Dropdown Structure -->
-            <ul id="userMenu" class="dropdown-content">
-                <li><span>Hallo <b>Nutzer!<b></span></li>
-                <li class="divider"></li>
-                <li><a href="#!">Profil</a></li>
-                <li><a href="#!">Ausloggen</a></li>
-            </ul>
         </nav>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.dropdown-trigger');
-            var instances = M.Dropdown.init(elems, {coverTrigger: false});
-            instance.open();
-        });
-    </script>
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/login.php'; ?>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/register.php'; ?>
