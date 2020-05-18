@@ -11,6 +11,10 @@
     position: relative;
 }
 
+.container .header {
+    margin-top: 2em;
+}
+
 h1, .username, .category {
     color: var(--dark-blue-color);
 }
@@ -19,7 +23,7 @@ h1, .username, .category {
     display: inline;
 }
 
-h1 {
+h3 {
     display: inline;
 }
 
@@ -30,7 +34,7 @@ h1 {
     border-radius: 4px;
     padding: 9px;
     right: 0px;
-    top: 10px;
+    top: -10px;
     display: inline-block;
     position: absolute;
 }
@@ -109,4 +113,14 @@ hr {
 
 .display_none {
     display: none;
+}
+
+.content-row {
+    display: grid;
+    grid-column-gap: 24px;
+    grid-template-columns: minmax(200px, 690px) 389px;
+}
+
+.exercise-picture img {
+    width: 100%;
 }
