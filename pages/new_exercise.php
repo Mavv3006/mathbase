@@ -67,7 +67,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
-                <img src="" alt="">
+                <img src="../assets/pp_default.svg" alt="Bild der Übung">
                 <div class="file-field input-field">
                     <div class="btn">
                         <span>File</span>
