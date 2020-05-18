@@ -12,7 +12,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
 </head>
 <body>
     <div class="row">
-        <div class="col s6 offset-s3">
+        <div class="col m6 offset-m3">
             <div class="card" id="profile">
                 <span class="card-title" id="profile-title">Profil</span>
                 <div id="profile-avatar-container">
@@ -39,7 +39,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
                         </a>
                         <div class="input-field col s10">
                             <input disabled id="password" type="password" class="validate">
-                            <label for="password">E-Mail-Adresse</label>
+                            <label for="password">Passwort</label>
                         </div>
                         <a class="edit-button waves-effect waves-light btn" onclick="disableInput('password')">
                             <i class="material-icons">create</i>
