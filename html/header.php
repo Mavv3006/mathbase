@@ -6,7 +6,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo logo-wrapper">
+                <a href="/" class="brand-logo logo-wrapper">
                     <img id="header-logo" src="/assets/logo/logo.svg" />
                     <div class="logo-text">
                         Math<span class="mb-orange-text">base</span>
@@ -24,7 +24,7 @@
                         <li><a class="waves-effect waves-light btn">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
-                                <a class="avatar" href="#">
+                                <a class="avatar" href="html/profile.php">
                                     <img class="avatar" src="/assets/pp_default.svg">
                                 </a>
                             </div>
