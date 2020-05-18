@@ -9,7 +9,6 @@ selbst machen oder Angular?
 * (eigene) Aufgabenverwaltung (eigene Aufgaben löschen, editieren)
 * Kategorien (nur Admins, oder nur per Dropdown)
     * Schwierigkeitsgrad als Schulklassenstufe (1., 2., Studium)
-* Userrollen (Admin, User)
 
 ## Optional
 * Textsuche
