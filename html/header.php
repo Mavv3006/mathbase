@@ -12,7 +12,7 @@
                         Math<span class="mb-orange-text">base</span>
                     </div>
                 </a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down" style="padding-right: 20px">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <?php
                     if (false) {
                     ?>
@@ -31,7 +31,7 @@
                         </li>
                         <!-- Dropdown Trigger -->
                         <li>
-                            <a class="dropdown-trigger" href="#!" data-target="userMenu" style="padding: 0;"><i class="material-icons mb-orange-text">arrow_drop_down</i></a>
+                            <a class="dropdown-trigger" href="#!" data-target="userMenu"><i class="material-icons mb-orange-text">arrow_drop_down</i></a>
                         </li>
                     <?php
                     }

@@ -1,5 +1,6 @@
 #nav-mobile{
     font-weight: bold;
+    padding-right: 20px;
 }
 
 .logo-wrapper{
@@ -36,4 +37,8 @@
     width: 36px;
     border-radius: 36px;
     padding: 0px;
+}
+
+.dropdown-trigger{
+    padding: 0;
 }
