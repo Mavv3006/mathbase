@@ -42,7 +42,17 @@ class ExerciseViewModel extends ViewModel
 
     public function create(Exercise $model): void
     {
-        $this->database->create("INSERT INTO " . $this->database->tablename . " (user_id, description, solution, title, category, subcategory, difficulty) VALUES (?,?,?,?,?,?,?)", $model->get_user_id(), $model->get_description(), $model->get_solution(), $model->get_title(), $model->get_category(), $model->get_subcategory(), $model->get_difficulty());
+        $array = array(
+            $model->get_user_id(),
+            $model->get_description(),
+            $model->get_solution(),
+            $model->get_title(),
+            $model->get_category(),
+            $model->get_subcategory(),
+            $model->get_difficulty(), 
+            "empty" // TODO: add exercise picture if available
+        );
+        $this->database->create($array);
     }
 
     public function update(Exercise $model): void

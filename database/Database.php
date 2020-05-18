@@ -41,7 +41,9 @@ abstract class Database
             ORDER BY
                 t.id;
         ";
-        return $this->prepareStatement($query);
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt;
     }
 
     public function query_by_id(int $id): PDOStatement
@@ -63,15 +65,18 @@ abstract class Database
         return $stmt;
     }
 
-    public function create(string $query, ...$values): void
+    public function create(array &$values): void
     {
-        $stmt = $this->prepareStatement($query, $values);
-        var_dump($stmt);
+        $this->prepareStatement(
+            "INSERT INTO " . $this->tablename . " (user_id, description, solution, title, category, subcategory, difficulty, picture) 
+            VALUES (?,?,?,?,?,?,?,?)",
+            $values
+        );
     }
-    public function update(string $query, ...$values): void
+    public function update(string $query, array &$values): void
     {
+        $this->prepareStatement($query, $values);
     }
-
 
     /**
      * Prepares and executes an SQL query. If provided it also binds parameters.
@@ -80,12 +85,12 @@ abstract class Database
      * @param mixed ...$parameters An array with the parameters to bind
      * @return PDOStatement The Statement retuned from querying the database
      */
-    protected function prepareStatement(string $query, ...$parameters): PDOStatement
+    protected function prepareStatement(string $query, array &$parameters): PDOStatement
     {
         $stmt = $this->connection->prepare($query);
 
         for ($i = 0; $i < count($parameters); $i++) {
-            $stmt->bindParam($i, $parameters[$i]);
+            $stmt->bindParam($i + 1, $parameters[$i]);
         }
 
         $stmt->execute();
