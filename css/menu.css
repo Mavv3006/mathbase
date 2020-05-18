@@ -1,0 +1,11 @@
+.dropdown-content {
+    width: 185px !important;
+
+}
+
+.dropdown-content li a, .dropdown-content li span{
+    
+    color: black !important;
+    font-weight: normal !important;
+
+}
