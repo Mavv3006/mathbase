@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 06. Mai 2020 um 08:30
+-- Erstellungszeit: 11. Mai 2020 um 16:18
 -- Server-Version: 10.4.11-MariaDB
 -- PHP-Version: 7.4.5
 
@@ -75,8 +75,8 @@ INSERT INTO `difficulties` (`id`, `description`) VALUES
 --
 
 CREATE TABLE `exercise` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `description` text NOT NULL,
   `solution` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -91,20 +91,13 @@ CREATE TABLE `exercise` (
 -- RELATIONEN DER TABELLE `exercise`:
 --   `category`
 --       `categories` -> `id`
---   `subcategory`
---       `subcategories` -> `id`
 --   `difficulty`
 --       `difficulties` -> `id`
+--   `subcategory`
+--       `subcategories` -> `id`
 --   `user_id`
 --       `users` -> `id`
 --
-
---
--- Daten für Tabelle `exercise`
---
-
-INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `created_at`, `updated_at`, `category`, `subcategory`, `difficulty`) VALUES
-(1, 1, 'test description', 'test solution', 'test title', '2020-05-04 16:41:59', '2020-05-05 21:16:55', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -135,23 +128,94 @@ INSERT INTO `subcategories` (`id`, `description`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `picture` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(249) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint(2) UNSIGNED NOT NULL DEFAULT 0,
+  `verified` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `resettable` tinyint(1) UNSIGNED NOT NULL DEFAULT 1,
+  `roles_mask` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `registered` int(10) UNSIGNED NOT NULL,
+  `last_login` int(10) UNSIGNED DEFAULT NULL,
+  `force_logout` mediumint(7) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- RELATIONEN DER TABELLE `users`:
 --
 
+-- --------------------------------------------------------
+
 --
--- Daten für Tabelle `users`
+-- Tabellenstruktur für Tabelle `users_confirmations`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `picture`) VALUES
-(1, 'UserName', 'user@user.de', 'sh7up#KT!', NULL);
+CREATE TABLE `users_confirmations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `email` varchar(249) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `selector` varchar(16) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `expires` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONEN DER TABELLE `users_confirmations`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users_remembered`
+--
+
+CREATE TABLE `users_remembered` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user` int(10) UNSIGNED NOT NULL,
+  `selector` varchar(24) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `expires` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONEN DER TABELLE `users_remembered`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users_resets`
+--
+
+CREATE TABLE `users_resets` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user` int(10) UNSIGNED NOT NULL,
+  `selector` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `expires` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONEN DER TABELLE `users_resets`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users_throttling`
+--
+
+CREATE TABLE `users_throttling` (
+  `bucket` varchar(44) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `tokens` float UNSIGNED NOT NULL,
+  `replenished_at` int(10) UNSIGNED NOT NULL,
+  `expires_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- RELATIONEN DER TABELLE `users_throttling`:
+--
 
 --
 -- Indizes der exportierten Tabellen
@@ -190,42 +254,85 @@ ALTER TABLE `subcategories`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indizes für die Tabelle `users_confirmations`
+--
+ALTER TABLE `users_confirmations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `selector` (`selector`),
+  ADD KEY `email_expires` (`email`,`expires`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indizes für die Tabelle `users_remembered`
+--
+ALTER TABLE `users_remembered`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `selector` (`selector`),
+  ADD KEY `user` (`user`);
+
+--
+-- Indizes für die Tabelle `users_resets`
+--
+ALTER TABLE `users_resets`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `selector` (`selector`),
+  ADD KEY `user_expires` (`user`,`expires`);
+
+--
+-- Indizes für die Tabelle `users_throttling`
+--
+ALTER TABLE `users_throttling`
+  ADD PRIMARY KEY (`bucket`),
+  ADD KEY `expires_at` (`expires_at`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT für Tabelle `exercise`
---
-ALTER TABLE `exercise`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT für Tabelle `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
---
--- AUTO_INCREMENT für Tabelle `subcategories`
---
-ALTER TABLE `subcategories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `difficulties`
 --
 ALTER TABLE `difficulties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `subcategories`
+--
+ALTER TABLE `subcategories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `users_confirmations`
+--
+ALTER TABLE `users_confirmations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `users_remembered`
+--
+ALTER TABLE `users_remembered`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT für Tabelle `users_resets`
+--
+ALTER TABLE `users_resets`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints der exportierten Tabellen
@@ -235,10 +342,10 @@ ALTER TABLE `users`
 -- Constraints der Tabelle `exercise`
 --
 ALTER TABLE `exercise`
-  ADD CONSTRAINT `foreignKey_categories(id)` FOREIGN KEY (`category`) REFERENCES `categories` (`id`),
-  ADD CONSTRAINT `foreignKey_subcategories(id)` FOREIGN KEY (`subcategory`) REFERENCES `subcategories` (`id`),
-  ADD CONSTRAINT `foreignKey_difficulties(id)` FOREIGN KEY (`difficulty`) REFERENCES `difficulties` (`id`),
-  ADD CONSTRAINT `foreignKey_users(id)` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `FK_exercise_categories(id)` FOREIGN KEY (`category`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `FK_exercise_difficulties(id)` FOREIGN KEY (`difficulty`) REFERENCES `difficulties` (`id`),
+  ADD CONSTRAINT `FK_exercise_subcategories(id)` FOREIGN KEY (`subcategory`) REFERENCES `subcategories` (`id`),
+  ADD CONSTRAINT `FK_exercise_users(id)` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
