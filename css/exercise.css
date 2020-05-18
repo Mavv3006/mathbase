@@ -1,4 +1,3 @@
-
 :root {
     --dark-blue-color: #003049;
     --orange-color: #FFA400;
@@ -8,10 +7,9 @@
     --green-color: #42FF00;
 }
 
-.container .header , .container .sub-header{
+.container .header, .container .sub-header {
     position: relative;
 }
-
 
 h1, .username, .category {
     color: var(--dark-blue-color);
@@ -25,7 +23,6 @@ h1 {
     display: inline;
 }
 
-
 .edit_icon {
     width: 55px;
     height: 55px;
@@ -38,7 +35,7 @@ h1 {
     position: absolute;
 }
 
-.edit_icon a  {
+.edit_icon a {
     color: white;
 }
 
@@ -54,7 +51,7 @@ hr {
 
 .difficulty {
     color: var(--red-color);
-    margin-left: 15px;;
+    margin-left: 15px;
 }
 
 .username {
@@ -64,7 +61,6 @@ hr {
     display: inline-block;
     margin-top: 0;
 }
-
 
 .description {
     text-align: justify;
@@ -99,7 +95,7 @@ hr {
     vertical-align: middle;
 }
 
-.done-icon i, .clear-icon i{
+.done-icon i, .clear-icon i {
     font-size: 40px;
 }
 
