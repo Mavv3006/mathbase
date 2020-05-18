@@ -19,10 +19,6 @@
     font-size: 38px;
 }
 
-#mb-orange{
-    color: #ffa400;
-}
-
 #login-button{
     background-color: #003049;
     box-shadow: none;
@@ -41,4 +37,10 @@
     width: 36px;
     border-radius: 36px;
     padding: 0px;
+}
+
+.dropdown-content{
+    width: 185px !important;
+    color: black !important;
+    font-weight: normal !important;
 }

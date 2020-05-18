@@ -9,10 +9,10 @@
                 <a href="#" class="brand-logo logo-wrapper">
                     <img id="header-logo" src="/assets/logo/logo.svg" />
                     <div class="logo-text">
-                        Math<span id="mb-orange">base</span>
+                        Math<span class="mb-orange-text">base</span>
                     </div>
                 </a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right hide-on-med-and-down" style="padding-right: 20px">
                     <?php
                     if (false) {
                     ?>
@@ -31,7 +31,7 @@
                         </li>
                         <!-- Dropdown Trigger -->
                         <li>
-                            <a class="dropdown-trigger" href="#!" data-target="userMenu"><i class="material-icons">arrow_drop_down</i></a>
+                            <a class="dropdown-trigger" href="#!" data-target="userMenu" style="padding: 0;"><i class="material-icons mb-orange-text">arrow_drop_down</i></a>
                         </li>
                     <?php
                     }
@@ -41,7 +41,7 @@
 
             <!-- Dropdown Structure -->
             <ul id="userMenu" class="dropdown-content">
-                <li>Hallo <b>Nutzer!<b></li>
+                <li><span>Hallo <b>Nutzer!<b></span></li>
                 <li class="divider"></li>
                 <li><a href="#!">Profil</a></li>
                 <li><a href="#!">Ausloggen</a></li>
@@ -50,8 +50,10 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            $(".dropdown-trigger").dropdown();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems, {coverTrigger: false});
+            instance.open();
         });
     </script>
 
