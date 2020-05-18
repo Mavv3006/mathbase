@@ -7,25 +7,25 @@
         <span class="card-title mb-prussian-blue-text">
             <h2>Registrieren</h2>
         </span>
-        <form method="POST" action="#">
+        <form method="POST" action="<?= '../auth/sign_up.php' ?>">
 
             <div class="input-field">
-                <input id="email" type="text">
+                <input name="email" type="email">
                 <label for="email">E-Mail-Addresse</label>
             </div>
 
             <div class="input-field">
-                <input id="username" type="text">
+                <input name="username" type="text">
                 <label for="username">Benutername</label>
             </div>
 
             <div class="input-field">
-                <input id="password" type="password">
+                <input name="password" type="password">
                 <label for="password">Passwort</label>
             </div>
 
             <div class="input-field">
-                <input id="password_confirm" type="password">
+                <input name="password_confirm" type="password">
                 <label for="password_confirm">Passwort bestätigen</label>
             </div>
 

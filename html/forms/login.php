@@ -7,15 +7,15 @@
         <span class="card-title mb-prussian-blue-text">
             <h2>Einloggen</h2>
         </span>
-        <form method="POST" action="#">
+        <form method="post" action="<?= '../auth/sign_in.php' ?>">
 
             <div class="input-field">
-                <input id="username" type="text">
-                <label for="username">Benutername</label>
+                <input name="email" type="email">
+                <label for="email">E-Mail-Adresse</label>
             </div>
 
             <div class="input-field">
-                <input id="password" type="password">
+                <input name="password" type="password">
                 <label for="password">Passwort</label>
             </div>
 
@@ -29,7 +29,7 @@
 
             <p>
                 <a href="#">
-                Noch kein Mitglied? <b>Jetzt registrieren!</b>
+                    Noch kein Mitglied? <b>Jetzt registrieren!</b>
                 </a>
             </p>
         </form>

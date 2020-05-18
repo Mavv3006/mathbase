@@ -8,7 +8,10 @@ It uses $_POST['email'], $_POST['password'], $_POST['remember']
 require_once('auth.php');
 
 try {
-    if ($_POST['remember'] == 1) {
+    if (!isset($_POST['remember'])) {
+        // do not keep logged in after session ends
+        $rememberDuration = null;
+    } else if ($_POST['remember'] == 1) {
         // keep logged in for one year
         $rememberDuration = (int) (60 * 60 * 24 * 365.25);
     } else {
