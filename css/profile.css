@@ -1,16 +1,18 @@
-#profile{
-    padding-top: 30px;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+.wrapper{
+    align-items: center;
 }
 
 #profile-title{
     font-size: 40px;
     font-weight: normal;
     margin-left: 5%;
+}
+
+#profile-avatar-container{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
 }
 
 #profile-avatar{
@@ -21,18 +23,8 @@
     margin-left: 5%;
 }
 
-#profile-avatar-container{
-    overflow: auto;
-    margin-top: 30px;
-}
-
-#avatar-button-container{
-    overflow: auto;
-    padding-top: 32px;
-    margin-left: 20px;
-}
-
 #avatar-button{
+    float: left;
     margin-left: 20px;
     font-weight: bold;
 }
