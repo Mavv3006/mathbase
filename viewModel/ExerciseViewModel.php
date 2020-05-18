@@ -1,8 +1,8 @@
 <?php
 
-include_once ('ViewModel.php');
-include_once ('../models/Exercise.php');
-include_once ('../database/ExerciseDatabase.php');
+include_once('ViewModel.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/models/Exercise.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/database/ExerciseDatabase.php');
 
 class ExerciseViewModel extends ViewModel
 {
@@ -34,7 +34,7 @@ class ExerciseViewModel extends ViewModel
      *
      * @return array An Array of Exercises
      */
-    public function get_all():array
+    public function get_all(): array
     {
         $stmt = $this->database->query_all();
         return $this->fetchData($stmt);
