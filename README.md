@@ -9,7 +9,6 @@ selbst machen oder Angular?
 * (eigene) Aufgabenverwaltung (eigene Aufgaben löschen, editieren)
 * Kategorien (nur Admins, oder nur per Dropdown)
     * Schwierigkeitsgrad als Schulklassenstufe (1., 2., Studium)
-* Userrollen (Admin, User)
 
 ## Optional
 * Textsuche
@@ -29,3 +28,6 @@ selbst machen oder Angular?
 
 ## Datenbank
 Bitte bei jeder Änderung, die lokal an der Datenbank gemacht wird (hinzufügen, ändern oder löschen von Tabellen), einen Export hinzufügen, damit immer alle den aktuellen Stand haben. Der Export kann gerne den bisher vorhandenen überschreiben.
+
+## Login Library
+Wir nutzen die Library [PHP-Auth](https://github.com/delight-im/PHP-Auth) für unsere Userverwaltung.
