@@ -45,6 +45,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
                             <i class="material-icons">create</i>
                         </a>
                     </form>
+                    <a class="waves-effect waves-light btn" id="save-button">Änderungen speichern</a>
                 </div>
             </div>
         </div>
