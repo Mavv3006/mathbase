@@ -6,7 +6,5 @@
 <body>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/html/header.php'; ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/html/forms/login.php';?>
-
 <?php include $_SERVER['DOCUMENT_ROOT'].'/html/footer.php';?>
 </body>
