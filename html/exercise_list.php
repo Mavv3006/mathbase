@@ -12,11 +12,14 @@ $categoryViewModel = new CategoryViewModel();
 
 $exercises = $exerciseViewModel->get_all();
 
-$stylesheet_path = "../css/exercise_list.css";
 $site_name = "Aufgabenliste";
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
 ?>
+
+<head>
+    <link rel="stylesheet" href="/css/exercise_list.css" />
+</head>
 
 <div class="container">
 

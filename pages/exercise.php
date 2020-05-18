@@ -25,11 +25,14 @@ $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
 
-$stylesheet_path = $_SERVER['DOCUMENT_ROOT'] . '/css/exercise.css';
 $site_name = $exercise->get_title();
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
 ?>
+
+<head>
+    <link rel="stylesheet" href="/css/exercise.css" />
+</head>
 
 <body>
 
