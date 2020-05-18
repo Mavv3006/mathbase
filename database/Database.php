@@ -16,7 +16,7 @@ abstract class Database
      */
     public function __construct()
     {
-        require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] .'/config/config.php');
         $configs = get_config_array();
         $this->hostname = $configs['host'];
         $this->password = $configs['password'];
@@ -74,6 +74,8 @@ abstract class Database
     protected function prepareStatement(string $query, ...$parameters): PDOStatement
     {
         $stmt = $this->connection->prepare($query);
+
+        var_dump($parameters);
 
         for ($i = 0; $i < count($parameters); $i++) {
             $stmt->bindParam($i, $parameters[$i]);
