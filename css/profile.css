@@ -17,7 +17,12 @@
     margin-left: 5%;
 }
 
+#profile-avatar-container{
+    overflow: auto;
+}
+
 #avatar-button-container{
+    overflow: auto;
     padding-top: 32px;
     margin-left: 20px;
 }
@@ -34,6 +39,15 @@
 .edit-button{
     width: 55px;
     height: 55px;
-   
     float: right;
+}
+
+.card-content{
+    overflow: auto;
+}
+
+.edit-icon{
+    font-size: 37px;
+    width: 37px;
+    height: 37px;
 }

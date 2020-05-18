@@ -4,6 +4,7 @@
 ?>
 <head>
     <link rel="stylesheet" href="/css/profile.css"/>
+    <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css"
 </head>
 <body>
     <?php
@@ -26,21 +27,21 @@
                             <label for="email">E-Mail-Adresse</label>
                         </div>
                         <a class="edit-button waves-effect waves-light btn" href="#">
-                            <i class="edit-icon material-icons">create</i>
+                            <i class="edit-icon material-icons" id="edit">create</i>
                         </a>
                         <div class="input-field col s10">
                             <input id="username" type="text" class="validate">
                             <label for="username">Benutzername</label>
                         </div>
                         <a class="edit-button waves-effect waves-light btn" href="#">
-                            <i class="edit-icon material-icons">create</i>
+                            <i class="material-icons edit-icon">create</i>
                         </a>
                         <div class="input-field col s10">
                             <input id="password" type="password" class="validate">
                             <label for="password">E-Mail-Adresse</label>
                         </div>
                         <a class="edit-button waves-effect waves-light btn" href="#">
-                            <i class="large material-icons">create</i>
+                            <i class="material-icons large">create</i>
                         </a>
                     </form>
                 </div>
