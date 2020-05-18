@@ -64,4 +64,3 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
         }
     }
 </script>
-<script src="../js/bin/materialize.min.js"></script>
