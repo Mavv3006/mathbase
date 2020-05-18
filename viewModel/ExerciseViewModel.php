@@ -40,6 +40,15 @@ class ExerciseViewModel extends ViewModel
         return $this->fetchData($stmt);
     }
 
+    public function create(Exercise $model): void
+    {
+        $this->database->create("INSERT INTO " . $this->database->tablename . " (user_id, description, solution, title, category, subcategory, difficulty) VALUES (?,?,?,?,?,?,?)", $model->get_user_id(), $model->get_description(), $model->get_solution(), $model->get_title(), $model->get_category(), $model->get_subcategory(), $model->get_difficulty());
+    }
+
+    public function update(Exercise $model): void
+    {
+    }
+
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();

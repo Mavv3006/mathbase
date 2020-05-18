@@ -1,9 +1,31 @@
 <?php
+// if this page is for editing an existing exercise than we need the id
+// so $_GET['id'] has to be provided.
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/ExerciseViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/UserViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
+
+$exerciseViewModel = new ExerciseViewModel();
+$userViewModel = new UserViewModel();
+$difficultyViewModel = new DifficultyViewModel();
+$subcategoryViewModel = new SubCategoryViewModel();
+$categoryViewModel = new CategoryViewModel();
+
+$categories = $categoryViewModel->get_all();
+$subcategories = $subcategoryViewModel->get_all();
+$difficulties = $difficultyViewModel->get_all();
 
 $site_name = "Neue Aufgabe";
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 ?>
+
+<head>
+    <link rel="stylesheet" href="../css/new_exercise.css">
+</head>
 
 <div class="container">
     <div class="header">
@@ -37,33 +59,27 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                 <div class="input-field">
                     <select name="category">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
+                        <?php foreach ($categories as $category) { ?>
+                        <option value="<?=$category->get_id()?>"><?=$category->get_description()?></option>
+                        <?php } ?>
                     </select>
                     <label for="category">Kategorie</label>
                 </div>
                 <div class="input-field">
-                    <select name="subcategory" disabled>
+                    <select name="subcategory">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
+                        <?php foreach ($subcategories as $subcategory) { ?>
+                        <option value="<?=$subcategory->get_id()?>"><?=$subcategory->get_description()?></option>
+                        <?php } ?>
                     </select>
                     <label for="category">Unterkategorie</label>
                 </div>
                 <div class="input-field">
                     <select name="difficulty">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
+                        <?php foreach ($difficulties as $difficulty) { ?>
+                        <option value="<?=$difficulty->get_id()?>"><?=$difficulty->get_description()?></option>
+                        <?php } ?>
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
@@ -74,7 +90,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                         <input type="file" name="file">
                     </div>
                     <div class="file-path-wrapper">
-                        <input type="text" class="file-path validate">
+                        <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
                     </div>
                 </div>
             </div>
@@ -91,5 +107,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
 <script>
     $(document).ready(function() {
         $('select').formSelect();
+    });
+    $('#description').show(function() {
+        $(this).css('height', '12em');
     });
 </script>

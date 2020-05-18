@@ -3,7 +3,7 @@
 abstract class Database
 {
     protected PDO $connection;
-    protected string $tablename;
+    public string $tablename;
 
     private string $hostname;
     private string $password;
@@ -61,6 +61,15 @@ abstract class Database
         $stmt->execute();
 
         return $stmt;
+    }
+
+    public function create(string $query, ...$values): void
+    {
+        $stmt = $this->prepareStatement($query, $values);
+        var_dump($stmt);
+    }
+    public function update(string $query, ...$values): void
+    {
     }
 
 

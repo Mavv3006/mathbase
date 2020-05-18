@@ -11,9 +11,9 @@ class Exercise implements Model
     private string $created_at;
     private string $updated_at;
     private string $title;
-    private string $category;
-    private string $subcategory;
-    private string $difficulty;
+    private int $category;
+    private int $subcategory;
+    private int $difficulty;
 
     /**
      * Exersise constructor
@@ -25,7 +25,7 @@ class Exercise implements Model
      * @param string $created_at The date and time the Exersise was created at
      * @param string $updated_at The date and time the Exersise was last updated
      */
-    public function __construct(int $id, int $user_id, string $title, string $description, string $solution, string $created_at, string $updated_at, string $category, string $subcategory, string $difficulty)
+    public function __construct(int $id, int $user_id, string $title, string $description, string $solution, string $created_at, string $updated_at, int $category, int $subcategory, int $difficulty)
     {
         $this->id = $id;
         $this->user_id = $user_id;
@@ -121,7 +121,7 @@ class Exercise implements Model
     /**
      * @return string The category of the exercise
      */
-    public function get_category(): string
+    public function get_category(): int
     {
         return $this->category;
     }
@@ -130,7 +130,7 @@ class Exercise implements Model
     /**
      * @return string The subcategory of the exercise
      */
-    public function get_subcategory(): string
+    public function get_subcategory(): int
     {
         return $this->subcategory;
     }
@@ -139,7 +139,7 @@ class Exercise implements Model
     /**
      * @return string The title of the exercise
      */
-    public function get_difficulty(): string
+    public function get_difficulty(): int
     {
         return $this->difficulty;
     }
