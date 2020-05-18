@@ -14,6 +14,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 
     <form action="#" method="put">
         <div class="row">
+            <!-- erste Spalte -->
             <div class="col s12 m6">
                 <div class="input-field ">
                     <input type="text" name="title" id="title">
@@ -30,7 +31,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 
                 <button type="submit" class="waves-effect waves-light btn">Erstellen</button>
             </div>
-            <div class="col s12 offset-m6 m6">
+
+            <!-- zweite Spalte -->
+            <div class="col s12 m6">
                 <div class="input-field">
                     <select name="category">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
@@ -40,7 +43,39 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                         <option value="4">Option 4</option>
                         <option value="5">Option 5</option>
                     </select>
-                    <label for="category"></label>
+                    <label for="category">Kategorie</label>
+                </div>
+                <div class="input-field">
+                    <select name="subcategory" disabled>
+                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="4">Option 4</option>
+                        <option value="5">Option 5</option>
+                    </select>
+                    <label for="category">Unterkategorie</label>
+                </div>
+                <div class="input-field">
+                    <select name="difficulty">
+                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="4">Option 4</option>
+                        <option value="5">Option 5</option>
+                    </select>
+                    <label for="category">Schwierigkeit</label>
+                </div>
+                <img src="" alt="">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" name="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input type="text" class="file-path validate">
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,8 +89,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="../js/bin/materialize.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems, options);
+    $(document).ready(function() {
+        $('select').formSelect();
     });
 </script>
