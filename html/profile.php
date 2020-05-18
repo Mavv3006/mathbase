@@ -12,7 +12,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
 </head>
 <body>
     <div class="row">
-        <div class="col s4 offset-s3">
+        <div class="col s6 offset-s3">
             <div class="card" id="profile">
                 <span class="card-title" id="profile-title">Profil</span>
                 <div id="profile-avatar-container">
