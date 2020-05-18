@@ -7,19 +7,18 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
     <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css" />
     <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/html/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/html/header.php';
     ?>
 </head>
 
 <body>
-    <div class="wrapper">
     <div class="row">
         <div class="col m6 offset-m3">
             <div class="card" id="profile">
                 <span class="card-title" id="profile-title">Profil</span>
                 <div id="profile-avatar-container">
                     <img id="profile-avatar" src="/assets/pp_default.svg">
-                        <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
+                    <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
                 </div>
                 <div class="card-content">
                     <form method="UPDATE" action="#">
@@ -50,9 +49,8 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
             </div>
         </div>
     </div>
-    </div>
     <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php';
     ?>
 </body>
 <script>
