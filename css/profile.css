@@ -40,13 +40,15 @@
     width: 55px;
     height: 55px;
     float: right;
+    border-radius: 4px;
+    padding: 9px;
 }
 
 .card-content{
     overflow: auto;
 }
 
-.edit-icon{
+.edit-button i{
     font-size: 37px;
     width: 37px;
     height: 37px;
