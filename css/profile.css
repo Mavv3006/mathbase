@@ -1,10 +1,6 @@
 #profile{
     padding-top: 30px;
     margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 #profile-title{
@@ -27,7 +23,6 @@
 }
 
 #avatar-button-container{
-    overflow: auto;
     padding-top: 32px;
     margin-left: 20px;
 }
