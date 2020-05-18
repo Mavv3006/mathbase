@@ -1,0 +1,78 @@
+:root {
+    --dark-blue-color: #003049;
+    --orange-color: #FFA400;
+    --grey-color: #7E7D7D;
+    --red-color: #D62828;
+    --black-color: #000000;
+    --green-color: #42FF00;
+    --category-color: rgba(0, 0, 0, 0, 0.87);
+    --background-color: #FAFAFA;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    padding: 0;
+}
+
+h1, .title {
+    color: var(--dark-blue-color);
+}
+
+.exercise-grid {
+    display: grid;
+    grid-row-gap: 35px;
+    grid-column-gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.exercise {
+    background-color: var(--background-color);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 172px;
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.category {
+    color: var(--category-color);
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-top: 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.title {
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+.short-text {
+    color: var(--black-color);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.difficulty {
+    color: var(--red-color);
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 21px;
+    margin-top: 12px;
+    bottom: 21px;
+}
