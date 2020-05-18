@@ -2,15 +2,15 @@
 
 if (!isset($_GET['id'])) {
     // redirect to homepage
-    die(header('Location: ../index.html'));
+    die(header('Location: ../index.php'));
 }
 
 // get Task based on GET Query
-require_once("../viewModel/ExerciseViewModel.php");
-require_once("../viewModel/UserViewModel.php");
-require_once("../viewModel/DifficultyViewModel.php");
-require_once("../viewModel/CategoryViewModel.php");
-require_once("../viewModel/SubcategoryViewModel.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/ExerciseViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/UserViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -25,11 +25,14 @@ $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
 
-$stylesheet_path = "../css/exercise.css";
 $site_name = $exercise->get_title();
-include_once("../html/head.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
 ?>
+
+<head>
+    <link rel="stylesheet" href="/css/exercise.css" />
+</head>
 
 <body>
 
@@ -37,7 +40,7 @@ include_once("../html/head.php");
         <div class="header">
             <h1><?= $exercise->get_title() ?></h1>
             <div class="edit_icon waves-effect waves-light btn">
-                <a href="../index.php">
+                <a href="<?= $_SERVER['DOCUMENT_ROOT'] ?>/index.php">
                     <!--TODO update link -->
                     <i class="material-icons">create</i>
                 </a>

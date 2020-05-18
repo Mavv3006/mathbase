@@ -1,8 +1,8 @@
 <?php
 
 include_once('ViewModel.php');
-include_once('../models/Category.php');
-include_once('../database/CategoryDatabase.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/models/Category.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/database/CategoryDatabase.php');
 
 class CategoryViewModel extends ViewModel
 {
