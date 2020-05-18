@@ -1,6 +1,10 @@
 #profile{
     padding-top: 30px;
-    float: left;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 #profile-title{
@@ -37,11 +41,13 @@
 }
 
 .edit-button{
-    width: 55px;
-    height: 55px;
+    width: 44px;
+    height: 44px;
     float: right;
     border-radius: 4px;
-    padding: 9px;
+    padding: 6px;
+    padding-top: 4px;
+    margin-top: 15px;
 }
 
 .card-content{
@@ -49,7 +55,7 @@
 }
 
 .edit-button i{
-    font-size: 37px;
-    width: 37px;
-    height: 37px;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
 }
