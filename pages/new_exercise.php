@@ -8,6 +8,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/auth/user_info.php');
+$user = getActiveUser();
+
+if ($user == null) { // Zum Testen ein User mit ungültiger ID
+    // http_response_code(401);
+    // die();
+    $user = new User(1, "test_user", "test@user.test");
+}
+
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
 $difficultyViewModel = new DifficultyViewModel();
@@ -17,6 +26,8 @@ $categoryViewModel = new CategoryViewModel();
 $categories = $categoryViewModel->get_all();
 $subcategories = $subcategoryViewModel->get_all();
 $difficulties = $difficultyViewModel->get_all();
+
+$action_path = '../inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
@@ -34,7 +45,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 
     <hr>
 
-    <form action="#" method="put">
+    <form action="<?= $action_path ?>" method="post">
+        <input type="hidden" name="user_id" value="<?= $user->get_id() ?>">
         <div class="row">
             <!-- erste Spalte -->
             <div class="col s12 m6">
@@ -60,7 +72,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                     <select name="category">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
                         <?php foreach ($categories as $category) { ?>
-                        <option value="<?=$category->get_id()?>"><?=$category->get_description()?></option>
+                            <option value="<?= $category->get_id() ?>"><?= $category->get_description() ?></option>
                         <?php } ?>
                     </select>
                     <label for="category">Kategorie</label>
@@ -69,7 +81,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                     <select name="subcategory">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
                         <?php foreach ($subcategories as $subcategory) { ?>
-                        <option value="<?=$subcategory->get_id()?>"><?=$subcategory->get_description()?></option>
+                            <option value="<?= $subcategory->get_id() ?>"><?= $subcategory->get_description() ?></option>
                         <?php } ?>
                     </select>
                     <label for="category">Unterkategorie</label>
@@ -78,7 +90,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                     <select name="difficulty">
                         <option value="" selected disabled>Bitte etwas auswählen</option>
                         <?php foreach ($difficulties as $difficulty) { ?>
-                        <option value="<?=$difficulty->get_id()?>"><?=$difficulty->get_description()?></option>
+                            <option value="<?= $difficulty->get_id() ?>"><?= $difficulty->get_description() ?></option>
                         <?php } ?>
                     </select>
                     <label for="category">Schwierigkeit</label>

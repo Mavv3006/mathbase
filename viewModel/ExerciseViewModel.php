@@ -50,7 +50,7 @@ class ExerciseViewModel extends ViewModel
             $model->get_category(),
             $model->get_subcategory(),
             $model->get_difficulty(), 
-            "empty" // TODO: add exercise picture if available
+            "assets/pp_default.svg" // TODO: add exercise picture if available
         );
         $this->database->create($array);
     }
