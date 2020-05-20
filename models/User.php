@@ -14,11 +14,12 @@ class User implements Model
      * @param string $username The Users username
      * @param string $email The Users email
      */
-    public function __construct(int $id, string $username, string $email)
+    public function __construct(int $id, string $username, string $email, string $picture)
     {
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
+        $this->picture = $picture;
     }
 
     /**
@@ -53,12 +54,20 @@ class User implements Model
         return $this->username;
     }
 
-
     /**
      * @return string The Users email
      */
     public function get_email(): string
     {
         return $this->email;
+    }
+
+
+    /**
+     * @return string The path to the Users picture
+     */
+    public function get_picture(): string
+    {
+        return $this->picture;
     }
 }
