@@ -97,7 +97,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                 </div>
                 <img src="../assets/exercise_default.svg" alt="Bild der Übung">
                 <div class="file-field input-field">
-                    <div class="btn blue-btn">
+                    <div class="btn blue-btn waves-effect waves-light">
                         <span class="">Bild hochladen</span>
                         <input type="file" name="file">
                     </div>
@@ -114,8 +114,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
 ?>
 
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="../js/bin/materialize.min.js"></script>
 <script>
     $(document).ready(function() {
         $('select').formSelect();

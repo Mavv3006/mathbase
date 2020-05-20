@@ -2,7 +2,6 @@
     color: black;
 }
 
-.blue-btn {    
+.blue-btn, .blue-btn:hover {
     background-color: #003049;
-
 }
