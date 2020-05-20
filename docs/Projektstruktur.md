@@ -1,0 +1,1 @@
+Die Projektstruktur soll sich an das [Standard PHP Package Skeleton](https://github.com/php-pds/skeleton) anlehnen.
