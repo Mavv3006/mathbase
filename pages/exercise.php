@@ -24,9 +24,13 @@ $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
 $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
+// var_dump($exercise);
+
+$has_picture = $exercise->get_picture() == "" ? false : true;
 
 $site_name = $exercise->get_title();
 include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 
 ?>
 
@@ -38,9 +42,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
     <div class="container">
         <div class="header">
-            <h1><?= $exercise->get_title() ?></h1>
+            <h3><?= $exercise->get_title() ?></h3>
             <div class="edit_icon waves-effect waves-light btn">
-                <a href="<?= $_SERVER['DOCUMENT_ROOT'] ?>/index.php">
+                <a href="<?= $_SERVER['DOCUMENT_ROOT'] ?>index.php">
                     <!--TODO update link -->
                     <i class="material-icons">create</i>
                 </a>
@@ -56,21 +60,21 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
         </div>
 
         <div class="row">
-            <p class="description col s12 l8"><?= $exercise->get_description() ?></p>
-            <p class="exercise-picture col s12 l4">Bild der Übung</p>
+            <?php if ($has_picture) { ?>
+                <p class="description col s12 m6"><?= $exercise->get_description() ?></p>
+                <p class="exercise-picture col s12 m6">
+                    <img src="../<?= $exercise->get_picture() ?>" alt="Bild der Übung">
+                </p>
+            <?php } else { ?>
+                <p class="description col s12"><?= $exercise->get_description() ?></p>
+            <?php } ?>
         </div>
-
-        <?php
-
-        // show Bild, wenn vorhanden
-
-        ?>
 
         <form action="" method="post" name="solutionForm" id="solutionForm">
             <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
             <input type="hidden" name="correct_solution" value="<?= $exercise->get_solution() ?>">
-            <div>
-                <div class="input-field">
+            <div class="row">
+                <div class="input-field col s12 m5">
                     <input type="text" name="solution" id="solution">
                     <label for="solution" id="solution_label">Antwort</label>
                 </div>
@@ -88,9 +92,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
         </form>
 
         <?php
-
-        // include footer
-
+        include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
         ?>
 
     </div>

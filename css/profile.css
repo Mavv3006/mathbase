@@ -1,0 +1,60 @@
+#profile{
+    padding-top: 30px;
+    margin-top: 12%;
+}
+
+#profile-title{
+    font-size: 40px;
+    font-weight: normal;
+    margin-left: 5%;
+}
+
+#profile-avatar-container{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#profile-avatar{
+    float: left;
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    margin-left: 5%;
+}
+
+#avatar-button{
+    float: left;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.profile-input{
+    float: left;
+}
+
+.edit-button{
+    width: 44px;
+    height: 44px;
+    float: right;
+    border-radius: 4px;
+    padding: 6px;
+    padding-top: 4px;
+    margin-top: 15px;
+}
+
+.card-content{
+    overflow: auto;
+}
+
+.edit-button i{
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+#save-button{
+    float: right;
+    margin-top: 40px;
+}

@@ -1,5 +1,6 @@
 #nav-mobile{
     font-weight: bold;
+    padding-right: 20px;
 }
 
 .logo-wrapper{
@@ -19,10 +20,6 @@
     font-size: 38px;
 }
 
-#mb-orange{
-    color: #ffa400;
-}
-
 #login-button{
     background-color: #003049;
     box-shadow: none;
@@ -33,7 +30,6 @@
     width: 36px;
     border-radius: 36px;
     margin-top: 14px;
-    margin-right: 20px;
 }
 
 .avatar{
@@ -41,4 +37,8 @@
     width: 36px;
     border-radius: 36px;
     padding: 0px;
+}
+
+.dropdown-trigger{
+    padding: 0;
 }
