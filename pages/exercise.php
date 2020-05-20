@@ -11,6 +11,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/UserViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -23,8 +24,6 @@ $user = $userViewModel->get_by_id($exercise->get_user_id());
 $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
 $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
-
-// var_dump($exercise);
 
 $has_picture = $exercise->get_picture() == "" ? false : true;
 

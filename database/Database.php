@@ -44,6 +44,12 @@ abstract class Database
         return $this->prepareStatement($query);
     }
 
+    /**
+     * Queries the database for a specific entry with the given id.
+     *
+     * @param int $id The ID of the required entry 
+     * @return PDOStatement The Statement returned from querying the database
+     */
     public function query_by_id(int $id): PDOStatement
     {
         $query = "
@@ -60,6 +66,19 @@ abstract class Database
 
         $stmt->execute();
 
+        return $stmt;
+    }
+
+    /**
+     * Queries the database with the given string.
+     *
+     * @param string $query the SQL query to be executed
+     * @return PDOStatement The Statement returned from querying the database
+     */
+    public function query(string $query):PDOStatement
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
         return $stmt;
     }
 

@@ -1,5 +1,5 @@
 <?php
-
+require_once('Model.php');
 class User implements Model
 {
     private int $id;

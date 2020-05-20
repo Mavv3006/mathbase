@@ -6,6 +6,7 @@ It uses $_POST['email'], $_POST['password'], $_POST['remember']
 */
 
 require_once('auth.php');
+require_once('../config/config.php');
 
 try {
     if (!isset($_POST['remember'])) {
@@ -21,7 +22,14 @@ try {
 
     $auth->login($_POST['email'], $_POST['password'], $rememberDuration);
 
-    echo 'User is logged in';
+    $userLocation = PAGE[$_SESSION[USER_LOCATION]];
+    if (isset($userLocation)) {
+        header("Location: ../" .  $userLocation);
+        die();
+    } else {
+        http_response_code(404);
+        die();
+    }
 } catch (\Delight\Auth\InvalidEmailException $e) {
     die('Wrong email address');
 } catch (\Delight\Auth\InvalidPasswordException $e) {
