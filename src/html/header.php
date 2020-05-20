@@ -42,7 +42,7 @@
     </div>
 
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/login.php'; ?>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/register.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/login.php'; ?>
+    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/register.php'; ?>
 
 </body>

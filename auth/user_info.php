@@ -1,6 +1,6 @@
 <?php
 require_once('auth.php');
-include_once('../models/User.php');
+require_once('../models/User.php');
 
 /**
  * Gets the currently signed in user.

@@ -1,8 +1,8 @@
 <?php
 
-include_once('ViewModel.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/models/User.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/database/UserDatabase.php');
+require_once('ViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/User.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/UserDatabase.php');
 
 class UserViewModel extends ViewModel
 {

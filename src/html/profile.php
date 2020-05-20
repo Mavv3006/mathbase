@@ -1,13 +1,13 @@
 <?php
 $site_name = "Profil";
-include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
+include  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php';
 ?>
 
 <head>
     <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css" />
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/html/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php';
     ?>
 </head>
 
@@ -50,7 +50,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
         </div>
     </div>
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php';
     ?>
 </body>
 <script>

@@ -1,11 +1,11 @@
 <?php
     $site_name = "Mathbase";
-    include  $_SERVER['DOCUMENT_ROOT'].'/html/head.php';
+    require_once  $_SERVER['DOCUMENT_ROOT'].'/src/html/head.php';
 ?>
 
 <body>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/html/header.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/html/menu.php';?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/html/exercise_list.php'; ?>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/html/footer.php';?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/src/html/header.php'; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/src/html/menu.php';?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/src/html/exercise_list.php'; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/src/html/footer.php';?>
 </body>

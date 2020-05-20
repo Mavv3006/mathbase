@@ -6,11 +6,11 @@ if (!isset($_GET['id'])) {
 }
 
 // get Task based on GET Query
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/UserViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -29,8 +29,8 @@ $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
 $site_name = $exercise->get_title();
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
 
 ?>
 
@@ -92,7 +92,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
         </form>
 
         <?php
-        include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
         ?>
 
     </div>

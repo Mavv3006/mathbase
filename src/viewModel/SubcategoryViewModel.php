@@ -1,8 +1,8 @@
 <?php
 
-include_once('ViewModel.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/models/Subcategory.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/database/SubcategoryDatabase.php');
+require_once('ViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/Subcategory.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/SubcategoryDatabase.php');
 
 class SubCategoryViewModel extends ViewModel
 {
