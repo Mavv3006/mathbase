@@ -1,3 +1,8 @@
 .file-path::placeholder {
     color: black;
 }
+
+.blue-btn {    
+    background-color: #003049;
+
+}

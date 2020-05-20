@@ -14,7 +14,7 @@ $user = getActiveUser();
 if ($user == null) { // Zum Testen ein User mit ungültiger ID
     // http_response_code(401);
     // die();
-    $user = new User(1, "test_user", "test@user.test");
+    $user = new User(1, "test_user", "test@user.test","assets/pp_default.svg");
 }
 
 $exerciseViewModel = new ExerciseViewModel();
@@ -95,10 +95,10 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
-                <img src="../assets/pp_default.svg" alt="Bild der Übung">
+                <img src="../assets/exercise_default.svg" alt="Bild der Übung">
                 <div class="file-field input-field">
-                    <div class="btn">
-                        <span>File</span>
+                    <div class="btn blue-btn">
+                        <span class="">Bild hochladen</span>
                         <input type="file" name="file">
                     </div>
                     <div class="file-path-wrapper">
