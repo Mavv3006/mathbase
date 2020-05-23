@@ -24,7 +24,7 @@
                         <li><a class="waves-effect waves-light btn">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
-                                <a class="avatar" href="html/profile.php">
+                                <a class="avatar" href="/html/profile.php">
                                     <img class="avatar" src="/assets/pp_default.svg">
                                 </a>
                             </div>
