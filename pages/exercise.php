@@ -90,11 +90,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
             <button type="submit" class="waves-effect waves-light btn">Überprüfen</button>
             <div class="waves-effect btn-flat" id="show_solution">Lösung anzeigen</div>
         </form>
-
-        <?php
-        include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
-        ?>
-
     </div>
 
     <script src="../js/bin/materialize.min.js"></script>
@@ -122,5 +117,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
             event.preventDefault();
         })
     </script>
+
+    <?php
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+    ?>
 
 </body>
