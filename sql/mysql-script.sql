@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 11. Mai 2020 um 16:18
+-- Erstellungszeit: 20. Mai 2020 um 16:58
 -- Server-Version: 10.4.11-MariaDB
 -- PHP-Version: 7.4.5
 
@@ -84,11 +84,18 @@ CREATE TABLE `exercise` (
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `category` int(11) DEFAULT NULL,
   `subcategory` int(11) DEFAULT NULL,
-  `difficulty` int(11) DEFAULT NULL
+  `difficulty` int(11) DEFAULT NULL,
+  `picture` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- RELATIONEN DER TABELLE `exercise`:
+--   `difficulty`
+--       `difficulties` -> `id`
+--   `subcategory`
+--       `subcategories` -> `id`
+--   `user_id`
+--       `users` -> `id`
 --   `category`
 --       `categories` -> `id`
 --   `difficulty`
@@ -98,6 +105,22 @@ CREATE TABLE `exercise` (
 --   `user_id`
 --       `users` -> `id`
 --
+
+--
+-- Daten für Tabelle `exercise`
+--
+
+INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `created_at`, `updated_at`, `category`, `subcategory`, `difficulty`, `picture`) VALUES
+(1, 3, 'Aufgabenstellung, Beschreibung, etc.', 'test solution', 'Aufgabentitel', '2020-05-16 16:24:36', '2020-05-16 17:09:35', 0, 0, 0, ''),
+(2, 3, 'get_description', 'test solution', 'test title', '2020-05-04 16:41:59', '2020-05-18 14:53:43', 0, 0, 0, 'assets/exercise_default.svg'),
+(3, 3, 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea tak', 'solution', 'title', '2020-05-16 16:23:08', '2020-05-16 17:01:05', 0, 0, 0, ''),
+(4, 3, 'test description', 'test solution', 'test title', '2020-05-16 16:27:24', '2020-05-16 16:27:24', 0, 0, 0, ''),
+(5, 1, 'description', 'solution', 'title', '2020-05-18 17:43:43', '2020-05-18 17:43:43', 0, 0, 0, ''),
+(6, 1, 'description', 'solution', 'title', '2020-05-18 17:48:58', '2020-05-18 17:48:58', 0, 0, 0, ''),
+(7, 1, 'description', 'solution', 'title', '2020-05-18 17:55:29', '2020-05-18 17:55:29', 0, 0, 0, ''),
+(8, 1, 'description', 'solution', 'title', '2020-05-18 18:02:28', '2020-05-19 15:37:11', 0, 0, 0, ''),
+(9, 1, 'description', 'solution', 'title', '2020-05-18 18:02:34', '2020-05-19 15:37:14', 0, 0, 0, ''),
+(11, 1, 'aaa', 'lll', 'ttt', '2020-05-19 16:05:24', '2020-05-19 16:05:24', 0, 0, 0, 'assets/pp_default.svg');
 
 -- --------------------------------------------------------
 
@@ -138,12 +161,22 @@ CREATE TABLE `users` (
   `roles_mask` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `registered` int(10) UNSIGNED NOT NULL,
   `last_login` int(10) UNSIGNED DEFAULT NULL,
-  `force_logout` mediumint(7) UNSIGNED NOT NULL DEFAULT 0
+  `force_logout` mediumint(7) UNSIGNED NOT NULL DEFAULT 0,
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'assets/pp_default.svg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- RELATIONEN DER TABELLE `users`:
 --
+
+--
+-- Daten für Tabelle `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `username`, `status`, `verified`, `resettable`, `roles_mask`, `registered`, `last_login`, `force_logout`, `picture`) VALUES
+(1, 'test@test.com', '$2y$10$Pwp4UNw4Y1mQjZULNCclHOe933Ml5PKuBjBfeDi9p1QC0ZK20X6VC', 'test', 0, 1, 1, 0, 1589789784, 1589801622, 0, 'assets/pp_default.svg'), -- password: test
+(2, 'bla@bla.com', '$2y$10$a0y9oN51EPKHzzC89sUI0u/io.nWUaLmfoMToaMV9HxD2RPydCmFW', 'bla bla', 0, 1, 1, 0, 1589791282, NULL, 0, 'assets/pp_default.svg'), -- password: bla
+(3, 'user@user.de', '$2y$10$ZWz1Po2eBvDXl60bpqlYZezlr98sjnHwrWGEP3J3MwZVw4A8mmWxW', 'User', 0, 1, 1, 0, 1589209770, 1589813450, 0, 'assets/pp_default.svg'); -- password: sh7up#KT!
 
 -- --------------------------------------------------------
 
@@ -216,6 +249,14 @@ CREATE TABLE `users_throttling` (
 --
 -- RELATIONEN DER TABELLE `users_throttling`:
 --
+
+--
+-- Daten für Tabelle `users_throttling`
+--
+
+INSERT INTO `users_throttling` (`bucket`, `tokens`, `replenished_at`, `expires_at`) VALUES
+('PZ3qJtO_NLbJfRIP-8b4ME4WA3xxc6n9nbCORSffyQ0', 3.03468, 1589791282, 1590223282),
+('QduM75nGblH2CDKFyk0QeukPOwuEVDAUFE54ITnHM38', 58.6137, 1589813450, 1590353450);
 
 --
 -- Indizes der exportierten Tabellen
@@ -296,31 +337,37 @@ ALTER TABLE `users_throttling`
 -- AUTO_INCREMENT für Tabelle `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT für Tabelle `difficulties`
 --
 ALTER TABLE `difficulties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- AUTO_INCREMENT für Tabelle `exercise`
+--
+ALTER TABLE `exercise`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT für Tabelle `users_confirmations`
 --
 ALTER TABLE `users_confirmations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `users_remembered`
