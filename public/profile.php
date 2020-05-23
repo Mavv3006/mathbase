@@ -17,7 +17,7 @@ include  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php';
             <div class="card" id="profile">
                 <span class="card-title" id="profile-title">Profil</span>
                 <div id="profile-avatar-container">
-                    <img id="profile-avatar" src="/assets/pp_default.svg">
+                    <img id="profile-avatar" src="/assets/defaults/pp_default.svg">
                     <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
                 </div>
                 <div class="card-content">

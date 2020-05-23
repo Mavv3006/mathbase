@@ -24,8 +24,8 @@
                         <li><a class="waves-effect waves-light btn">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
-                                <a class="avatar" href="html/profile.php">
-                                    <img class="avatar" src="/assets/pp_default.svg">
+                                <a class="avatar" href="profile.php">
+                                    <img class="avatar" src="/assets/defaults/pp_default.svg">
                                 </a>
                             </div>
                         </li>
@@ -44,5 +44,6 @@
 
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/login.php'; ?>
     <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/register.php'; ?>
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/src/html/menu.php'; ?>
 
 </body>
