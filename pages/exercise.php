@@ -97,9 +97,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 
     </div>
 
-    <script src="../js/bin/materialize.min.js"></script>
-    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-
     <script>
         $('#show_solution').on('click', function() {
             let value = document.getElementById('solution').value;
