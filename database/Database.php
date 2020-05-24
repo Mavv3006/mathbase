@@ -46,6 +46,12 @@ abstract class Database
         return $stmt;
     }
 
+    /**
+     * Queries the database for a specific entry with the given id.
+     *
+     * @param int $id The ID of the required entry 
+     * @return PDOStatement The Statement returned from querying the database
+     */
     public function query_by_id(int $id): PDOStatement
     {
         $query = "
@@ -65,18 +71,19 @@ abstract class Database
         return $stmt;
     }
 
-    public function create(array &$values): void
+    /**
+     * Queries the database with the given string.
+     *
+     * @param string $query the SQL query to be executed
+     * @return PDOStatement The Statement returned from querying the database
+     */
+    public function query(string $query):PDOStatement
     {
-        $this->prepareStatement(
-            "INSERT INTO " . $this->tablename . " (user_id, description, solution, title, category, subcategory, difficulty, picture) 
-            VALUES (?,?,?,?,?,?,?,?)",
-            $values
-        );
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt;
     }
-    public function update(string $query, array &$values): void
-    {
-        $this->prepareStatement($query, $values);
-    }
+
 
     /**
      * Prepares and executes an SQL query. If provided it also binds parameters.
