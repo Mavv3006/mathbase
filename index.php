@@ -25,7 +25,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
         </div>
 
         <div class="row">
-            <div class="col s10 offset-s3 m2 offset-m2">
+            <div class="col s10 offset-s1 m2 offset-m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">access_time</i>
@@ -37,7 +37,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
                 </div>
             </div>
 
-            <div class="col s12 m2">
+            <div class="col s10 offset-s1 m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">beach_access</i>
@@ -49,7 +49,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
                 </div>
             </div>
 
-            <div class="col s12 m2">
+            <div class="col s10 offset-s1 m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">fitness_center</i>
@@ -61,7 +61,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
                 </div>
             </div>
 
-            <div class="col s12 m2">
+            <div class="col s10 offset-s1 m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">redeem</i>
