@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . 'auth/user_info.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/auth/user_info.php');
 $user = getActiveUser();
 
 ?>
