@@ -1,6 +1,13 @@
 <?php
+session_start();
 $site_name = "Mathbase";
 include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+setUserLocation("index");
+
+$site_name = "Aufgabenliste";
+include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+
 ?>
 
 <head>
