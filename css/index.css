@@ -1,0 +1,34 @@
+.title{
+    text-align: center;
+    color: #003049;
+}
+
+h5{
+    text-align: center;
+    padding-bottom: 24px;
+    color: #7E7D7D;
+}
+
+.card {
+    cursor: default;
+}
+
+.card-image {
+    text-align: center;
+    cursor: default;
+    padding-top: 24px;
+}
+
+.card-title {
+    text-align: center;
+    color: #003049;
+    font-weight: bold !important;
+}
+
+.card-content {
+    color: #003049;
+}
+
+.button-start{
+    text-align: center;
+}
