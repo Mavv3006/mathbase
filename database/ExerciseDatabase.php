@@ -1,6 +1,6 @@
 <?php
 
-include_once('Database.php');
+require_once('Database.php');
 
 class ExerciseDatabase extends Database
 {

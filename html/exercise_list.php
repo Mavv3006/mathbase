@@ -13,7 +13,7 @@ $categoryViewModel = new CategoryViewModel();
 $exercises = $exerciseViewModel->get_all();
 
 $site_name = "Aufgabenliste";
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
 ?>
 
