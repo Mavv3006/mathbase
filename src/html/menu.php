@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . 'auth/user_info.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/auth/user_info.php');
 $user = getActiveUser();
 
 ?>
@@ -14,8 +14,8 @@ $user = getActiveUser();
     <ul id="userMenu" class="dropdown-content">
         <li><span>Hallo <b><?= $user == null ? "" : $user->get_username() ?></b></span></li>
         <li class="divider"></li>
-        <li><a href="/html/profile.php">Profil</a></li>
-        <li><a href="auth/logout.php">Ausloggen</a></li>
+        <li><a href="profile.php">Profil</a></li>
+        <li><a href="<?= '../auth/logout.php' ?>">Ausloggen</a></li>
     </ul>
 </div>
 

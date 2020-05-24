@@ -1,7 +1,6 @@
 <?php
 
 define('USER_LOCATION', "user_location");
-
 define(
     'PAGE',
     array(

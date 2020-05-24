@@ -4,9 +4,8 @@
 This is the page, which handles sign up requests.
 It uses $_POST['email'], $_POST['password'], $_POST['remember']
 */
-
 require_once('auth.php');
-require_once('../config/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
 
 try {
     if (!isset($_POST['remember'])) {
@@ -22,13 +21,17 @@ try {
 
     $auth->login($_POST['email'], $_POST['password'], $rememberDuration);
 
-    $userLocation = PAGE[$_SESSION[USER_LOCATION]];
-    if (isset($userLocation)) {
-        header("Location: ../" .  $userLocation);
-        die();
+    $user_location = $_SESSION[USER_LOCATION];
+    if (isset($user_location)) {
+        $page = PAGE[$user_location];
+        if (isset($page)) {
+            redirect("../" .  $page);
+        } else {
+            http_response_code(404);
+            die();
+        }
     } else {
-        http_response_code(404);
-        die();
+        redirect("../public/");
     }
 } catch (\Delight\Auth\InvalidEmailException $e) {
     die('Wrong email address');

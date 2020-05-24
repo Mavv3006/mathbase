@@ -26,6 +26,8 @@ $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
+$username = $user->get_username();
+
 $site_name = $exercise->get_title();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
@@ -54,7 +56,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
         <div class="sub-header">
             <h5 class="category"><?= $category->get_description() ?> - <?= $subcategory->get_description() ?></h5>
             <h6 class="difficulty"><?= $difficulty->get_description() ?></h6>
-            <h6 class="username">von <?= $user->get_username() ?></h6>
+            <h6 class="username">von <?= $username ?></h6>
         </div>
 
         <div class="row">
