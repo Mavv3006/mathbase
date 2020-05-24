@@ -30,8 +30,8 @@ $difficulties = $difficultyViewModel->get_all();
 $action_path = '../inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 ?>
 
 <head>
@@ -111,7 +111,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 </div>
 
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
 ?>
 
 <script>

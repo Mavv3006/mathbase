@@ -28,8 +28,8 @@ $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
 $site_name = $exercise->get_title();
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
 
 ?>
 
@@ -115,7 +115,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
     </script>
 
     <?php
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
     ?>
 
 </body>

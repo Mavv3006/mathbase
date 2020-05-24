@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
+require_once($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
 
 $activeUser = getActiveUser();
 ?>
@@ -27,7 +27,7 @@ $activeUser = getActiveUser();
                     <?php
                     } else {
                     ?>
-                        <li><a class="waves-effect waves-light btn">Aufgabe erstellen</a></li>
+                        <li><a class="waves-effect waves-light btn" href="/pages/new_exercise.php">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
                                 <a class="avatar" href="/html/profile.php">
@@ -48,7 +48,8 @@ $activeUser = getActiveUser();
     </div>
 
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/login.php'; ?>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/forms/register.php'; ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/forms/login.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/forms/register.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'].'/html/menu.php'); ?>  
 
 </body>

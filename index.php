@@ -1,12 +1,12 @@
 <?php
 session_start();
 $site_name = "Mathbase";
-include  $_SERVER['DOCUMENT_ROOT'] . '/html/head.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
 setUserLocation("index");
 
 $site_name = "Aufgabenliste";
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
 ?>
 
@@ -15,7 +15,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 </head>
 
 <body>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/header.php'; ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php'); ?>
 
     <div class="introduction">
 
@@ -25,7 +25,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
         </div>
 
         <div class="row">
-            <div class="col s10 offset-s3 m2 offset-m2">
+            <div class="col s10 offset-s1 m2 offset-m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">access_time</i>
@@ -37,7 +37,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
                 </div>
             </div>
 
-            <div class="col s12 m2">
+            <div class="col s10 offset-s1 m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">beach_access</i>
@@ -49,7 +49,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
                 </div>
             </div>
 
-            <div class="col s12 m2">
+            <div class="col s10 offset-s1 m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">fitness_center</i>
@@ -61,7 +61,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
                 </div>
             </div>
 
-            <div class="col s12 m2">
+            <div class="col s10 offset-s1 m2">
                 <div class="card">
                     <div class="card-image mb-orange-text waves-effect waves-block waves-light">
                         <i class="large material-icons">redeem</i>
@@ -85,5 +85,5 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php'; ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php'); ?>
 </body>
