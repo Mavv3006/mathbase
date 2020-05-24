@@ -1,0 +1,7 @@
+.file-path::placeholder {
+    color: black;
+}
+
+.blue-btn, .blue-btn:hover {
+    background-color: #003049;
+}

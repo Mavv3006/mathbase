@@ -3,7 +3,7 @@
 abstract class Database
 {
     protected PDO $connection;
-    protected string $tablename;
+    public string $tablename;
 
     private string $hostname;
     private string $password;
@@ -41,7 +41,9 @@ abstract class Database
             ORDER BY
                 t.id;
         ";
-        return $this->prepareStatement($query);
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt;
     }
 
     /**
@@ -90,12 +92,12 @@ abstract class Database
      * @param mixed ...$parameters An array with the parameters to bind
      * @return PDOStatement The Statement retuned from querying the database
      */
-    protected function prepareStatement(string $query, ...$parameters): PDOStatement
+    protected function prepareStatement(string $query, array &$parameters): PDOStatement
     {
         $stmt = $this->connection->prepare($query);
 
         for ($i = 0; $i < count($parameters); $i++) {
-            $stmt->bindParam($i, $parameters[$i]);
+            $stmt->bindParam($i + 1, $parameters[$i]);
         }
 
         $stmt->execute();

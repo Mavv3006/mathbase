@@ -63,6 +63,12 @@ class UserViewModel extends ViewModel
         $user_array = $this->fetchData($stmt);
         return $this->returnModel($user_array);
     }
+    
+    public function get_all(): array
+    {
+        $stmt = $this->database->query_all();
+        return $this->fetchData($stmt);
+    }
 
     /**
      * Fetches the User from a database query and returns them in an array.
@@ -99,4 +105,5 @@ class UserViewModel extends ViewModel
             // TODO: throw DatabaseException
         }
     }
+    
 }
