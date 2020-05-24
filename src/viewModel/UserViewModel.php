@@ -38,6 +38,18 @@ class UserViewModel extends ViewModel
         }
     }
 
+    /**
+     * Queries the database and returns the picture field from the user with the given ID.
+     *
+     * @param integer $id The users ID
+     * @return string The content of the picture field
+     */
+    public function get_picture(int $id): string
+    {
+        $stmt = $this->database->query("SELECT picture FROM users WHERE id = " . $id);
+        return $stmt->fetchColumn(0);
+    }
+
 
     /**
      * Queries the database for a given username.
@@ -50,6 +62,12 @@ class UserViewModel extends ViewModel
         $stmt = $this->database->query_user($username);
         $user_array = $this->fetchData($stmt);
         return $this->returnModel($user_array);
+    }
+    
+    public function get_all(): array
+    {
+        $stmt = $this->database->query_all();
+        return $this->fetchData($stmt);
     }
 
     /**
@@ -87,4 +105,5 @@ class UserViewModel extends ViewModel
             // TODO: throw DatabaseException
         }
     }
+    
 }

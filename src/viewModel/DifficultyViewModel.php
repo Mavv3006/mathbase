@@ -28,6 +28,11 @@ class DifficultyViewModel extends ViewModel
         $task_array = $this->fetchData($stmt);
         return $this->returnModel($task_array);
     }
+    public function get_all(): array
+    {
+        $stmt = $this->database->query_all();
+        return $this->fetchData($stmt);
+    }
 
     protected function fetchData(PDOStatement $stmt): array
     {

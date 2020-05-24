@@ -11,11 +11,5 @@ abstract class ViewModel
 
     abstract protected function returnModel(array $array): Model;
 
-    public function get_all(): array
-    {
-        $stmt = $this->database->query_all();
-        return $this->fetchData($stmt);
-    }
-
-
+    abstract function get_all(): array;
 }

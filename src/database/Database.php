@@ -3,7 +3,7 @@
 abstract class Database
 {
     protected PDO $connection;
-    protected string $tablename;
+    public string $tablename;
 
     private string $hostname;
     private string $password;
@@ -41,9 +41,17 @@ abstract class Database
             ORDER BY
                 t.id;
         ";
-        return $this->prepareStatement($query);
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt;
     }
 
+    /**
+     * Queries the database for a specific entry with the given id.
+     *
+     * @param int $id The ID of the required entry 
+     * @return PDOStatement The Statement returned from querying the database
+     */
     public function query_by_id(int $id): PDOStatement
     {
         $query = "
@@ -63,6 +71,19 @@ abstract class Database
         return $stmt;
     }
 
+    /**
+     * Queries the database with the given string.
+     *
+     * @param string $query the SQL query to be executed
+     * @return PDOStatement The Statement returned from querying the database
+     */
+    public function query(string $query):PDOStatement
+    {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
 
     /**
      * Prepares and executes an SQL query. If provided it also binds parameters.
@@ -71,12 +92,12 @@ abstract class Database
      * @param mixed ...$parameters An array with the parameters to bind
      * @return PDOStatement The Statement retuned from querying the database
      */
-    protected function prepareStatement(string $query, ...$parameters): PDOStatement
+    protected function prepareStatement(string $query, array &$parameters): PDOStatement
     {
         $stmt = $this->connection->prepare($query);
 
         for ($i = 0; $i < count($parameters); $i++) {
-            $stmt->bindParam($i, $parameters[$i]);
+            $stmt->bindParam($i + 1, $parameters[$i]);
         }
 
         $stmt->execute();

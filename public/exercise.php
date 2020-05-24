@@ -24,8 +24,6 @@ $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
 $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
-// var_dump($exercise);
-
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
 $site_name = $exercise->get_title();
@@ -91,14 +89,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
             <div class="waves-effect btn-flat" id="show_solution">Lösung anzeigen</div>
         </form>
 
-        <?php
-        require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
-        ?>
-
     </div>
-
-    <script src="../js/bin/materialize.min.js"></script>
-    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 
     <script>
         $('#show_solution').on('click', function() {
@@ -122,5 +113,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
             event.preventDefault();
         })
     </script>
+
+    <?php
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
+    ?>
 
 </body>

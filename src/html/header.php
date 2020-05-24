@@ -1,3 +1,9 @@
+<?php
+require($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
+
+$activeUser = getActiveUser();
+?>
+
 <head>
     <link rel="stylesheet" href="/css/header.css" />
 </head>
@@ -14,7 +20,7 @@
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <?php
-                    if (false) {
+                    if ($activeUser == null) {
                     ?>
                         <li><a class="waves-effect btn modal-trigger" id="login-button" href="#modalLogin">Einloggen</a></li>
                         <li><a class="waves-effect waves-light btn modal-trigger" href="#modalRegister">Registrieren</a></li>
@@ -24,7 +30,7 @@
                         <li><a class="waves-effect waves-light btn">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
-                                <a class="avatar" href="html/profile.php">
+                                <a class="avatar" href="/html/profile.php">
                                     <img class="avatar" src="/assets/pp_default.svg">
                                 </a>
                             </div>
