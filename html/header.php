@@ -50,5 +50,6 @@ $activeUser = getActiveUser();
 
     <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/forms/login.php'); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/forms/register.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'].'/html/menu.php'); ?>  
 
 </body>

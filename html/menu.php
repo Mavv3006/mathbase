@@ -15,7 +15,7 @@ $user = getActiveUser();
         <li><span>Hallo <b><?= $user == null ? "" : $user->get_username() ?></b></span></li>
         <li class="divider"></li>
         <li><a href="/html/profile.php">Profil</a></li>
-        <li><a href="auth/logout.php">Ausloggen</a></li>
+        <li><a href="/auth/logout.php">Ausloggen</a></li>
     </ul>
 </div>
 
