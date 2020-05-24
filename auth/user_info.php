@@ -1,7 +1,7 @@
 <?php
 require_once('auth.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/models/User.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . 'viewModel/UserViewmodel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/UserViewmodel.php');
 
 /**
  * Gets the currently signed in user.
