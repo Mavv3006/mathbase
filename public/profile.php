@@ -2,7 +2,13 @@
 $site_name = "Profil";
 require_once(  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
 setUserLocation("profile");
+
+$activeUser = getActiveUser();
+$email = $activeUser->get_email();
+$username = $activeUser->get_username();
+$picture = $activeUser->get_picture();
 ?>
 
 <head>
@@ -26,21 +32,21 @@ setUserLocation("profile");
                     <div class="card-content">
                         <form method="UPDATE" action="#">
                             <div class="input-field col s10 profile-input">
-                                <input disabled id="email" type="email" class="validate">
+                                <input disabled id="email" type="email" class="validate" value="<?= $email ?>">
                                 <label for="email">E-Mail-Adresse</label>
                             </div>
                             <a class="edit-button waves-effect waves-light btn" onclick="disableInput('email')">
                                 <i class="material-icons" id="edit">create</i>
                             </a>
                             <div class="input-field col s10">
-                                <input disabled id="username" type="text" class="validate">
+                                <input disabled id="username" type="text" class="validate" value="<?= $username ?>">
                                 <label for="username">Benutzername</label>
                             </div>
                             <a class="edit-button waves-effect waves-light btn" onclick="disableInput('username')">
                                 <i class="material-icons">create</i>
                             </a>
                             <div class="input-field col s10">
-                                <input disabled id="password" type="password" class="validate">
+                                <input disabled id="password" type="password" class="validate" value="*****">
                                 <label for="password">Passwort</label>
                             </div>
                             <a class="edit-button waves-effect waves-light btn" onclick="disableInput('password')">
