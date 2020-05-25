@@ -47,7 +47,7 @@ include_once($path['src'] . '/html/header.php');
 
     <hr>
 
-    <form action="<?= $action_path ?>" method="post">
+    <form action="<?= $action_path ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="user_id" value="<?= $user->get_id() ?>">
         <div class="row">
             <!-- erste Spalte -->
