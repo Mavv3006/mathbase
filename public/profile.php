@@ -1,6 +1,6 @@
 <?php
 $site_name = "Profil";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once(  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
 setUserLocation("profile");
 ?>
@@ -9,7 +9,7 @@ setUserLocation("profile");
     <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css" />
     <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
+    require_once( $_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
     ?>
 </head>
 
@@ -20,7 +20,7 @@ setUserLocation("profile");
                 <div class="card" id="profile">
                     <span class="card-title" id="profile-title">Profil</span>
                     <div id="profile-avatar-container">
-                        <img id="profile-avatar" src="/assets/pp_default.svg">
+                        <img id="profile-avatar" src="/assets/defaults/pp_default.svg">
                         <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
                     </div>
                     <div class="card-content">
@@ -54,7 +54,7 @@ setUserLocation("profile");
         </div>
     </div>
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php';
     ?>
 </body>
 <script>

@@ -1,12 +1,11 @@
 <?php
 
 define('USER_LOCATION', "user_location");
-
 define(
     'PAGE',
     array(
-        "profile" => 'html/profile.php',
-        "index" => 'index.php',
+        "profile" => 'public/profile.php',
+        "index" => 'public/index.php',
     )
 );
 

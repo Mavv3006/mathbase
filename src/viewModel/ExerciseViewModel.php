@@ -1,8 +1,8 @@
 <?php
 
 require_once('ViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/models/Exercise.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/database/ExerciseDatabase.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/Exercise.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/ExerciseDatabase.php');
 
 class ExerciseViewModel extends ViewModel
 {

@@ -1,9 +1,9 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $difficultyViewModel = new DifficultyViewModel();
@@ -13,7 +13,7 @@ $categoryViewModel = new CategoryViewModel();
 $exercises = $exerciseViewModel->get_all();
 
 $site_name = "Aufgabenliste";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 
 ?>
 
@@ -35,7 +35,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
             $category = $categoryViewModel->get_by_id($exercise->get_category());
             $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
         ?>
-            <a href=" <?= '/pages/exercise.php?id=' . $exercise->get_id() ?>">
+            <a href=" <?= 'exercise.php?id=' . $exercise->get_id() ?>">
                 <div class="exercise hoverable">
                     <p class="category col-content">
                         <span class="main_category"><?= $category->get_description() ?></span>

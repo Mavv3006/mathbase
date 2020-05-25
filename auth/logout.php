@@ -6,11 +6,15 @@ require_once('../config/config.php');
 
 $auth->logOut();
 
-$userLocation = PAGE[$_SESSION[USER_LOCATION]];
-if (isset($userLocation)) {
-    redirect("../" . $userLocation);
-    die();
+$user_location = $_SESSION[USER_LOCATION];
+if (isset($user_location)) {
+    $page = PAGE[$user_location];
+    if (isset($page)) {
+        redirect("../" .  $page);
+    } else {
+        http_response_code(404);
+        die();
+    }
 } else {
-    http_response_code(404);
-    die();
+    redirect("../public/");
 }

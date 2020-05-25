@@ -6,12 +6,11 @@ if (!isset($_GET['id'])) {
 }
 
 // get Task based on GET Query
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/UserViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/SubcategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -27,9 +26,11 @@ $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
+$username = $user->get_username();
+
 $site_name = $exercise->get_title();
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
 
 ?>
 
@@ -55,7 +56,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
         <div class="sub-header">
             <h5 class="category"><?= $category->get_description() ?> - <?= $subcategory->get_description() ?></h5>
             <h6 class="difficulty"><?= $difficulty->get_description() ?></h6>
-            <h6 class="username">von <?= $user->get_username() ?></h6>
+            <h6 class="username">von <?= $username ?></h6>
         </div>
 
         <div class="row">
@@ -89,6 +90,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
             <button type="submit" class="waves-effect waves-light btn">Überprüfen</button>
             <div class="waves-effect btn-flat" id="show_solution">Lösung anzeigen</div>
         </form>
+
     </div>
 
     <script>
@@ -115,7 +117,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php');
     </script>
 
     <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
     ?>
 
 </body>

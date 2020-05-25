@@ -1,28 +1,28 @@
 <?php
 
 require_once('ViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/models/Subcategory.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/database/SubcategoryDatabase.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/Category.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/CategoryDatabase.php');
 
-class SubCategoryViewModel extends ViewModel
+class CategoryViewModel extends ViewModel
 {
-    private SubcategoryDatabase $database;
+    private CategoryDatabase $database;
 
     /**
-     * SubCategoryViewModel constructor.
+     * CategoryViewModel constructor.
      */
     public function __construct()
     {
-        $this->database = new SubcategoryDatabase();
+        $this->database = new CategoryDatabase();
     }
 
     /**
      * Queries the database and returns the Category with the given ID
      *
      * @param integer $id The ID of the Category in the database
-     * @return Subcategory The queried Category
+     * @return Category The queried Category
      */
-    public function get_by_id(int $id): Subcategory
+    public function get_by_id(int $id): Category
     {
         $stmt = $this->database->query_by_id($id);
         $task_array = $this->fetchData($stmt);
@@ -33,26 +33,25 @@ class SubCategoryViewModel extends ViewModel
         $stmt = $this->database->query_all();
         return $this->fetchData($stmt);
     }
-
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $task = Subcategory::from_pdo_statement($row);
+            $task = Category::from_pdo_statement($row);
             array_push($task_array, $task);
         }
         return $task_array;
     }
 
     /**
-     * Returns only one Category from an array of subcategories.
+     * Returns only one Category from an array of categories.
      *
-     * @param array $array An array with subcategories
-     * @return Subcategory Returns only one Category. If there are more or less than one element in the array the method
+     * @param array $array An array with categories
+     * @return Category Returns only one Category. If there are more or less than one element in the array the method
      * throws an exception
      */
-    protected function returnModel(array $array): Subcategory
+    protected function returnModel(array $array): Category
     {
         $count = count($array);
 

@@ -1,28 +1,28 @@
 <?php
 
 require_once('ViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/models/Category.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/database/CategoryDatabase.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/Difficulty.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/DifficultyDatabase.php');
 
-class CategoryViewModel extends ViewModel
+class DifficultyViewModel extends ViewModel
 {
-    private CategoryDatabase $database;
+    private DifficultyDatabase $database;
 
     /**
-     * CategoryViewModel constructor.
+     * DifficultyViewModel constructor.
      */
     public function __construct()
     {
-        $this->database = new CategoryDatabase();
+        $this->database = new DifficultyDatabase();
     }
 
     /**
-     * Queries the database and returns the Category with the given ID
+     * Queries the database and returns the Difficulty with the given ID
      *
-     * @param integer $id The ID of the Category in the database
-     * @return Category The queried Category
+     * @param integer $id The ID of the Difficulty in the database
+     * @return Difficulty The queried Difficulty
      */
-    public function get_by_id(int $id): Category
+    public function get_by_id(int $id): Difficulty
     {
         $stmt = $this->database->query_by_id($id);
         $task_array = $this->fetchData($stmt);
@@ -33,25 +33,26 @@ class CategoryViewModel extends ViewModel
         $stmt = $this->database->query_all();
         return $this->fetchData($stmt);
     }
+
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $task = Category::from_pdo_statement($row);
+            $task = Difficulty::from_pdo_statement($row);
             array_push($task_array, $task);
         }
         return $task_array;
     }
 
     /**
-     * Returns only one Category from an array of categories.
+     * Returns only one Difficulty from an array of difficulties.
      *
-     * @param array $array An array with categories
-     * @return Category Returns only one Category. If there are more or less than one element in the array the method
+     * @param array $array An array with difficulties
+     * @return Difficulty Returns only one Difficulty. If there are more or less than one element in the array the method
      * throws an exception
      */
-    protected function returnModel(array $array): Category
+    protected function returnModel(array $array): Difficulty
     {
         $count = count($array);
 

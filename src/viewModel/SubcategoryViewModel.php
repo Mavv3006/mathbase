@@ -1,28 +1,28 @@
 <?php
 
 require_once('ViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/models/Difficulty.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/database/DifficultyDatabase.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/Subcategory.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/SubcategoryDatabase.php');
 
-class DifficultyViewModel extends ViewModel
+class SubCategoryViewModel extends ViewModel
 {
-    private DifficultyDatabase $database;
+    private SubcategoryDatabase $database;
 
     /**
-     * DifficultyViewModel constructor.
+     * SubCategoryViewModel constructor.
      */
     public function __construct()
     {
-        $this->database = new DifficultyDatabase();
+        $this->database = new SubcategoryDatabase();
     }
 
     /**
-     * Queries the database and returns the Difficulty with the given ID
+     * Queries the database and returns the Category with the given ID
      *
-     * @param integer $id The ID of the Difficulty in the database
-     * @return Difficulty The queried Difficulty
+     * @param integer $id The ID of the Category in the database
+     * @return Subcategory The queried Category
      */
-    public function get_by_id(int $id): Difficulty
+    public function get_by_id(int $id): Subcategory
     {
         $stmt = $this->database->query_by_id($id);
         $task_array = $this->fetchData($stmt);
@@ -39,20 +39,20 @@ class DifficultyViewModel extends ViewModel
         $task_array = array();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $task = Difficulty::from_pdo_statement($row);
+            $task = Subcategory::from_pdo_statement($row);
             array_push($task_array, $task);
         }
         return $task_array;
     }
 
     /**
-     * Returns only one Difficulty from an array of difficulties.
+     * Returns only one Category from an array of subcategories.
      *
-     * @param array $array An array with difficulties
-     * @return Difficulty Returns only one Difficulty. If there are more or less than one element in the array the method
+     * @param array $array An array with subcategories
+     * @return Subcategory Returns only one Category. If there are more or less than one element in the array the method
      * throws an exception
      */
-    protected function returnModel(array $array): Difficulty
+    protected function returnModel(array $array): Subcategory
     {
         $count = count($array);
 
