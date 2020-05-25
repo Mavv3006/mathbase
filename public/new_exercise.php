@@ -111,7 +111,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
 </div>
 
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
 ?>
 
 <script>
