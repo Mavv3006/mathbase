@@ -1,6 +1,6 @@
 <?php
 $site_name = "Mathbase";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 ?>
 
 <body>
