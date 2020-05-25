@@ -1,5 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
+require_once($path['auth'].  '/user_info.php');
 
 $activeUser = getActiveUser();
 ?>
@@ -27,7 +29,7 @@ $activeUser = getActiveUser();
                     <?php
                     } else {
                     ?>
-                        <li><a class="waves-effect waves-light btn" href="/pages/new_exercise.php">Aufgabe erstellen</a></li>
+                        <li><a class="waves-effect waves-light btn" href="/www/new_exercise.php">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
                                 <a class="avatar" href="profile.php">
@@ -47,8 +49,8 @@ $activeUser = getActiveUser();
         </nav>
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/login.php'; ?>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/register.php'; ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/src/html/menu.php'; ?>
+    <?php include $path['src'] . '/html/forms/login.php'; ?>
+    <?php include $path['src'] . '/html/forms/register.php'; ?>
+    <?php require_once $path['src'] . '/html/menu.php'; ?>
 
 </body>

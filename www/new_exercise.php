@@ -3,16 +3,20 @@ session_start();
 // if this page is for editing an existing exercise than we need the id
 // so $_GET['id'] has to be provided.
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
+require_once($path['config'] . '/config/config.php');
+
+require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
+require_once($path['src'] . '/viewModel/UserViewModel.php');
+require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
+require_once($path['src'] . '/viewModel/CategoryViewModel.php');
+require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
+
+require_once($path['auth'] . '/user_info.php');
+
 setUserLocation("create");
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/auth/user_info.php');
 $user = getActiveUser();
 
 if ($user == null) { // Zum Testen ein User mit ungültiger ID
@@ -34,8 +38,8 @@ $difficulties = $difficultyViewModel->get_all();
 $action_path =$_SERVER['DOCUMENT_ROOT'] . 'src/inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
-include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
+include_once($path['src'] . '/html/head.php');
+include_once($path['src'] . '/html/header.php');
 ?>
 
 <head>
@@ -99,7 +103,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
-                <img src="../assets/exercise_default.svg" alt="Bild der Übung">
+                <img src="../assets/defaults/exercise_default.svg" alt="Bild der Übung">
                 <div class="file-field input-field">
                     <div class="btn blue-btn waves-effect waves-light">
                         <span class="">Bild hochladen</span>
@@ -115,7 +119,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
 </div>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+require_once($path['src'] . '/html/footer.php');
 ?>
 
 <script>

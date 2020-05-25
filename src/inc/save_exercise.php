@@ -1,4 +1,5 @@
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
 
 /* Benötigte Informationen zum speichern:
     user_id (int)
@@ -11,8 +12,8 @@
     picture-path (varchar(255))
 */
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/auth/user_info.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/viewModel/ExerciseViewModel.php');
+require_once($path['auth'] . '/user_info.php');
+require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
 $user = getActiveUser();
 $viewModel = new ExerciseViewModel();
 

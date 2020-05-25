@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+require_once($path['config'] . '/config/config.php');
 
 if (!isset($_GET['id'])) {
     // redirect to homepage
@@ -13,11 +14,11 @@ getPage();
 
 
 // get Task based on GET Query
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
+require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
+require_once($path['src'] . '/viewModel/UserViewModel.php');
+require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
+require_once($path['src'] . '/viewModel/CategoryViewModel.php');
+require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -36,8 +37,8 @@ $has_picture = $exercise->get_picture() == "" ? false : true;
 $username = $user->get_username();
 
 $site_name = $exercise->get_title();
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
+require_once($path['src'] . '/html/head.php');
+require_once($path['src'] . '/html/header.php');
 
 ?>
 
@@ -124,7 +125,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
     </script>
 
     <?php
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
+    include_once($path['src'] . '/html/footer.php');
     ?>
 
 </body>

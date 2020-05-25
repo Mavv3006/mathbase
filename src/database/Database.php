@@ -1,5 +1,5 @@
 <?php
-
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
 abstract class Database
 {
     protected PDO $connection;
@@ -16,7 +16,8 @@ abstract class Database
      */
     public function __construct()
     {
-        require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+        global $path;
+        require_once($path['config'] . '/config.php');
         $configs = get_config_array();
         $this->hostname = $configs['host'];
         $this->password = $configs['password'];
