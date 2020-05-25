@@ -1,5 +1,5 @@
 <?php
- include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
  
 require_once('auth.php');
 require_once($path['src'] . '/models/User.php');

@@ -1,6 +1,6 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
 /*
 This is the page, which handles sign up requests.
