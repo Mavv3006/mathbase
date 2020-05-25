@@ -1,9 +1,10 @@
 <?php
 session_start();
+
 // if this page is for editing an existing exercise than we need the id
 // so $_GET['id'] has to be provided.
 
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
 require_once($path['config'] . '/config/config.php');
 

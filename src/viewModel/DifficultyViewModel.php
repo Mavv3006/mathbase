@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
 require_once('ViewModel.php');
 require_once($path['src'] . '/models/Difficulty.php');
