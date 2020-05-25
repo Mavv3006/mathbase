@@ -11,7 +11,7 @@ setUserLocation("profile");
     <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css" />
     <?php
-    require_once( $path['src'] . '/html/header.php');
+    require_once($path['src'] . '/html/header.php');
     ?>
 </head>
 
@@ -23,7 +23,13 @@ setUserLocation("profile");
                     <span class="card-title" id="profile-title">Profil</span>
                     <div id="profile-avatar-container">
                         <img id="profile-avatar" src="/assets/defaults/pp_default.svg">
-                        <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
+                        <div class="file-field input-field">
+                            <div class="waves-effect waves-light btn" id="avatar-button">
+                                <span class="">Bild hochladen</span>
+                                <input type="file" name="file">
+                            </div>
+                        </div>
+                        <br>
                     </div>
                     <div class="card-content">
                         <form method="UPDATE" action="#">
