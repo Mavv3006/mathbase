@@ -1,12 +1,12 @@
 <?php
 session_start();
 $site_name = "Mathbase";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
 setUserLocation("index");
 
 $site_name = "Aufgabenliste";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 
 ?>
 
@@ -15,7 +15,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 </head>
 
 <body>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/header.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php'); ?>
 
     <div class="introduction">
 
@@ -85,5 +85,5 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/html/head.php');
 
     </div>
 
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php'); ?>
 </body>
