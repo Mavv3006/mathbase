@@ -95,7 +95,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
-                <img src="../assets/exercise_default.svg" alt="Bild der Übung">
+                <img src="../assets/defaults/exercise_default.svg" alt="Bild der Übung">
                 <div class="file-field input-field">
                     <div class="btn blue-btn waves-effect waves-light">
                         <span class="">Bild hochladen</span>
@@ -111,7 +111,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
 </div>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/html/footer.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
 ?>
 
 <script>
