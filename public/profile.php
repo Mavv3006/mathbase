@@ -46,12 +46,13 @@ $picture = $activeUser->get_picture();
                                 <i class="material-icons">create</i>
                             </a>
                             <div class="input-field col s10">
-                                <input disabled id="password" type="password" class="validate" value="********">
-                                <label for="password">Passwort</label>
+                                <input id="new_password" type="password" class="validate">
+                                <label for="new_password">Neues Passwort</label>
                             </div>
-                            <a class="edit-button waves-effect waves-light btn" onclick="disableInput('password')">
-                                <i class="material-icons">create</i>
-                            </a>
+                            <div class="input-field col s10">
+                                <input id="old_password" type="password" class="validate">
+                                <label for="old_password">Altes Passwort</label>
+                            </div>
                             <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
                         </form>
                     </div>
@@ -74,12 +75,28 @@ $picture = $activeUser->get_picture();
 
     function saveData() {
         var newEmail = $('#email').val();
-        $.ajax({
-            type: "POST",
-            url: "/auth/change_email.php",
-            data: { 'newEmail': 'florina,goel@outlod.de' }
-        }).done(function( msg ) {
-            alert( "Data Saved: " + msg );
-        });
+        var newPassword = $('#new_password').val();
+        var oldPassword = $('#old_password').val();
+        
+        if(newEmail !== "<?php $email ?>"){
+            $.ajax({
+                type: "POST",
+                url: "/auth/change_email.php",
+                data: { 'newEmail': newEmail }
+            }).done(function( msg ) {
+                alert( "Data Saved: " + msg );
+            });
+        }
+
+        if(newPassword !== "" && oldPassword !== "" && newPassword !== oldPassword){
+            $.ajax({
+                type: "POST",
+                url: "/auth/change_password.php",
+                data: { 'oldPassword': oldPassword,
+                        'newPassword': newPassword }
+            }).done(function( msg ){
+                alert( "Passwort wurde gespeichert" + msg );
+            });
+        }
     }
 </script>
