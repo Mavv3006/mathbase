@@ -2,7 +2,7 @@
 session_start();
 
 include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
-require_once($path['config'] . '/config/config.php');
+require_once($path['config'] . '/config.php');
 
 if (!isset($_GET['id'])) {
     // redirect to homepage
