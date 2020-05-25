@@ -1,11 +1,15 @@
 <?php
+session_start();
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
-setUserLocation("create");
 
 if (!isset($_GET['id'])) {
     // redirect to homepage
     redirect("../main.php");
 }
+
+setUserLocation("show", array("id" => $_GET['id']));
+getPage();
 
 
 // get Task based on GET Query

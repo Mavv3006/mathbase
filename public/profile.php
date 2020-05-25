@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $site_name = "Profil";
 require_once(  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');

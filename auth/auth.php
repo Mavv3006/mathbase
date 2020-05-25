@@ -1,8 +1,6 @@
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/database/AuthDatabase.php';
-
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/AuthDatabase.php');
 
 use Delight\Auth\Auth;
 
