@@ -80,7 +80,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
         </h5>
 
         <div class="button-start">
-            <a class="waves-effect waves-light btn" href="/main.php">Jetzt starten</a>
+            <a class="waves-effect waves-light btn" href="main.php">Jetzt starten</a>
         </div>
 
     </div>
