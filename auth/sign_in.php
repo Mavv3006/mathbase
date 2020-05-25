@@ -31,7 +31,7 @@ try {
             die();
         }
     } else {
-        redirect("../public/");
+        redirect("../www/");
     }
 } catch (\Delight\Auth\InvalidEmailException $e) {
     die('Wrong email address');

@@ -16,5 +16,5 @@ if (isset($user_location)) {
         die();
     }
 } else {
-    redirect("../public/");
+    redirect("../www/");
 }

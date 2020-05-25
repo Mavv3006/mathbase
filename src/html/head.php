@@ -4,7 +4,7 @@
     <title><?= $site_name ?></title>
     <link rel="stylesheet" href="../css/materialize.css">
     <?php if (isset($stylesheet_path)) echo '<link rel="stylesheet" href="' . $stylesheet_path . '">' ?>
-    <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/www/favicon.ico">
     
     <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="../js/bin/materialize.min.js"></script>

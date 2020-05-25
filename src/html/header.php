@@ -27,7 +27,7 @@ $activeUser = getActiveUser();
                     <?php
                     } else {
                     ?>
-                        <li><a class="waves-effect waves-light btn" href="/pages/new_exercise.php">Aufgabe erstellen</a></li>
+                        <li><a class="waves-effect waves-light btn" href="/www/new_exercise.php">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
                                 <a class="avatar" href="profile.php">
