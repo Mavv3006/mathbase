@@ -60,8 +60,6 @@ abstract class Database
             WHERE t.id = :id;
         ";
 
-        // return $this->prepareStatement($query, $id);
-
         $stmt = $this->connection->prepare($query);
 
         $stmt->bindParam(':id', $id);

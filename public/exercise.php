@@ -1,9 +1,12 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+setUserLocation("create");
 
 if (!isset($_GET['id'])) {
     // redirect to homepage
-    die(header('Location: ../index.php'));
+    redirect("../main.php");
 }
+
 
 // get Task based on GET Query
 require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');

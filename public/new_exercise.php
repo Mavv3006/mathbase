@@ -2,6 +2,9 @@
 // if this page is for editing an existing exercise than we need the id
 // so $_GET['id'] has to be provided.
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+setUserLocation("create");
+
 require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
@@ -27,7 +30,7 @@ $categories = $categoryViewModel->get_all();
 $subcategories = $subcategoryViewModel->get_all();
 $difficulties = $difficultyViewModel->get_all();
 
-$action_path = '../inc/save_exercise.php';
+$action_path =$_SERVER['DOCUMENT_ROOT'] . 'src/inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
 include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
