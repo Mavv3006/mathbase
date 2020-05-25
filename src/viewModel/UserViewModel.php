@@ -28,7 +28,7 @@ class UserViewModel extends ViewModel
         $stmt = $this->database->query_by_id($id);
         $user_array = $this->fetchData($stmt);
 
-        $count = count($user_array);
+        $count = count($user_array); 
         if ($count == 0) {
             // TODO: throw NoDatabaseEntryFoundException
         } else if ($count == 1) {
@@ -104,6 +104,11 @@ class UserViewModel extends ViewModel
         } else {
             // TODO: throw DatabaseException
         }
+    }
+
+    public function changeUsername(int $id, string $new_username): void
+    {
+        $this->database->query("UPDATE users SET username = '" . $new_username . "' WHERE id = " . $id);
     }
     
 }

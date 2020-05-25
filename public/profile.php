@@ -3,9 +3,11 @@ $site_name = "Profil";
 require_once(  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
 setUserLocation("profile");
 
 $activeUser = getActiveUser();
+$user_id = $activeUser->get_id();
 $email = $activeUser->get_email();
 $username = $activeUser->get_username();
 $picture = $activeUser->get_picture();
@@ -77,6 +79,7 @@ $picture = $activeUser->get_picture();
         var newEmail = $('#email').val();
         var newPassword = $('#new_password').val();
         var oldPassword = $('#old_password').val();
+        var newUsername = $('#username').val();
         
         if(newEmail !== "<?php $email ?>"){
             $.ajax({
@@ -98,5 +101,14 @@ $picture = $activeUser->get_picture();
                 alert( "Passwort wurde gespeichert" + msg );
             });
         }
+        
+        
+            $.ajax({
+                type: "POST",
+                url: "/auth/change_username.php",
+                data: { 'id': "<?php $user_id ?>",
+                        'new_username': newUsername }
+            }).done(function(){});
+        
     }
 </script>
