@@ -30,7 +30,7 @@ $picture = $activeUser->get_picture();
                         <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
                     </div>
                     <div class="card-content">
-                        <form method="UPDATE" action="#">
+                        <form method="POST" action="#">
                             <div class="input-field col s10 profile-input">
                                 <input disabled id="email" type="email" class="validate" value="<?= $email ?>">
                                 <label for="email">E-Mail-Adresse</label>
@@ -46,14 +46,14 @@ $picture = $activeUser->get_picture();
                                 <i class="material-icons">create</i>
                             </a>
                             <div class="input-field col s10">
-                                <input disabled id="password" type="password" class="validate" value="*****">
+                                <input disabled id="password" type="password" class="validate" value="********">
                                 <label for="password">Passwort</label>
                             </div>
                             <a class="edit-button waves-effect waves-light btn" onclick="disableInput('password')">
                                 <i class="material-icons">create</i>
                             </a>
+                            <a class="waves-effect waves-light btn" id="save-button" name="save-button" type="submit">Änderungen speichern</a>
                         </form>
-                        <a class="waves-effect waves-light btn" id="save-button">Änderungen speichern</a>
                     </div>
                 </div>
             </div>
@@ -71,4 +71,15 @@ $picture = $activeUser->get_picture();
             document.getElementById(element).disabled = true;
         }
     }
+
+    $('#save-button').click(function() {
+        var newEmail = $('#email').val();
+        $.ajax({
+            type: "POST",
+            url: "/auth/change_email.php",
+            data: { 'newEmail': 'florian.goelz@outlook.es' }
+        }).done(function( msg ) {
+            alert( "Data Saved: " + msg );
+        });
+    });
 </script>
