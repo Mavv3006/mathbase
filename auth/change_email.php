@@ -8,8 +8,8 @@ It uses $_POST['password'], $_POST['newEmail']
 require_once('auth.php');
 
 try {
-    $auth->changeEmail($_POST['newEmail'], function ($selector, $token) {
-        echo 'Email has been changed';
+    $auth->changeEmail($_POST['newEmail'], function ($selector, $token) use ($auth) {
+            $auth->confirmEmail($selector, $token);
     });
     
 } catch (\Delight\Auth\InvalidEmailException $e) {

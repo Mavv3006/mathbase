@@ -52,7 +52,7 @@ $picture = $activeUser->get_picture();
                             <a class="edit-button waves-effect waves-light btn" onclick="disableInput('password')">
                                 <i class="material-icons">create</i>
                             </a>
-                            <a class="waves-effect waves-light btn" id="save-button" name="save-button" type="submit">Änderungen speichern</a>
+                            <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
                         </form>
                     </div>
                 </div>
@@ -72,12 +72,12 @@ $picture = $activeUser->get_picture();
         }
     }
 
-    $('#save-button').click(function() {
+    function saveData() {
         var newEmail = $('#email').val();
         $.ajax({
             type: "POST",
             url: "/auth/change_email.php",
-            data: { 'newEmail': 'florian.goelz@outlook.es' }
+            data: { 'newEmail': $(#email).val() }
         }).done(function( msg ) {
             alert( "Data Saved: " + msg );
         });
