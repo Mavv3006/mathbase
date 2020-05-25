@@ -1,5 +1,7 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] .  '/auth/user_info.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
+require_once($path['auth'].  '/user_info.php');
 
 $activeUser = getActiveUser();
 ?>
@@ -47,8 +49,8 @@ $activeUser = getActiveUser();
         </nav>
     </div>
 
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/login.php'; ?>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . '/src/html/forms/register.php'; ?>
-    <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/src/html/menu.php'; ?>
+    <?php include $path['src'] . '/html/forms/login.php'; ?>
+    <?php include $path['src'] . '/html/forms/register.php'; ?>
+    <?php require_once $path['src'] . '/html/menu.php'; ?>
 
 </body>

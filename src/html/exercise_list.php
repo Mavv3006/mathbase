@@ -1,9 +1,10 @@
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
+require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
+require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
+require_once($path['src'] . '/viewModel/CategoryViewModel.php');
+require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $difficultyViewModel = new DifficultyViewModel();
@@ -13,7 +14,7 @@ $categoryViewModel = new CategoryViewModel();
 $exercises = $exerciseViewModel->get_all();
 
 $site_name = "Aufgabenliste";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
+require_once($path['src'] . '/html/head.php');
 
 ?>
 

@@ -1,10 +1,12 @@
 <?php
 $site_name = "Mathbase";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
+require_once($path['src'] . '/html/head.php');
 ?>
 
 <body>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php'); ?>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/exercise_list.php'); ?>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php'); ?>
+    <?php require_once($path['src'] . '/html/header.php'); ?>
+    <?php require_once($path['src'] . '/html/exercise_list.php'); ?>
+    <?php require_once($path['src'] . '/html/footer.php'); ?>
 </body>
