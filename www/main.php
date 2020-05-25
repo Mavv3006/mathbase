@@ -1,15 +1,14 @@
 <?php
 session_start();
+$site_name = "Mathbase";
 include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 include_once($path['config'] . "/config.php");
 
-$site_name = "Mathbase";
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
-setUserLocation("main");
+require_once($path['src'] . '/html/head.php');
 ?>
 
 <body>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php'); ?>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/exercise_list.php'); ?>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php'); ?>
+    <?php require_once($path['src'] . '/html/header.php'); ?>
+    <?php require_once($path['src'] . '/html/exercise_list.php'); ?>
+    <?php require_once($path['src'] . '/html/footer.php'); ?>
 </body>

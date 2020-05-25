@@ -6,7 +6,7 @@ session_start();
 
 include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
-require_once($path['config'] . '/config/config.php');
+require_once($path['config'] . '/config.php');
 
 require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
 require_once($path['src'] . '/viewModel/UserViewModel.php');
