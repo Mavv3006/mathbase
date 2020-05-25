@@ -1,8 +1,9 @@
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
 
 require_once('ViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/models/Difficulty.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/database/DifficultyDatabase.php');
+require_once($path['src'] . '/models/Difficulty.php');
+require_once($path['src'] . '/database/DifficultyDatabase.php');
 
 class DifficultyViewModel extends ViewModel
 {

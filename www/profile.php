@@ -1,7 +1,9 @@
 <?php
 $site_name = "Profil";
-require_once(  $_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
+require_once($path['src'] . '/html/head.php');
+require_once($path['config'] . '/config.php');
 setUserLocation("profile");
 ?>
 
@@ -9,7 +11,7 @@ setUserLocation("profile");
     <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css" />
     <?php
-    require_once( $_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
+    require_once( $path['src'] . '/html/header.php');
     ?>
 </head>
 
@@ -54,7 +56,7 @@ setUserLocation("profile");
         </div>
     </div>
     <?php
-    include $_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php';
+    include $path['src'] . '/html/footer.php';
     ?>
 </body>
 <script>

@@ -1,14 +1,16 @@
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
 // if this page is for editing an existing exercise than we need the id
 // so $_GET['id'] has to be provided.
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/ExerciseViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/UserViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/DifficultyViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/CategoryViewModel.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/viewModel/SubcategoryViewModel.php');
+require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
+require_once($path['src'] . '/viewModel/UserViewModel.php');
+require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
+require_once($path['src'] . '/viewModel/CategoryViewModel.php');
+require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/auth/user_info.php');
+require_once($path['auth'] . '/user_info.php');
 $user = getActiveUser();
 
 if ($user == null) { // Zum Testen ein User mit ungültiger ID
@@ -30,8 +32,8 @@ $difficulties = $difficultyViewModel->get_all();
 $action_path = '../inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
-include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/head.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
+include_once($path['src'] . '/html/head.php');
+include_once($path['src'] . '/html/header.php');
 ?>
 
 <head>
@@ -111,7 +113,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/header.php');
 </div>
 
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/src/html/footer.php');
+require_once($path['src'] . '/html/footer.php');
 ?>
 
 <script>

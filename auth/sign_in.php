@@ -1,11 +1,13 @@
 <?php
 
+include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+
 /*
 This is the page, which handles sign up requests.
 It uses $_POST['email'], $_POST['password'], $_POST['remember']
 */
 require_once('auth.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/config/config.php');
+require_once($path['config'] . '/config.php');
 
 try {
     if (!isset($_POST['remember'])) {
