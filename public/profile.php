@@ -77,9 +77,9 @@ $picture = $activeUser->get_picture();
         $.ajax({
             type: "POST",
             url: "/auth/change_email.php",
-            data: { 'newEmail': $(#email).val() }
+            data: { 'newEmail': 'florina,goel@outlod.de' }
         }).done(function( msg ) {
             alert( "Data Saved: " + msg );
         });
-    });
+    }
 </script>
