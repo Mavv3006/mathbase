@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $site_name = "Profil";
 include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 

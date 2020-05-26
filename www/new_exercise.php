@@ -1,8 +1,12 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
+session_start();
 
 // if this page is for editing an existing exercise than we need the id
 // so $_GET['id'] has to be provided.
+
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
+
+require_once($path['config'] . '/config.php');
 
 require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
 require_once($path['src'] . '/viewModel/UserViewModel.php');
@@ -11,6 +15,9 @@ require_once($path['src'] . '/viewModel/CategoryViewModel.php');
 require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
 
 require_once($path['auth'] . '/user_info.php');
+
+setUserLocation("create");
+
 $user = getActiveUser();
 
 if ($user == null) { // Zum Testen ein User mit ungültiger ID
@@ -29,7 +36,7 @@ $categories = $categoryViewModel->get_all();
 $subcategories = $subcategoryViewModel->get_all();
 $difficulties = $difficultyViewModel->get_all();
 
-$action_path = '../inc/save_exercise.php';
+$action_path =$_SERVER['DOCUMENT_ROOT'] . 'src/inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
 include_once($path['src'] . '/html/head.php');
