@@ -2,6 +2,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
 session_start();
+
 $site_name = "Mathbase";
 require_once($path['src'] . '/html/head.php');
 require_once($path['config'] . '/config.php');

@@ -112,7 +112,7 @@ CREATE TABLE `exercise` (
 
 INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `created_at`, `updated_at`, `category`, `subcategory`, `difficulty`, `picture`) VALUES
 (1, 3, 'Aufgabenstellung, Beschreibung, etc.', 'test solution', 'Aufgabentitel', '2020-05-16 16:24:36', '2020-05-16 17:09:35', 0, 0, 0, ''),
-(2, 3, 'get_description', 'test solution', 'test title', '2020-05-04 16:41:59', '2020-05-18 14:53:43', 0, 0, 0, 'assets/exercise_default.svg'),
+(2, 3, 'get_description', 'test solution', 'test title', '2020-05-04 16:41:59', '2020-05-18 14:53:43', 0, 0, 0, 'defaults/exercise_default.svg'),
 (3, 3, 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea tak', 'solution', 'title', '2020-05-16 16:23:08', '2020-05-16 17:01:05', 0, 0, 0, ''),
 (4, 3, 'test description', 'test solution', 'test title', '2020-05-16 16:27:24', '2020-05-16 16:27:24', 0, 0, 0, ''),
 (5, 1, 'description', 'solution', 'title', '2020-05-18 17:43:43', '2020-05-18 17:43:43', 0, 0, 0, ''),
@@ -120,7 +120,7 @@ INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `cr
 (7, 1, 'description', 'solution', 'title', '2020-05-18 17:55:29', '2020-05-18 17:55:29', 0, 0, 0, ''),
 (8, 1, 'description', 'solution', 'title', '2020-05-18 18:02:28', '2020-05-19 15:37:11', 0, 0, 0, ''),
 (9, 1, 'description', 'solution', 'title', '2020-05-18 18:02:34', '2020-05-19 15:37:14', 0, 0, 0, ''),
-(11, 1, 'aaa', 'lll', 'ttt', '2020-05-19 16:05:24', '2020-05-19 16:05:24', 0, 0, 0, 'assets/pp_default.svg');
+(11, 1, 'aaa', 'lll', 'ttt', '2020-05-19 16:05:24', '2020-05-19 16:05:24', 0, 0, 0, 'defaults/pp_default.svg');
 
 -- --------------------------------------------------------
 
