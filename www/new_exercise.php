@@ -38,7 +38,7 @@ $categories = $categoryViewModel->get_all();
 $subcategories = $subcategoryViewModel->get_all();
 $difficulties = $difficultyViewModel->get_all();
 
-$action_path =$_SERVER['DOCUMENT_ROOT'] . 'src/inc/save_exercise.php';
+$action_path = $path['src'] . '/inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
 include_once($path['src'] . '/html/head.php');

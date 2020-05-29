@@ -11,7 +11,7 @@
     picture-path (varchar(255))
 */
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 require_once($path['auth'] . '/user_info.php');
 require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
 
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
     moveFileToTemp($_POST['user_id']);
     $id = insertExercise();
     moveFileToExercise($_POST['user_id'], $id);
-    // TODO: Add routing to the newly created exercise
+    redirectToUrl("../../www/exercise.php?id=" . $id);
 } else {
     http_response_code(405);
 }
