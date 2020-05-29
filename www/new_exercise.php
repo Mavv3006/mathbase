@@ -16,8 +16,10 @@ $user = getActiveUser();
 if ($user == null) { // Zum Testen ein User mit ungültiger ID
     // http_response_code(401);
     // die();
-    $user = new User(1, "test_user", "test@user.test","assets/pp_default.svg");
+    $user = new User(1, "test_user", "test@user.test", "assets/pp_default.svg");
 }
+
+$user_id = $user->get_id();
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -48,7 +50,7 @@ include_once($path['src'] . '/html/header.php');
     <hr>
 
     <form action="<?= $action_path ?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="user_id" value="<?= $user->get_id() ?>">
+        <input type="hidden" name="user_id" value="<?= $user_id ?>">
         <div class="row">
             <!-- erste Spalte -->
             <div class="col s12 m6">
