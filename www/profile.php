@@ -90,6 +90,8 @@ $picture = $activeUser->get_picture();
                 type: "POST",
                 url: "/auth/change_email.php",
                 data: { 'newEmail': newEmail }
+            }).done(function(){
+                location.reload();
             })
         }
 
@@ -99,9 +101,9 @@ $picture = $activeUser->get_picture();
                 url: "/auth/change_password.php",
                 data: { 'oldPassword': oldPassword,
                         'newPassword': newPassword }
+            }).done(function(){
+                location.reload();
             })
         }
-
-        location.reload();
     }
 </script>
