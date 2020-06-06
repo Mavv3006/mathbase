@@ -44,4 +44,23 @@ class ExerciseDatabase extends Database
         $id->execute();
         return $id;
     }
+
+    /**
+     * Updates the picture of the exercise with the ID.
+     *
+     * @param integer $id The ID of the exercise
+     * @param string $picture The path to the exercise
+     * @return void
+     */
+    public function insertPicture(int $id, string $picture)
+    {
+        $query = 'UPDATE '.$this->tablename.' SET picture = :picture WHERE id = :id';
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bindParam(":id",$id);
+        $stmt->bindParam(":picture",$picture);
+
+        $stmt->execute();
+    }
 }

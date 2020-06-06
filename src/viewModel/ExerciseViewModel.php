@@ -75,6 +75,18 @@ class ExerciseViewModel extends ViewModel
     }
 
     /**
+     * Updates the picture of the exercise with the ID.
+     *
+     * @param integer $id The ID of the exercise
+     * @param string $picture The path to the exercise
+     * @return void
+     */
+    public function insertPicture(int $id, string $picture)
+    {
+        $this->database->insertPicture($id, $picture);
+    }
+
+    /**
      * Returns only one Exercise from an array of Tasks.
      *
      * @param array $array An array with Tasks

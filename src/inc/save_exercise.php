@@ -25,11 +25,38 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
     moveFileToTemp($_POST['user_id']);
     $id = insertExercise();
     moveFileToExercise($_POST['user_id'], $id);
+    insertFilePathIntoDB($id);
     redirectToUrl("../../www/exercise.php?id=" . $id);
 } else {
     http_response_code(405);
 }
 
+insertFilePathIntoDB(1);
+
+/**
+ * Inserts the path to the exercise picture into the database.
+ *
+ * @param integer $id The ID of the exercise
+ * @return void
+ */
+function insertFilePathIntoDB(int $id)
+{
+    global $path;
+    $basePath = $path['assets'] . "/exercise/";
+    $files = glob($basePath . $id . ".*");
+    for ($i = 0; $i < sizeof($files); $i++) {
+        $files[$i] = explode("assets/", $files[$i])[1];
+    }
+    var_dump($files);
+    $viewModel = new ExerciseViewModel();
+    $viewModel->insertPicture($id, $files[0]);
+}
+
+/**
+ * This function tests whether the user posted all the information.
+ *
+ * @return boolean True if every information was posted. False if some information are missing
+ */
 function testUserInput(): bool
 {
     $user_id = isset($_POST['user_id']);
