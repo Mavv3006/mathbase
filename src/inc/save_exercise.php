@@ -25,7 +25,7 @@ testUserInput();
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
     extract($_POST);
-    $exercise = new Exercise(0, $user_id, $title, $description, $solution, "", "", $category, $subcategory, $difficulty);
+    $exercise = new Exercise(0, $user_id, $title, $description, $solution, "", "", $category, $subcategory, $difficulty,"");
     $viewModel->create($exercise);
     // $viewModel->create(new Exercise(0, 1, "title", "description", "solution", "today", "today", 0, 0, 0));
 

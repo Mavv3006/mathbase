@@ -152,13 +152,16 @@ require_once($path['src'] . '/html/footer.php');
         messages = [];
 
         if (title.value == "") {
-            messages.push("Bitte geben Sie einen Titel.");
+            messages.push("Bitte geben Sie einen Titel an.");
         }
         if (description.value == "") {
-            messages.push("Bitte geben Sie eine Aufgabenstellung.");
+            messages.push("Bitte geben Sie eine Aufgabenstellung an.");
         }
         if (solution.value == "") {
             messages.push("Bitte geben Sie eine Lösung an.");
+        }
+        if (categorySelect.value == "") {
+            messages.push("Bitte geben Sie eine Kategorie an.");
         }
         if (subcategorySelect.value == "") {
             messages.push("Bitte wählen Sie eine Unterkategorie aus.");
