@@ -105,10 +105,4 @@ class UserViewModel extends ViewModel
             // TODO: throw DatabaseException
         }
     }
-
-    public function changeUsername(int $id, string $new_username): void
-    {
-        $this->database->query("UPDATE users SET username = '" . $new_username . "' WHERE id = " . $id);
-    }
-    
 }

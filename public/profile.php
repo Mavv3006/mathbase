@@ -41,7 +41,7 @@ $picture = $activeUser->get_picture();
                                 <i class="material-icons" id="edit">create</i>
                             </a>
                             <div class="input-field col s10">
-                                <input disabled id="username" type="text" class="validate" value="<?= $username ?>">
+                                <input disabled id="username" name="username" type="text" class="validate" value="<?= $username ?>">
                                 <label for="username">Benutzername</label>
                             </div>
                             <a class="edit-button waves-effect waves-light btn" onclick="disableInput('username')">
@@ -87,7 +87,7 @@ $picture = $activeUser->get_picture();
                 url: "/auth/change_email.php",
                 data: { 'newEmail': newEmail }
             }).done(function( msg ) {
-                alert( "Data Saved: " + msg );
+                location.reload();
             });
         }
 
@@ -97,18 +97,9 @@ $picture = $activeUser->get_picture();
                 url: "/auth/change_password.php",
                 data: { 'oldPassword': oldPassword,
                         'newPassword': newPassword }
-            }).done(function( msg ){
-                alert( "Passwort wurde gespeichert" + msg );
+            }).done(function(){
+                location.reload();
             });
         }
-        
-        
-            $.ajax({
-                type: "POST",
-                url: "/auth/change_username.php",
-                data: { 'id': "<?php $user_id ?>",
-                        'new_username': newUsername }
-            }).done(function(){});
-        
     }
 </script>
