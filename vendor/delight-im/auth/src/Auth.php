@@ -777,10 +777,10 @@ final class Auth extends UserManager {
 			$newPassword = self::validatePassword($newPassword);
 			$this->updatePasswordInternal($this->getUserId(), $newPassword);
 
-			try {
-				$this->logOutEverywhereElse();
-			}
-			catch (NotLoggedInException $ignored) {}
+			//try {
+			//	$this->logOutEverywhereElse();
+			//}
+			//catch (NotLoggedInException $ignored) {}
 		}
 		else {
 			throw new NotLoggedInException();
