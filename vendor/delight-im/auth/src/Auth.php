@@ -810,7 +810,7 @@ final class Auth extends UserManager {
 	 * @see confirmEmail
 	 * @see confirmEmailAndSignIn
 	 */
-	public function changeEmail($newEmail, callable $callback) {
+	public function changeEmail($newEmail, callable $callback = null) {
 		if ($this->isLoggedIn()) {
 			$newEmail = self::validateEmailAddress($newEmail);
 
