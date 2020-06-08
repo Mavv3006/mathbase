@@ -1,7 +1,7 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
-require_once($path['auth'].  '/user_info.php');
+require_once($path['auth'] .  '/user_info.php');
 
 $activeUser = getActiveUser();
 ?>
@@ -20,6 +20,7 @@ $activeUser = getActiveUser();
                         Math<span class="mb-orange-text">base</span>
                     </div>
                 </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <?php
                     if ($activeUser == null) {
@@ -33,7 +34,7 @@ $activeUser = getActiveUser();
                         <li>
                             <div class="avatar-container">
                                 <a class="avatar" href="profile.php">
-                                    <img class="avatar" src="<?= $path['assets'] . '/' .  $activeUser->get_picture() ?>" alt="Profilbild">
+                                    <img class="avatar" src="<?= $path['assets'] . '/' .  $activeUser->get_picture()  ?>" alt="Profilbild">
                                 </a>
                             </div>
                         </li>
@@ -45,12 +46,13 @@ $activeUser = getActiveUser();
                     }
                     ?>
                 </ul>
+
             </div>
         </nav>
     </div>
 
-    <?php include $path['src'] . '/html/forms/login.php'; ?>
-    <?php include $path['src'] . '/html/forms/register.php'; ?>
+    <?php include_once $path['src'] . '/html/forms/login.php'; ?>
+    <?php include_once $path['src'] . '/html/forms/register.php'; ?>
     <?php require_once $path['src'] . '/html/menu.php'; ?>
 
 </body>

@@ -20,6 +20,23 @@ $user = getActiveUser();
     </ul>
 </div>
 
+<ul class="sidenav" id="mobile-demo">
+    <?php
+    if ($activeUser == null) {
+    ?>
+        <li><a class="modal-trigger" href="#modalLogin">Einloggen</a></li>
+        <li><a class="modal-trigger" href="#modalRegister">Registrieren</a></li>
+    <?php
+    } else {
+    ?>
+        <li><a href="/www/new_exercise.php">Aufgabe erstellen</a></li>
+        <li><a href="profile.php">Profil</a></li>
+        <li class="divider"></li>
+        <li><a href="<?= '../auth/logout.php' ?>">Ausloggen</a></li>
+    <?php
+    }
+    ?>
+</ul>
 
 
 <script>
@@ -28,4 +45,9 @@ $user = getActiveUser();
             coverTrigger: false
         });
     });
+
+    $(document).ready(function() {
+        $('.sidenav').sidenav();
+    });
 </script>
+
