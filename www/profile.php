@@ -32,29 +32,28 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
     <div class="container">
         <div class="row">
             <div class="col m6 offset-m3">
-                <div class="card" id="profile">
-                    <span class="card-title" id="profile-title">Profil</span>
-                    <form method="POST" action="<?= $action_path ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?= $action_path ?>" enctype="multipart/form-data">
+                    <div class="card" id="profile">
+                        <span class="card-title" id="profile-title">Profil</span>
+
                         <input type="hidden" name="user_id" value="<?= $user_id ?>">
                         <div id="profile-avatar-container">
-                            <img id="profile-avatar" src="<?= $path['assets'] .'/'.  $picture ?>" alt="Bild der Übung">
+                            <img id="profile-avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Bild der Übung">
                             <div class="file-field input-field">
                                 <div class="waves-effect waves-light btn" id="avatar-button">
                                     <span class="">Bild hochladen</span>
                                     <input type="file" name="file">
                                 </div>
-
+                                <br>
                                 <div class="file-path-wrapper">
                                     <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
                                 </div>
                             </div>
-                            <button type="submit" class="waves-effect waves-light btn">Erstellen</button>
 
                             <br>
                         </div>
-                    </form>
-                    <div class="card-content">
-                        <form method="POST" action="#">
+
+                        <div class="card-content">
                             <div class="input-field col s10 profile-input">
                                 <input disabled id="email" type="email" class="validate" value="<?= $email ?>">
                                 <label for="email">E-Mail-Adresse</label>
@@ -77,10 +76,11 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                                 <input id="old_password" type="password" class="validate">
                                 <label for="old_password">Altes Passwort</label>
                             </div>
-                            <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
-                        </form>
+                            <button type="submit" class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</button>
+
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
