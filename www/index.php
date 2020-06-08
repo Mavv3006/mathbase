@@ -5,12 +5,11 @@ session_start();
 
 $site_name = "Mathbase";
 require_once($path['src'] . '/html/head.php');
+require_once($path['auth'] . '/user_info.php');
 require_once($path['config'] . '/config.php');
 setUserLocation("index");
 
-$site_name = "Aufgabenliste";
-require_once($path['src'] . '/html/head.php');
-
+$activeUser = getActiveUser();
 ?>
 
 <head>
@@ -18,8 +17,12 @@ require_once($path['src'] . '/html/head.php');
 </head>
 
 <body>
-    <?php require_once($path['src'] . '/html/header.php'); ?>
-
+    <?php
+    if ($activeUser != null) {
+        redirectToUrl("../../www/main.php");
+    }
+    require_once($path['src'] . '/html/header.php');
+    ?>
     <div class="introduction">
 
         <div class="title">
