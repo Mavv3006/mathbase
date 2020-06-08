@@ -80,29 +80,35 @@ include_once($path['src'] . '/html/header.php');
             <!-- zweite Spalte -->
             <div class="col s12 m6">
                 <div class="input-field">
-                    <select name="category">
-                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                    <select name="category" id="categorySelect">
+                        <option value="" selected>Bitte etwas auswählen</option>
+
                         <?php foreach ($categories as $category) { ?>
                             <option value="<?= $category->get_id() ?>"><?= $category->get_description() ?></option>
                         <?php } ?>
+
                     </select>
                     <label for="category">Kategorie</label>
                 </div>
                 <div class="input-field">
-                    <select name="subcategory">
-                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                    <select name="subcategory" id="subcategorySelect">
+                        <option value="" selected>Bitte etwas auswählen</option>
+
                         <?php foreach ($subcategories as $subcategory) { ?>
                             <option value="<?= $subcategory->get_id() ?>"><?= $subcategory->get_description() ?></option>
                         <?php } ?>
+
                     </select>
                     <label for="category">Unterkategorie</label>
                 </div>
                 <div class="input-field">
-                    <select name="difficulty">
-                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                    <select name="difficulty" id="difficultySelect">
+                        <option value="" selected>Bitte etwas auswählen</option>
+
                         <?php foreach ($difficulties as $difficulty) { ?>
                             <option value="<?= $difficulty->get_id() ?>"><?= $difficulty->get_description() ?></option>
                         <?php } ?>
+
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
@@ -131,5 +137,43 @@ require_once($path['src'] . '/html/footer.php');
     });
     $('#description').show(function() {
         $(this).css('height', '12em');
+    });
+
+    // form validation
+    const categorySelect = document.getElementById('categorySelect');
+    const subcategorySelect = document.getElementById('subcategorySelect');
+    const difficultySelect = document.getElementById('difficultySelect');
+    const title = document.getElementById('title');
+    const solution = document.getElementById('solution');
+    const description = document.getElementById('description');
+    const error = document.getElementById("error");
+
+    $("#form").submit((e) => {
+        messages = [];
+
+        if (title.value == "") {
+            messages.push("Bitte geben Sie einen Titel an.");
+        }
+        if (description.value == "") {
+            messages.push("Bitte geben Sie eine Aufgabenstellung an.");
+        }
+        if (solution.value == "") {
+            messages.push("Bitte geben Sie eine Lösung an.");
+        }
+        if (categorySelect.value == "") {
+            messages.push("Bitte geben Sie eine Kategorie an.");
+        }
+        if (subcategorySelect.value == "") {
+            messages.push("Bitte wählen Sie eine Unterkategorie aus.");
+        }
+        if (difficultySelect.value == "") {
+            messages.push("Bitte wählen Sie eine Schwierigkeit aus.");
+        }
+
+        if (messages.length > 0) {
+            e.preventDefault();
+            error.innerText = messages.join("\n");
+            $("#error").removeClass("hidden");
+        }
     });
 </script>
