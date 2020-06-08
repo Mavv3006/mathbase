@@ -4,11 +4,11 @@ define('USER_LOCATION', "user_location");
 define(
     'PAGE',
     array(
-        "profile" => 'public/profile.php',
-        "main" => 'public/main.php',
-        "index" => 'public/index.php',
-        "show" => 'public/exercise.php',
-        "create" => 'public/new_exercise.php',
+        "profile" => 'www/profile.php',
+        "main" => 'www/main.php',
+        "index" => 'www/index.php',
+        "show" => 'www/exercise.php',
+        "create" => 'www/new_exercise.php',
     )
 );
 

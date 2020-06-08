@@ -41,19 +41,22 @@ class ExerciseViewModel extends ViewModel
         return $this->fetchData($stmt);
     }
 
-    public function create(Exercise $model): void
+    /**
+     * Inserts an Exercise into the database and returns the ID of it.
+     *
+     * @param Exercise $model The Exercise to to insert
+     * @return int|null The ID of the database entry. Returns Null on error
+     */
+    public function create(Exercise $model)
     {
-        $array = array(
-            $model->get_user_id(),
-            $model->get_description(),
-            $model->get_solution(),
-            $model->get_title(),
-            $model->get_category(),
-            $model->get_subcategory(),
-            $model->get_difficulty(), 
-            "assets/pp_default.svg" // TODO: add exercise picture if available
-        );
-        $this->database->create($array);
+        $array = $model->toArray();
+        $stmt = $this->database->create($array);
+
+        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            return $row['id'];
+        } else {
+            return null;
+        }
     }
 
     public function update(Exercise $model): void
@@ -69,6 +72,18 @@ class ExerciseViewModel extends ViewModel
             array_push($task_array, $task);
         }
         return $task_array;
+    }
+
+    /**
+     * Updates the picture of the exercise with the ID.
+     *
+     * @param integer $id The ID of the exercise
+     * @param string $picture The path to the exercise
+     * @return void
+     */
+    public function insertPicture(int $id, string $picture)
+    {
+        $this->database->insertPicture($id, $picture);
     }
 
     /**

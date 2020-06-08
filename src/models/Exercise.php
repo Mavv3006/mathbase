@@ -64,6 +64,24 @@ class Exercise implements Model
     }
 
     /**
+     * Returns an Exercise into an array.
+     *
+     * @return array The array representation of the exercise
+     */
+    public function toArray():array
+    {
+        return array(
+            "user_id" => $this->get_user_id(),
+            "description" => $this->get_description(),
+            "solution" => $this->get_solution(),
+            "title" => $this->get_title(),
+            "category" => $this->get_category(),
+            "subcategory" => $this->get_subcategory(),
+            "difficulty" => $this->get_difficulty()
+        );
+    }
+
+    /**
      * @return integer The Tasks ID
      */
     public function get_id(): int

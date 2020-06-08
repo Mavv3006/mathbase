@@ -26,6 +26,8 @@ if ($user == null) { // Zum Testen ein User mit ungültiger ID
     $user = new User(1, "test_user", "test@user.test", "assets/pp_default.svg");
 }
 
+$user_id = $user->get_id();
+
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
 $difficultyViewModel = new DifficultyViewModel();
@@ -36,7 +38,7 @@ $categories = $categoryViewModel->get_all();
 $subcategories = $subcategoryViewModel->get_all();
 $difficulties = $difficultyViewModel->get_all();
 
-$action_path = $_SERVER['DOCUMENT_ROOT'] . 'src/inc/save_exercise.php';
+$action_path = $path['src'] . '/inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
 include_once($path['src'] . '/html/head.php');
@@ -54,10 +56,8 @@ include_once($path['src'] . '/html/header.php');
 
     <hr>
 
-    <div class="error hidden" id="error"></div>
-
-    <form action="<?= $action_path ?>" method="post" id="form">
-        <input type="hidden" name="user_id" value="<?= $user->get_id() ?>">
+    <form action="<?= $action_path ?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="user_id" value="<?= $user_id ?>">
         <div class="row">
             <!-- erste Spalte -->
             <div class="col s12 m6">

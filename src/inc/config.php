@@ -15,4 +15,3 @@ $path['js'] = $path['rel'] . "js";
 $path['src'] = $path['rel'] . "src";
 $path['vendor'] = $path['rel'] . "vendor";
 $path['www'] = $path['rel'] . "www";
-?>
