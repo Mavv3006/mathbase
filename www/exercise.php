@@ -1,10 +1,17 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+session_start();
+
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
+require_once($path['config'] . '/config.php');
 
 if (!isset($_GET['id'])) {
     // redirect to homepage
-    die(header('Location: ../index.php'));
+    redirect("../main.php");
 }
+
+setUserLocation("show", array("id" => $_GET['id']));
+getPage();
+
 
 // get Task based on GET Query
 require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
@@ -45,7 +52,7 @@ require_once($path['src'] . '/html/header.php');
         <div class="header">
             <h3><?= $exercise->get_title() ?></h3>
             <div class="edit_icon waves-effect waves-light btn">
-                <a href="<?= $_SERVER['DOCUMENT_ROOT'] ?>index.php">
+                <a href="<?= $path['server'] ?>index.php">
                     <!--TODO update link -->
                     <i class="material-icons">create</i>
                 </a>
@@ -64,7 +71,7 @@ require_once($path['src'] . '/html/header.php');
             <?php if ($has_picture) { ?>
                 <p class="description col s12 m6"><?= $exercise->get_description() ?></p>
                 <p class="exercise-picture col s12 m6">
-                    <img src="../<?= $exercise->get_picture() ?>" alt="Bild der Übung">
+                    <img src="<?= $path['assets'] .'/'.  $exercise->get_picture() ?>" alt="Bild der Übung">
                 </p>
             <?php } else { ?>
                 <p class="description col s12"><?= $exercise->get_description() ?></p>

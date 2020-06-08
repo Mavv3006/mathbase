@@ -777,10 +777,10 @@ final class Auth extends UserManager {
 			$newPassword = self::validatePassword($newPassword);
 			$this->updatePasswordInternal($this->getUserId(), $newPassword);
 
-			try {
-				$this->logOutEverywhereElse();
-			}
-			catch (NotLoggedInException $ignored) {}
+			//try {
+			//	$this->logOutEverywhereElse();
+			//}
+			//catch (NotLoggedInException $ignored) {}
 		}
 		else {
 			throw new NotLoggedInException();
@@ -810,7 +810,7 @@ final class Auth extends UserManager {
 	 * @see confirmEmail
 	 * @see confirmEmailAndSignIn
 	 */
-	public function changeEmail($newEmail, callable $callback) {
+	public function changeEmail($newEmail, callable $callback = null) {
 		if ($this->isLoggedIn()) {
 			$newEmail = self::validateEmailAddress($newEmail);
 

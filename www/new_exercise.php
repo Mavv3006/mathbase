@@ -1,8 +1,12 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+session_start();
 
 // if this page is for editing an existing exercise than we need the id
 // so $_GET['id'] has to be provided.
+
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
+
+require_once($path['config'] . '/config.php');
 
 require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
 require_once($path['src'] . '/viewModel/UserViewModel.php');
@@ -11,13 +15,18 @@ require_once($path['src'] . '/viewModel/CategoryViewModel.php');
 require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
 
 require_once($path['auth'] . '/user_info.php');
+
+setUserLocation("create");
+
 $user = getActiveUser();
 
 if ($user == null) { // Zum Testen ein User mit ungültiger ID
     // http_response_code(401);
     // die();
-    $user = new User(1, "test_user", "test@user.test","assets/pp_default.svg");
+    $user = new User(1, "test_user", "test@user.test", "assets/pp_default.svg");
 }
+
+$user_id = $user->get_id();
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -29,7 +38,7 @@ $categories = $categoryViewModel->get_all();
 $subcategories = $subcategoryViewModel->get_all();
 $difficulties = $difficultyViewModel->get_all();
 
-$action_path = '../inc/save_exercise.php';
+$action_path = $path['src'] . '/inc/save_exercise.php';
 
 $site_name = "Neue Aufgabe";
 include_once($path['src'] . '/html/head.php');
@@ -47,8 +56,8 @@ include_once($path['src'] . '/html/header.php');
 
     <hr>
 
-    <form action="<?= $action_path ?>" method="post">
-        <input type="hidden" name="user_id" value="<?= $user->get_id() ?>">
+    <form action="<?= $action_path ?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="user_id" value="<?= $user_id ?>">
         <div class="row">
             <!-- erste Spalte -->
             <div class="col s12 m6">
@@ -71,29 +80,35 @@ include_once($path['src'] . '/html/header.php');
             <!-- zweite Spalte -->
             <div class="col s12 m6">
                 <div class="input-field">
-                    <select name="category">
-                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                    <select name="category" id="categorySelect">
+                        <option value="" selected>Bitte etwas auswählen</option>
+
                         <?php foreach ($categories as $category) { ?>
                             <option value="<?= $category->get_id() ?>"><?= $category->get_description() ?></option>
                         <?php } ?>
+
                     </select>
                     <label for="category">Kategorie</label>
                 </div>
                 <div class="input-field">
-                    <select name="subcategory">
-                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                    <select name="subcategory" id="subcategorySelect">
+                        <option value="" selected>Bitte etwas auswählen</option>
+
                         <?php foreach ($subcategories as $subcategory) { ?>
                             <option value="<?= $subcategory->get_id() ?>"><?= $subcategory->get_description() ?></option>
                         <?php } ?>
+
                     </select>
                     <label for="category">Unterkategorie</label>
                 </div>
                 <div class="input-field">
-                    <select name="difficulty">
-                        <option value="" selected disabled>Bitte etwas auswählen</option>
+                    <select name="difficulty" id="difficultySelect">
+                        <option value="" selected>Bitte etwas auswählen</option>
+
                         <?php foreach ($difficulties as $difficulty) { ?>
                             <option value="<?= $difficulty->get_id() ?>"><?= $difficulty->get_description() ?></option>
                         <?php } ?>
+
                     </select>
                     <label for="category">Schwierigkeit</label>
                 </div>
@@ -122,5 +137,43 @@ require_once($path['src'] . '/html/footer.php');
     });
     $('#description').show(function() {
         $(this).css('height', '12em');
+    });
+
+    // form validation
+    const categorySelect = document.getElementById('categorySelect');
+    const subcategorySelect = document.getElementById('subcategorySelect');
+    const difficultySelect = document.getElementById('difficultySelect');
+    const title = document.getElementById('title');
+    const solution = document.getElementById('solution');
+    const description = document.getElementById('description');
+    const error = document.getElementById("error");
+
+    $("#form").submit((e) => {
+        messages = [];
+
+        if (title.value == "") {
+            messages.push("Bitte geben Sie einen Titel an.");
+        }
+        if (description.value == "") {
+            messages.push("Bitte geben Sie eine Aufgabenstellung an.");
+        }
+        if (solution.value == "") {
+            messages.push("Bitte geben Sie eine Lösung an.");
+        }
+        if (categorySelect.value == "") {
+            messages.push("Bitte geben Sie eine Kategorie an.");
+        }
+        if (subcategorySelect.value == "") {
+            messages.push("Bitte wählen Sie eine Unterkategorie aus.");
+        }
+        if (difficultySelect.value == "") {
+            messages.push("Bitte wählen Sie eine Schwierigkeit aus.");
+        }
+
+        if (messages.length > 0) {
+            e.preventDefault();
+            error.innerText = messages.join("\n");
+            $("#error").removeClass("hidden");
+        }
     });
 </script>

@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 abstract class Database
 {
     protected PDO $connection;
@@ -60,8 +60,6 @@ abstract class Database
             FROM " . $this->tablename . " t
             WHERE t.id = :id;
         ";
-
-        // return $this->prepareStatement($query, $id);
 
         $stmt = $this->connection->prepare($query);
 

@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-include_once($_SERVER['DOCUMENT_ROOT'] . "/inc/config.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
 /*
 This is the page, which handles sign up requests.
@@ -22,19 +23,7 @@ try {
     }
 
     $auth->login($_POST['email'], $_POST['password'], $rememberDuration);
-
-    $user_location = $_SESSION[USER_LOCATION];
-    if (isset($user_location)) {
-        $page = PAGE[$user_location];
-        if (isset($page)) {
-            redirect("../" .  $page);
-        } else {
-            http_response_code(404);
-            die();
-        }
-    } else {
-        redirect("../www/");
-    }
+    redirect();
 } catch (\Delight\Auth\InvalidEmailException $e) {
     die('Wrong email address');
 } catch (\Delight\Auth\InvalidPasswordException $e) {
