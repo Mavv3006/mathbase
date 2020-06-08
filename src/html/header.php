@@ -33,7 +33,7 @@ $activeUser = getActiveUser();
                         <li>
                             <div class="avatar-container">
                                 <a class="avatar" href="profile.php">
-                                    <img class="avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Profilbild">
+                                    <img class="avatar" src="<?= $path['assets'] . '/' .  $activeUser->get_picture() ?>" alt="Profilbild">
                                 </a>
                             </div>
                         </li>
