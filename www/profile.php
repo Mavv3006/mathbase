@@ -15,6 +15,9 @@ $user_id = $activeUser->get_id();
 $email = $activeUser->get_email();
 $username = $activeUser->get_username();
 $picture = $activeUser->get_picture();
+
+$action_path = $path['src'] . '/inc/save_profilepic.php';
+
 ?>
 
 <head>
@@ -31,16 +34,25 @@ $picture = $activeUser->get_picture();
             <div class="col m6 offset-m3">
                 <div class="card" id="profile">
                     <span class="card-title" id="profile-title">Profil</span>
-                    <div id="profile-avatar-container">
-                        <img id="profile-avatar" src="/assets/defaults/pp_default.svg">
-                        <div class="file-field input-field">
-                            <div class="waves-effect waves-light btn" id="avatar-button">
-                                <span class="">Bild hochladen</span>
-                                <input type="file" name="file">
+                    <form method="POST" action="<?= $action_path ?>" enctype="multipart/form-data">
+                        <input type="hidden" name="user_id" value="<?= $user_id ?>">
+                        <div id="profile-avatar-container">
+                            <img id="profile-avatar" src="<?= $path['assets'] .'/'.  $picture ?>" alt="Bild der Übung">
+                            <div class="file-field input-field">
+                                <div class="waves-effect waves-light btn" id="avatar-button">
+                                    <span class="">Bild hochladen</span>
+                                    <input type="file" name="file">
+                                </div>
+
+                                <div class="file-path-wrapper">
+                                    <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
+                                </div>
                             </div>
+                            <button type="submit" class="waves-effect waves-light btn">Erstellen</button>
+
+                            <br>
                         </div>
-                        <br>
-                    </div>
+                    </form>
                     <div class="card-content">
                         <form method="POST" action="#">
                             <div class="input-field col s10 profile-input">
@@ -90,24 +102,28 @@ $picture = $activeUser->get_picture();
         var newPassword = $('#new_password').val();
         var oldPassword = $('#old_password').val();
         var newUsername = $('#username').val();
-        
-        if(newEmail !== "<?php $email ?>"){
+
+        if (newEmail !== "<?php $email ?>") {
             $.ajax({
                 type: "POST",
                 url: "/auth/change_email.php",
-                data: { 'newEmail': newEmail }
-            }).done(function(){
+                data: {
+                    'newEmail': newEmail
+                }
+            }).done(function() {
                 location.reload();
             })
         }
 
-        if(newPassword !== "" && oldPassword !== "" && newPassword !== oldPassword){
+        if (newPassword !== "" && oldPassword !== "" && newPassword !== oldPassword) {
             $.ajax({
                 type: "POST",
                 url: "/auth/change_password.php",
-                data: { 'oldPassword': oldPassword,
-                        'newPassword': newPassword }
-            }).done(function(){
+                data: {
+                    'oldPassword': oldPassword,
+                    'newPassword': newPassword
+                }
+            }).done(function() {
                 location.reload();
             })
         }
