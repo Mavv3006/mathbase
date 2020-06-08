@@ -8,13 +8,9 @@ It uses $_POST['password'], $_POST['newEmail']
 require_once('auth.php');
 
 try {
-    if ($auth->reconfirmPassword($_POST['password'])) {
-        $auth->changeEmail($_POST['newEmail'], function ($selector, $token) {
-            echo 'Email has been changed';
-        });
-    } else {
-        echo 'We can\'t say if the user is who they claim to be';
-    }
+    $auth->changeEmail($_POST['newEmail'], function ($selector, $token) use ($auth) {
+        $auth->confirmEmail($selector, $token);
+    });
 } catch (\Delight\Auth\InvalidEmailException $e) {
     die('Invalid email address');
 } catch (\Delight\Auth\UserAlreadyExistsException $e) {
