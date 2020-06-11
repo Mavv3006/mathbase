@@ -21,7 +21,7 @@ $picture = $activeUser->get_picture();
     <link rel="stylesheet" href="/css/profile.css" />
     <link rel="stylesheet" href="/assets/icons/iconfont/material-icons.css" />
     <?php
-    require_once( $path['src'] . '/html/header.php');
+    require_once($path['src'] . '/html/header.php');
     ?>
 </head>
 
@@ -36,7 +36,7 @@ $picture = $activeUser->get_picture();
                         <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
                     </div>
                     <div class="card-content">
-                        <form method="POST" action="#">
+                        <form method="POST" action="#" id="form">
                             <div class="input-field col s10 profile-input">
                                 <input disabled id="email" type="email" class="validate" value="<?= $email ?>">
                                 <label for="email">E-Mail-Adresse</label>
@@ -61,6 +61,8 @@ $picture = $activeUser->get_picture();
                             </div>
                             <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
                         </form>
+                        <!-- TODO: Fix profile_error css -->
+                        <div class="error hidden" id="profile_error"></div>
                     </div>
                 </div>
             </div>
@@ -70,6 +72,8 @@ $picture = $activeUser->get_picture();
     include $path['src'] . '/html/footer.php';
     ?>
 </body>
+
+<script src="<?= $path['js'] ?>/validatePassword.js"></script>
 <script>
     function disableInput(element) {
         if (document.getElementById(element).disabled) {
@@ -84,24 +88,41 @@ $picture = $activeUser->get_picture();
         var newPassword = $('#new_password').val();
         var oldPassword = $('#old_password').val();
         var newUsername = $('#username').val();
-        
-        if(newEmail !== "<?php $email ?>"){
+
+
+        if (newEmail !== "<?= $email ?>") {
             $.ajax({
                 type: "POST",
                 url: "/auth/change_email.php",
-                data: { 'newEmail': newEmail }
-            }).done(function(){
+                data: {
+                    'newEmail': newEmail
+                }
+            }).done(function(e) {
+                alert(e);
                 location.reload();
+
             })
         }
 
-        if(newPassword !== "" && oldPassword !== "" && newPassword !== oldPassword){
+        console.log("Neues Passwort: " + newPassword);
+        if (!validatePassword(newPassword)) {
+            $('#profile_error').text("Das neue Passwort ist nicht valide").removeClass('hidden');
+            return;
+        }
+
+        $('#profile_error').addClass('hidden');
+
+
+        if (newPassword !== "" && oldPassword !== "" && newPassword !== oldPassword) {
             $.ajax({
                 type: "POST",
                 url: "/auth/change_password.php",
-                data: { 'oldPassword': oldPassword,
-                        'newPassword': newPassword }
-            }).done(function(){
+                data: {
+                    'oldPassword': oldPassword,
+                    'newPassword': newPassword
+                }
+            }).done(function() {
+                alert(e);
                 location.reload();
             })
         }
