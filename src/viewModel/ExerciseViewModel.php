@@ -98,11 +98,20 @@ class ExerciseViewModel extends ViewModel
         $count = count($array);
 
         if ($count == 0) {
-            // TODO: throw NoDatabaseEntryFoundException
+            return new Exercise(-1, 0, "", "", "", "", "", 0, 0, 0, "");
         } else if ($count == 1) {
             return $array[0];
-        } else {
-            // TODO: throw DatabaseException
         }
+    }
+
+    /**
+     * Delets a row with the given ID.
+     *
+     * @param integer $id The ID to be deleted
+     * @return bool True on success. False otherwise
+     */
+    public function delete(int $id): bool
+    {
+        return $this->database->deleteById($id);
     }
 }

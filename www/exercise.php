@@ -27,10 +27,16 @@ $subcategoryViewModel = new SubCategoryViewModel();
 $categoryViewModel = new CategoryViewModel();
 
 $exercise = $exerciseViewModel->get_by_id($_GET['id']);
+
+if ($exercise->get_id() < 0) {
+    redirectToUrl($path['www'] . '/index.php');
+}
+
 $user = $userViewModel->get_by_id($exercise->get_user_id());
 $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
 $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
+
 
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
@@ -57,6 +63,11 @@ require_once($path['src'] . '/html/header.php');
                     <i class="material-icons">create</i>
                 </a>
             </div>
+            <div class="delete_icon waves-effect waves-light btn">
+                <a href="<?= $path['src'] . '/inc/delete_exercise.php?id=' . $exercise->get_id() ?>">
+                    <i class="material-icons">delete</i>
+                </a>
+            </div>
         </div>
 
         <hr>
@@ -71,7 +82,7 @@ require_once($path['src'] . '/html/header.php');
             <?php if ($has_picture) { ?>
                 <p class="description col s12 m6"><?= $exercise->get_description() ?></p>
                 <p class="exercise-picture col s12 m6">
-                    <img src="<?= $path['assets'] .'/'.  $exercise->get_picture() ?>" alt="Bild der Übung">
+                    <img src="<?= $path['assets'] . '/' .  $exercise->get_picture() ?>" alt="Bild der Übung">
                 </p>
             <?php } else { ?>
                 <p class="description col s12"><?= $exercise->get_description() ?></p>
