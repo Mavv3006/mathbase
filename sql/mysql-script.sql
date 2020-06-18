@@ -131,6 +131,7 @@ INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `cr
 CREATE TABLE `subcategories` (
   `id` int(11) NOT NULL,
   `description` varchar(100) NOT NULL
+  `category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,8 +142,8 @@ CREATE TABLE `subcategories` (
 -- Daten für Tabelle `subcategories`
 --
 
-INSERT INTO `subcategories` (`id`, `description`) VALUES
-(0, 'Unterkategorie');
+INSERT INTO `subcategories` (`id`, `description`, `category`) VALUES
+(0, 'Unterkategorie', 0);
 
 -- --------------------------------------------------------
 
@@ -253,10 +254,6 @@ CREATE TABLE `users_throttling` (
 --
 -- Daten für Tabelle `users_throttling`
 --
-
-INSERT INTO `users_throttling` (`bucket`, `tokens`, `replenished_at`, `expires_at`) VALUES
-('PZ3qJtO_NLbJfRIP-8b4ME4WA3xxc6n9nbCORSffyQ0', 3.03468, 1589791282, 1590223282),
-('QduM75nGblH2CDKFyk0QeukPOwuEVDAUFE54ITnHM38', 58.6137, 1589813450, 1590353450);
 
 --
 -- Indizes der exportierten Tabellen
@@ -393,6 +390,10 @@ ALTER TABLE `exercise`
   ADD CONSTRAINT `FK_exercise_difficulties(id)` FOREIGN KEY (`difficulty`) REFERENCES `difficulties` (`id`),
   ADD CONSTRAINT `FK_exercise_subcategories(id)` FOREIGN KEY (`subcategory`) REFERENCES `subcategories` (`id`),
   ADD CONSTRAINT `FK_exercise_users(id)` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+COMMIT;
+
+ALTER TABLE `subcategories`
+  ADD CONSTRAINT `FK_subcategories_categories(id)` FOREIGN KEY (`category`) REFERENCES `categories` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
