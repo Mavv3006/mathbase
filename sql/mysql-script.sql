@@ -174,9 +174,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `status`, `verified`, `resettable`, `roles_mask`, `registered`, `last_login`, `force_logout`, `picture`) VALUES
-(1, 'test@test.com', '$2y$10$Pwp4UNw4Y1mQjZULNCclHOe933Ml5PKuBjBfeDi9p1QC0ZK20X6VC', 'test', 0, 1, 1, 0, 1589789784, 1589801622, 0, 'assets/pp_default.svg'), -- password: test
-(2, 'bla@bla.com', '$2y$10$a0y9oN51EPKHzzC89sUI0u/io.nWUaLmfoMToaMV9HxD2RPydCmFW', 'bla bla', 0, 1, 1, 0, 1589791282, NULL, 0, 'assets/pp_default.svg'), -- password: bla
-(3, 'user@user.de', '$2y$10$ZWz1Po2eBvDXl60bpqlYZezlr98sjnHwrWGEP3J3MwZVw4A8mmWxW', 'User', 0, 1, 1, 0, 1589209770, 1589813450, 0, 'assets/pp_default.svg'); -- password: sh7up#KT!
+(1, 'test@test.com', '$2y$10$Pwp4UNw4Y1mQjZULNCclHOe933Ml5PKuBjBfeDi9p1QC0ZK20X6VC', 'test', 0, 1, 1, 0, 1589789784, 1589801622, 0, ''), -- password: test
+(2, 'bla@bla.com', '$2y$10$a0y9oN51EPKHzzC89sUI0u/io.nWUaLmfoMToaMV9HxD2RPydCmFW', 'bla bla', 0, 1, 1, 0, 1589791282, NULL, 0, ''), -- password: bla
+(3, 'user@user.de', '$2y$10$ZWz1Po2eBvDXl60bpqlYZezlr98sjnHwrWGEP3J3MwZVw4A8mmWxW', 'User', 0, 1, 1, 0, 1589209770, 1589813450, 0, ''); -- password: sh7up#KT!
 
 -- --------------------------------------------------------
 

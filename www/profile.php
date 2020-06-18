@@ -43,7 +43,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                             ?>
                                 <img id="profile-avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Profilbild">
                             <?php } else { ?>
-                                <img class="profile-avatar" src="/assets/defaults/pp_default.svg" alt="Profilbild">
+                                <img id="profile-avatar" src="/assets/defaults/pp_default.svg" alt="Profilbild">
                             <?php } ?>
 
                             <div class="file-field input-field">
