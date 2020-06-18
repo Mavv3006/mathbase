@@ -82,13 +82,18 @@ function redirect()
             die();
         }
     } else {
-        redirectToUrl("../public/");
+        redirectToUrl("../www/");
     }
 }
 
-function redirectToUrl($url, $permanent = false)
+function redirectToUrl(string $url, bool $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
 
     exit();
+}
+
+function redirectToPage(string $page)
+{
+    redirectToUrl("../" . PAGE[$page]);
 }

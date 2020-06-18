@@ -14,7 +14,7 @@ $activeUser = getActiveUser();
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo logo-wrapper">
+                <a href="/www/" class="brand-logo logo-wrapper">
                     <img id="header-logo" src="/assets/logo/logo.svg" />
                     <div class="logo-text">
                         Math<span class="mb-orange-text">base</span>

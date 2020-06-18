@@ -83,9 +83,10 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                                 <input id="old_password" type="password" class="validate">
                                 <label for="old_password">Altes Passwort</label>
                             </div>
-                            <button type="submit" class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</button>
-
-                        </div>
+                            <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
+                        </form>
+                        <!-- TODO: Fix profile_error css -->
+                        <div class="error hidden" id="profile_error"></div>
                     </div>
                 </form>
             </div>
@@ -95,6 +96,8 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
     include $path['src'] . '/html/footer.php';
     ?>
 </body>
+
+<script src="<?= $path['js'] ?>/validatePassword.js"></script>
 <script>
     function disableInput(element) {
         if (document.getElementById(element).disabled) {
@@ -110,17 +113,29 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
         var oldPassword = $('#old_password').val();
         var newUsername = $('#username').val();
 
-        if (newEmail !== "<?php $email ?>") {
+
+        if (newEmail !== "<?= $email ?>") {
             $.ajax({
                 type: "POST",
                 url: "/auth/change_email.php",
                 data: {
                     'newEmail': newEmail
                 }
-            }).done(function() {
+            }).done(function(e) {
+                alert(e);
                 location.reload();
+
             })
         }
+
+        console.log("Neues Passwort: " + newPassword);
+        if (!validatePassword(newPassword)) {
+            $('#profile_error').text("Das neue Passwort ist nicht valide").removeClass('hidden');
+            return;
+        }
+
+        $('#profile_error').addClass('hidden');
+
 
         if (newPassword !== "" && oldPassword !== "" && newPassword !== oldPassword) {
             $.ajax({
@@ -131,6 +146,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                     'newPassword': newPassword
                 }
             }).done(function() {
+                alert(e);
                 location.reload();
             })
         }
