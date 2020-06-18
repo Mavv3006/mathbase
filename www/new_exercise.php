@@ -72,11 +72,10 @@ include_once($path['src'] . '/html/header.php');
                     <textarea type="text" name="description" id="description" class="materialize-textarea"></textarea>
                     <label for="description">Aufgabenstellung</label>
                 </div>
-                <div class="input-field ">
+                <div class="input-field tooltipped" data-position="bottom" data-tooltip="Die Lösung sollte nur aus Zahlen (auf zwei Nachkommastellen gerundet) oder möglichst wenigen Wörtern bestehen.">
                     <input type="text" name="solution" id="solution">
                     <label for="solution">Lösung</label>
                 </div>
-
                 <button type="submit" class="waves-effect waves-light btn">Erstellen</button>
             </div>
 
@@ -135,9 +134,12 @@ require_once($path['src'] . '/html/footer.php');
 ?>
 
 <script>
+        
     $(document).ready(function() {
         $('select').formSelect();
+        $('.tooltipped').tooltip();
     });
+
     $('#description').show(function() {
         $(this).css('height', '12em');
     });
