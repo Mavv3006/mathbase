@@ -22,19 +22,21 @@ $activeUser = getActiveUser();
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <?php
-                    if ($activeUser == null) {
-                    ?>
+                    <?php if ($activeUser == null) { ?>
                         <li><a class="waves-effect btn modal-trigger" id="login-button" href="#modalLogin">Einloggen</a></li>
                         <li><a class="waves-effect waves-light btn modal-trigger" href="#modalRegister">Registrieren</a></li>
-                    <?php
-                    } else {
-                    ?>
+                    <?php } else {  ?>
                         <li><a class="waves-effect waves-light btn" href="/www/new_exercise.php">Aufgabe erstellen</a></li>
                         <li>
                             <div class="avatar-container">
                                 <a class="avatar" href="profile.php">
-                                    <img class="avatar" src="<?= $path['assets'] . '/' .  $activeUser->get_picture()  ?>" alt="Profilbild">
+                                    <?php
+                                    if ($activeUser->get_picture() != null) {
+                                    ?>
+                                        <img class="avatar" src="<?= $path['assets'] . '/' .  $activeUser->get_picture()  ?>" alt="Profilbild">
+                                    <?php } else { ?>
+                                        <img class="avatar" src="/assets/defaults/pp_default.svg" alt="Profilbild">
+                                    <?php } ?>
                                 </a>
                             </div>
                         </li>

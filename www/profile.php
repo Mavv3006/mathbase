@@ -38,7 +38,14 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
 
                         <input type="hidden" name="user_id" value="<?= $user_id ?>">
                         <div id="profile-avatar-container">
-                            <img id="profile-avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Profilbild">
+                            <?php
+                            if ($activeUser->get_picture() != null) {
+                            ?>
+                                <img id="profile-avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Profilbild">
+                            <?php } else { ?>
+                                <img class="profile-avatar" src="/assets/defaults/pp_default.svg" alt="Profilbild">
+                            <?php } ?>
+
                             <div class="file-field input-field">
                                 <div class="waves-effect waves-light btn" id="avatar-button">
                                     <span class="">Bild hochladen</span>
