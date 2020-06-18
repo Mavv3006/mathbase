@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
 
 
 /**
- * Inserts the path to the exercise picture into the database.
+ * Inserts the path to the profilepicture into the database.
  *
- * @param integer $id The ID of the exercise
+ * @param integer $id The ID of the user
  * @return void
  */
 function insertFilePathIntoDB(int $id)
@@ -48,7 +48,6 @@ function testUserInput(): bool
     
     $user_id = isset($_POST['user_id']);
     var_dump($_POST['picture']);
-    //$picture = isset($_POST['picture']);
     return $user_id;
 }
 
@@ -61,15 +60,13 @@ function testUserInput(): bool
 function moveFileToTemp(int $user_id)
 {
     global $path;
-    var_dump($_FILES['file']['name']);
     $file_extention = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-    
     $destination = $path['assets'] . '/temp/' . $user_id . '.' . $file_extention;
     move_uploaded_file($_FILES['file']['tmp_name'], $destination);
 }
 
 /**
- * Moves the uploaded file into assets/exercise named after the corresponding exercise ID in the database.
+ * Moves the uploaded file into assets/profilepic named after the corresponding user ID in the database.
  *
  * @param integer $user_id The ID of the user who uploaded the file
  * @return void
