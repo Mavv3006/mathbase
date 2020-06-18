@@ -47,6 +47,7 @@ include_once($path['src'] . '/html/header.php');
 
 <head>
     <link rel="stylesheet" href="/css/new_exercise.css">
+    <link rel="stylesheet" href="/css/error.css">
 </head>
 
 <div class="container">

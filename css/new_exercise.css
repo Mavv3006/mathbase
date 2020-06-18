@@ -5,17 +5,3 @@
 .blue-btn, .blue-btn:hover {
     background-color: #003049;
 }
-
-.error {
-    background-color: lightcoral;
-    border-radius: 8px;
-    padding: 10px 15px;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    line-height: 26px;
-    color: #003049;
-}
-
-.hidden {
-    display: none;
-}
