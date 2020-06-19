@@ -44,7 +44,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `description`) VALUES
-(0, 'Kategorie');
+(0, 'Geometrie'),
+(1, 'Terme und Gleichungen'),
+(2, 'Funktionen/Analysis'),
+(3, 'Vektorgeometrie'),
+(4, 'Stochastik');
 
 -- --------------------------------------------------------
 
@@ -66,7 +70,11 @@ CREATE TABLE `difficulties` (
 --
 
 INSERT INTO `difficulties` (`id`, `description`) VALUES
-(0, 'Schwierigkeit');
+(0, 'Klasse 1-4'),
+(1, 'Klasse 5-8'),
+(2, 'Klasse 9, 10'),
+(3, 'Klasse 11'),
+(4, 'Klasse 12, 13');
 
 -- --------------------------------------------------------
 
@@ -111,16 +119,11 @@ CREATE TABLE `exercise` (
 --
 
 INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `created_at`, `updated_at`, `category`, `subcategory`, `difficulty`, `picture`) VALUES
-(1, 3, 'Aufgabenstellung, Beschreibung, etc.', 'test solution', 'Aufgabentitel', '2020-05-16 16:24:36', '2020-05-16 17:09:35', 0, 0, 0, ''),
-(2, 3, 'get_description', 'test solution', 'test title', '2020-05-04 16:41:59', '2020-05-18 14:53:43', 0, 0, 0, 'defaults/exercise_default.svg'),
-(3, 3, 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea tak', 'solution', 'title', '2020-05-16 16:23:08', '2020-05-16 17:01:05', 0, 0, 0, ''),
-(4, 3, 'test description', 'test solution', 'test title', '2020-05-16 16:27:24', '2020-05-16 16:27:24', 0, 0, 0, ''),
-(5, 1, 'description', 'solution', 'title', '2020-05-18 17:43:43', '2020-05-18 17:43:43', 0, 0, 0, ''),
-(6, 1, 'description', 'solution', 'title', '2020-05-18 17:48:58', '2020-05-18 17:48:58', 0, 0, 0, ''),
-(7, 1, 'description', 'solution', 'title', '2020-05-18 17:55:29', '2020-05-18 17:55:29', 0, 0, 0, ''),
-(8, 1, 'description', 'solution', 'title', '2020-05-18 18:02:28', '2020-05-19 15:37:11', 0, 0, 0, ''),
-(9, 1, 'description', 'solution', 'title', '2020-05-18 18:02:34', '2020-05-19 15:37:14', 0, 0, 0, ''),
-(11, 1, 'aaa', 'lll', 'ttt', '2020-05-19 16:05:24', '2020-05-19 16:05:24', 0, 0, 0, 'defaults/pp_default.svg');
+(1, 3, 'Eine halbkugelförmige Schüssel hat einen Durchmesser von 18cm. Wie viel Liter fasst die Schüssel?', '1,55', 'Volumen einer Halbkugel', '2020-05-16 16:24:36', '2020-05-16 17:09:35', 0, 1, 1, ''),
+(2, 3, 'Bestimme das Lösungspaar: x + y = 7, y = 2. Gibt die Lösung folgendermaßen an: (x, y)', '(5, 2)','Einfache Gleichungssystem', '2020-05-04 16:41:59', '2020-05-18 14:53:43', 1, 4, 2, ''),
+(3, 3, 'Daniel ist 10 kg leichter als Stefan. Zusammen wiegen sie 90 kg. Wie viel wiegt Daniel und wie viel wiegt Stefan? Gibt die Lösung folgendermaßen an: Gewicht Daniel, Gewicht Stefan', '50, 40', 'Textaufgabe Gleichungssystem', '2020-05-16 16:23:08', '2020-05-16 17:01:05', 1, 4, 2, ''),
+(4, 1, 'Ist das ein Würfelnetz?', 'Ja', 'Würfelnetze', '2020-05-16 16:27:24', '2020-05-16 16:27:24', 0, 0, 0, 'exercise/4.png'),
+(5, 1, 'cos(240°)', '-0,5', 'Kosinus', '2020-05-18 17:43:43', '2020-05-18 17:43:43', 0, 2, 2, '');
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,11 @@ CREATE TABLE `subcategories` (
 --
 
 INSERT INTO `subcategories` (`id`, `description`) VALUES
-(0, 'Unterkategorie');
+(0, 'Formen, Flächen'), -- Geometrie
+(1, 'Körper'), -- Geometrie
+(2, 'Sinus, Cosinus, Tangens'), -- Geometrie
+(3, 'Gleichungen lösen'), -- Terme und Gleichungen
+(4, 'Lineare Gleichungssysteme'); -- Terme und Gleichungen
 
 -- --------------------------------------------------------
 
