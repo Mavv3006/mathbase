@@ -162,7 +162,7 @@ CREATE TABLE `users` (
   `registered` int(10) UNSIGNED NOT NULL,
   `last_login` int(10) UNSIGNED DEFAULT NULL,
   `force_logout` mediumint(7) UNSIGNED NOT NULL DEFAULT 0,
-  `picture` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'assets/pp_default.svg'
+  `picture` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'defaults/pp_default.svg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

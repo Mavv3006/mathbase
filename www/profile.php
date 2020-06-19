@@ -32,7 +32,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
     <div class="container">
         <div class="row">
             <div class="col m6 offset-m3">
-                <form method="POST" action="<?= $action_path ?>" enctype="multipart/form-data">
+                <form method="POST" action="<?= $action_path ?>" enctype="multipart/form-data" id="form">
                     <div class="card" id="profile">
                         <span class="card-title" id="profile-title">Profil</span>
 
@@ -43,7 +43,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                             ?>
                                 <img id="profile-avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Profilbild">
                             <?php } else { ?>
-                                <img id="profile-avatar" src="/assets/defaults/pp_default.svg" alt="Profilbild">
+                                <img id="profile-avatar" src="<?= $path['assets'] ?>/defaults/pp_default.svg" alt="Profilbild">
                             <?php } ?>
 
                             <div class="file-field input-field">
@@ -84,13 +84,13 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                                 <label for="old_password">Altes Passwort</label>
                             </div>
                             <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
-                        </form>
-                        <!-- TODO: Fix profile_error css -->
-                        <div class="error hidden" id="profile_error"></div>
-                    </div>
                 </form>
+                <!-- TODO: Fix profile_error css -->
+                <div class="error hidden" id="profile_error"></div>
             </div>
+            </form>
         </div>
+    </div>
     </div>
     <?php
     include $path['src'] . '/html/footer.php';
@@ -128,8 +128,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
             })
         }
 
-        console.log("Neues Passwort: " + newPassword);
-        if (!validatePassword(newPassword)) {
+        if (!validatePassword(newPassword) && newPassword.length > 0) {
             $('#profile_error').text("Das neue Passwort ist nicht valide").removeClass('hidden');
             return;
         }
@@ -150,5 +149,6 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                 location.reload();
             })
         }
+        $('#form').submit();
     }
 </script>
