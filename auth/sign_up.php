@@ -10,7 +10,7 @@ require_once('../config/config.php');
 
 try {
     $userId = $auth->register($_POST['email'], $_POST['password'], $_POST['username'], null);
-    $auth->login($_POST['email'], $_POST['password'], $rememberDuration);
+    $auth->login($_POST['email'], $_POST['password']);
 
     $userLocation = PAGE[$_SESSION[USER_LOCATION]];
     if (isset($userLocation)) {

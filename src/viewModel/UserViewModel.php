@@ -72,6 +72,18 @@ class UserViewModel extends ViewModel
     }
 
     /**
+     * Updates the profilepicture of the user with the ID.
+     *
+     * @param integer $id The ID of the user
+     * @param string $picture The path to the profilepic
+     * @return void
+     */
+    public function insertPicture(int $id, string $picture)
+    {
+        $this->database->insertPicture($id, $picture);
+    }
+
+    /**
      * Fetches the User from a database query and returns them in an array.
      *
      * @param PDOStatement $stmt The PDOStatement returned from a database query

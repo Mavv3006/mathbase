@@ -15,6 +15,9 @@ $user_id = $activeUser->get_id();
 $email = $activeUser->get_email();
 $username = $activeUser->get_username();
 $picture = $activeUser->get_picture();
+
+$action_path = $path['src'] . '/inc/save_profilepic.php';
+
 ?>
 
 <head>
@@ -29,14 +32,35 @@ $picture = $activeUser->get_picture();
     <div class="container">
         <div class="row">
             <div class="col m6 offset-m3">
-                <div class="card" id="profile">
-                    <span class="card-title" id="profile-title">Profil</span>
-                    <div id="profile-avatar-container">
-                        <img id="profile-avatar" src="/assets/defaults/pp_default.svg">
-                        <a class="waves-effect waves-light btn" id="avatar-button">Bild hochladen</a><br>
-                    </div>
-                    <div class="card-content">
-                        <form method="POST" action="#" id="form">
+                <form method="POST" action="<?= $action_path ?>" enctype="multipart/form-data" id="form">
+                    <div class="card" id="profile">
+                        <span class="card-title" id="profile-title">Profil</span>
+
+                        <input type="hidden" name="user_id" value="<?= $user_id ?>">
+                        <div id="profile-avatar-container">
+                            <?php
+                            if ($activeUser->get_picture() != null) {
+                            ?>
+                                <img id="profile-avatar" src="<?= $path['assets'] . '/' .  $picture ?>" alt="Profilbild">
+                            <?php } else { ?>
+                                <img id="profile-avatar" src="<?= $path['assets'] ?>/defaults/pp_default.svg" alt="Profilbild">
+                            <?php } ?>
+
+                            <div class="file-field input-field">
+                                <div class="waves-effect waves-light btn" id="avatar-button">
+                                    <span class="">Bild hochladen</span>
+                                    <input type="file" name="file">
+                                </div>
+                                <br>
+                                <div class="file-path-wrapper">
+                                    <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
+                                </div>
+                            </div>
+
+                            <br>
+                        </div>
+
+                        <div class="card-content">
                             <div class="input-field col s10 profile-input">
                                 <input disabled id="email" type="email" class="validate" value="<?= $email ?>">
                                 <label for="email">E-Mail-Adresse</label>
@@ -60,13 +84,13 @@ $picture = $activeUser->get_picture();
                                 <label for="old_password">Altes Passwort</label>
                             </div>
                             <a class="waves-effect waves-light btn" id="save-button" name="save-button" onclick="saveData()">Änderungen speichern</a>
-                        </form>
-                        <!-- TODO: Fix profile_error css -->
-                        <div class="error hidden" id="profile_error"></div>
-                    </div>
-                </div>
+                </form>
+                <!-- TODO: Fix profile_error css -->
+                <div class="error hidden" id="profile_error"></div>
             </div>
+            </form>
         </div>
+    </div>
     </div>
     <?php
     include $path['src'] . '/html/footer.php';
@@ -104,8 +128,7 @@ $picture = $activeUser->get_picture();
             })
         }
 
-        console.log("Neues Passwort: " + newPassword);
-        if (!validatePassword(newPassword)) {
+        if (!validatePassword(newPassword) && newPassword.length > 0) {
             $('#profile_error').text("Das neue Passwort ist nicht valide").removeClass('hidden');
             return;
         }
@@ -126,5 +149,6 @@ $picture = $activeUser->get_picture();
                 location.reload();
             })
         }
+        $('#form').submit();
     }
 </script>
