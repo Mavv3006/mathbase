@@ -89,7 +89,7 @@ include_once($path['src'] . '/html/header.php');
                     <input type="text" name="solution" id="solution" value="<?= $exercise->get_solution() ?>">
                     <label for="solution">Lösung</label>
                 </div>
-                <button type="submit" class="waves-effect waves-light btn">Erstellen</button>
+                <button type="submit" class="waves-effect waves-light btn">Speichern</button>
             </div>
 
             <!-- zweite Spalte -->
