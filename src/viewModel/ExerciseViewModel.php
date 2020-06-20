@@ -22,6 +22,8 @@ class ExerciseViewModel extends ViewModel
      *
      * @param integer $id The ID of the Exercise in the database
      * @return Exercise The queried Exercise
+     * @throws Exception Throws an `NoDatabaseEntryException` if the database 
+     * query returns with an empty table
      */
     public function get_by_id(int $id): Exercise
     {
@@ -90,19 +92,32 @@ class ExerciseViewModel extends ViewModel
      * Returns only one Exercise from an array of Tasks.
      *
      * @param array $array An array with Tasks
-     * @return Exercise Returns only one Exercise. If there are more or less than one element in the array the method
-     * throws an exception
+     * @return Exercise Returns only one Exercise. If there are more or less than 
+     * one element in the array the method
+     * @throws Exception Throws an `NoDatabaseEntryException` if the database 
+     * query returns with an empty table
      */
     protected function returnModel(array $array): Exercise
     {
         $count = count($array);
 
         if ($count == 0) {
-            // TODO: throw NoDatabaseEntryFoundException
+            global $path;
+            require($path['src'].'/exceptions/no_database_entry_exception.php');
+            throw new NoDatabaseEntryException();
         } else if ($count == 1) {
             return $array[0];
-        } else {
-            // TODO: throw DatabaseException
         }
+    }
+
+    /**
+     * Delets a row with the given ID.
+     *
+     * @param integer $id The ID to be deleted
+     * @return bool True on success. False otherwise
+     */
+    public function delete(int $id): bool
+    {
+        return $this->database->deleteById($id);
     }
 }

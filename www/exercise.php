@@ -19,6 +19,7 @@ require_once($path['src'] . '/viewModel/UserViewModel.php');
 require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
 require_once($path['src'] . '/viewModel/CategoryViewModel.php');
 require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
+require_once($path['auth'] . '/user_info.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -26,13 +27,30 @@ $difficultyViewModel = new DifficultyViewModel();
 $subcategoryViewModel = new SubCategoryViewModel();
 $categoryViewModel = new CategoryViewModel();
 
-$exercise = $exerciseViewModel->get_by_id($_GET['id']);
+try {
+    $exercise = $exerciseViewModel->get_by_id($_GET['id']);
+} catch (Exception $e) {
+    redirectToUrl($path['src'].'/error/404.php', true);
+}
+
+if ($exercise->get_id() < 0) {
+    redirectToUrl($path['www'] . '/index.php');
+}
+
 $user = $userViewModel->get_by_id($exercise->get_user_id());
 $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
 $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
+
 $has_picture = $exercise->get_picture() == "" ? false : true;
+
+$activeUser = getActiveUser();
+if ($activeUser == null) {
+    $is_author = false;
+} else {
+    $is_author = $activeUser->get_id() == $exercise->get_user_id();
+}
 
 $username = $user->get_username();
 
@@ -51,12 +69,19 @@ require_once($path['src'] . '/html/header.php');
     <div class="container">
         <div class="header">
             <h3><?= $exercise->get_title() ?></h3>
-            <div class="edit_icon waves-effect waves-light btn">
+            <?php if ($is_author) { ?>
                 <a href="<?= $path['server'] ?>index.php">
-                    <!--TODO update link -->
-                    <i class="material-icons">create</i>
+                    <div class="edit_icon waves-effect waves-light btn">
+                        <!--TODO update link -->
+                        <i class="material-icons">create</i>
+                    </div>
                 </a>
-            </div>
+                <a href="<?= $path['src'] . '/inc/delete_exercise.php?id=' . $exercise->get_id() ?>">
+                    <div class="delete_icon waves-effect waves-light btn">
+                        <i class="material-icons">delete</i>
+                    </div>
+                </a>
+            <?php } ?>
         </div>
 
         <hr>
@@ -71,7 +96,7 @@ require_once($path['src'] . '/html/header.php');
             <?php if ($has_picture) { ?>
                 <p class="description col s12 m6"><?= $exercise->get_description() ?></p>
                 <p class="exercise-picture col s12 m6">
-                    <img src="<?= $path['assets'] .'/'.  $exercise->get_picture() ?>" alt="Bild der Übung">
+                    <img src="<?= $path['assets'] . '/' .  $exercise->get_picture() ?>" alt="Bild der Übung">
                 </p>
             <?php } else { ?>
                 <p class="description col s12"><?= $exercise->get_description() ?></p>

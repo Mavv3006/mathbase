@@ -28,6 +28,10 @@ h3 {
 }
 
 .edit_icon {
+    margin-right: 75px;
+}
+
+.edit_icon, .delete_icon {
     width: 55px;
     height: 55px;
     background-color: var(--orange-color);
@@ -39,11 +43,11 @@ h3 {
     position: absolute;
 }
 
-.edit_icon a {
+.edit_icon a, .delete_icon a {
     color: white;
 }
 
-.edit_icon i {
+.edit_icon i, .delete_icon i {
     width: 37px;
     height: 37px;
     font-size: 37px;
@@ -101,6 +105,7 @@ hr {
 
 .done-icon i, .clear-icon i {
     font-size: 40px;
+    display: inline;
 }
 
 .clear {
