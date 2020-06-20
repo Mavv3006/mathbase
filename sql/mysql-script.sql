@@ -130,7 +130,7 @@ INSERT INTO `exercise` (`id`, `user_id`, `description`, `solution`, `title`, `cr
 
 CREATE TABLE `subcategories` (
   `id` int(11) NOT NULL,
-  `description` varchar(100) NOT NULL
+  `description` varchar(100) NOT NULL,
   `category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
