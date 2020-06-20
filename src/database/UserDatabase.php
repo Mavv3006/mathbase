@@ -37,4 +37,23 @@ class UserDatabase extends Database
 
         return $stmt;
     }
+
+    /**
+     * Updates the picture of the user with the ID.
+     *
+     * @param integer $id The ID of the user
+     * @param string $picture The path to the exercise
+     * @return void
+     */
+    public function insertPicture(int $id, string $picture)
+    {
+        $query = 'UPDATE '.$this->tablename.' SET picture = :picture WHERE id = :id';
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":picture", $picture);
+
+        $stmt->execute();
+    }
 }

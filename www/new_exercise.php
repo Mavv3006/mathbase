@@ -72,11 +72,10 @@ include_once($path['src'] . '/html/header.php');
                     <textarea type="text" name="description" id="description" class="materialize-textarea"></textarea>
                     <label for="description">Aufgabenstellung</label>
                 </div>
-                <div class="input-field ">
+                <div class="input-field tooltipped" data-position="bottom" data-tooltip="Die Lösung sollte nur aus Zahlen (auf zwei Nachkommastellen gerundet) oder möglichst wenigen Wörtern bestehen.">
                     <input type="text" name="solution" id="solution">
                     <label for="solution">Lösung</label>
                 </div>
-
                 <button type="submit" class="waves-effect waves-light btn">Erstellen</button>
             </div>
 
@@ -119,10 +118,10 @@ include_once($path['src'] . '/html/header.php');
                 <div class="file-field input-field">
                     <div class="btn blue-btn waves-effect waves-light">
                         <span class="">Bild hochladen</span>
-                        <input type="file" name="file">
+                        <input type="file" name="file" id="file">
                     </div>
                     <div class="file-path-wrapper">
-                        <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
+                        <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt." id="file_name">
                     </div>
                 </div>
             </div>
@@ -135,9 +134,12 @@ require_once($path['src'] . '/html/footer.php');
 ?>
 
 <script>
+        
     $(document).ready(function() {
         $('select').formSelect();
+        $('.tooltipped').tooltip();
     });
+
     $('#description').show(function() {
         $(this).css('height', '12em');
     });
@@ -150,6 +152,7 @@ require_once($path['src'] . '/html/footer.php');
     const solution = document.getElementById('solution');
     const description = document.getElementById('description');
     const error = document.getElementById("error");
+    const file = document.getElementById("file_name");
 
     $("#form").submit((e) => {
         messages = [];
@@ -172,6 +175,11 @@ require_once($path['src'] . '/html/footer.php');
         if (difficultySelect.value == "") {
             messages.push("Bitte wählen Sie eine Schwierigkeit aus.");
         }
+        if (file.value != "") {
+            if (!isValidType(file.value)) {
+                messages.push("Bitte nur Bilder mit den Endungen .jpg, .jpeg, .png oder .gif hochladen.");
+            }
+        }
 
         if (messages.length > 0) {
             e.preventDefault();
@@ -179,4 +187,21 @@ require_once($path['src'] . '/html/footer.php');
             $("#error").removeClass("hidden");
         }
     });
+
+    function isValidType(file_name) {
+        if (file_name.includes(".")) {
+            let endung = file_name.split(".")[1];
+            switch (endung) {
+                case 'gif':
+                case 'png':
+                case 'jpg':
+                case 'jped':
+                    return true;
+                default:
+                    return false;
+            }
+        } else {
+            return false;
+        }
+    }
 </script>

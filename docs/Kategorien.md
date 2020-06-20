@@ -10,7 +10,7 @@ Grundüberlegungen, in welche Kategorien man die Aufgaben auteilen sollte. Gener
 * Gleichungen lösen
 * Lineare Gleichungssysteme
 
-## Funktionen/Analyses
+## Funktionen/Analysis
 * Lineare Funktionen
 * Quadratische Funktionen
 * Trigonometrische Funktionen
@@ -29,7 +29,7 @@ Grundüberlegungen, in welche Kategorien man die Aufgaben auteilen sollte. Gener
 * Prozentrechnung
 * Zinsrechnung
 
-## Verktorgeometrie
+## Vektorgeometrie
 * Geraden
 * Ebenen
 * Abstände im Raum
