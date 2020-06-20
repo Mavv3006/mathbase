@@ -24,7 +24,7 @@ if ($user == null) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
-    if (!isAllowedMIMEType($_FILES['file']['type'])) {
+    if (!isAllowedMIMEType($_FILES['file']['type']) && $_FILES['files']['name'] != "") {
         http_response_code(400); // Bad Request
         die();
     }
