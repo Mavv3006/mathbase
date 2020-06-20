@@ -6,17 +6,20 @@ class Subcategory implements Model
 {
     private int $id;
     private string $description;
+    private int $category;
 
     /**
      * Subcategory constructor
      *
      * @param integer $id The ID of the Subcategory
      * @param string $description The description of the Subcategory
+     * @param integer $category The ID of the related Category
      */
-    public function __construct(int $id, string $description)
+    public function __construct(int $id, string $description, int $category)
     {
         $this->id = $id;
         $this->description = $description;
+        $this->category = $category;
     }
 
     /**
@@ -30,6 +33,7 @@ class Subcategory implements Model
         return new Subcategory(
             $row['id'],
             $row['description'],
+            $row['category']
         );
     }
 
@@ -47,5 +51,13 @@ class Subcategory implements Model
     public function get_description(): string
     {
         return $this->description;
+    }
+
+    /**
+     * @return integer The Category ID
+     */
+    public function get_icategory(): int
+    {
+        return $this->category;
     }
 }
