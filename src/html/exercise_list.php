@@ -30,38 +30,60 @@ require_once($path['src'] . '/html/head.php');
         <h1>Neue Aufgaben</h1>
     </div>
 
-    <div class="row form" method="post">
-        <div class="input-field col s12 m5">
-            <select multiple name="categories[]" id="category-filter">
-                <?php foreach($categories as $category){ ?>
-                <option value="<?= $category->get_id() ?>"><?= $category->get_description() ?></option>
-                <?php } ?>
-            </select>
-            <label>Kategorie</label>
-        </div>
-        <div class="input-field col s12 m5">
-            <select multiple name="subcategory-filter" id="subcategory-filter">
-                <?php foreach($subcategories as $subcategory){ ?>
-                <option value="<?= $subcategory->get_id() ?>"><?= $subcategory->get_description() ?></option>
-                <?php } ?>
-            </select>
-            <label>Unterkategorie</label>
-        </div>
-        <div class="col s12 m2">
-            <a href="main.php?filter=true" class="waves-effect waves-light btn" onclick="">Filtern</a>
-        </div>
+    <div class="row">
+        <form method="post">
+            <div class="input-field col s12 m5">
+                <select multiple name="categories[]" id="category-filter">
+                    <?php foreach($categories as $category){ ?>
+                    <option value="<?= $category->get_id() ?>"><?= $category->get_description() ?></option>
+                    <?php } ?>
+                </select>
+                <label>Kategorie</label>
+            </div>
+            <div class="input-field col s12 m5">
+                <select multiple name="subcategories[]" id="subcategory-filter">
+                    <?php foreach($subcategories as $subcategory){ ?>
+                    <option value="<?= $subcategory->get_id() ?>"><?= $subcategory->get_description() ?></option>
+                    <?php } ?>
+                </select>
+                <label>Unterkategorie</label>
+            </div>
+            <div class="col s12 m2">
+                <input type='submit' name='submit' value="Filtern" class="waves-effect waves-light btn">
+            </div>
+        </form>
     </div>
     
     <hr>
 
     <div class="exercise-grid">
-        <?php foreach ($exercises as $exercise) {
+        <?php 
+        $selected_categories = array();
+        $selected_subcategories = array();
+
+        
+
+        foreach ($exercises as $exercise) {
             $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
             $category = $categoryViewModel->get_by_id($exercise->get_category());
             $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
-            $selected_categories = array();
+
+            if(isset($_POST['submit'])){
+                if(isset($_POST['categories'])){
+                    foreach($_POST['categories'] as $selected_category){
+                        array_push($selected_categories, $selected_category);
+                    }
+                }
+    
+                if(isset($_POST['subcategories'])){
+                    foreach($_POST['subcategories'] as $selected_subcategory){
+                        array_push($selected_subcategories, $selected_subcategory);
+                    }
+                }
+            }
             
-            if(count($selected_categories) == 0 || in_array($category, $selected_categories)){
+            if((count($selected_categories) == 0 || in_array($category->get_id(), $selected_categories) && 
+                (count($selected_subcategories) == 0 || in_array($subcategory->get_id(), $selected_subcategories)))){
         ?>
             <a href=" <?= 'exercise.php?id=' . $exercise->get_id() ?>">
                 <div class="exercise hoverable">
@@ -80,18 +102,6 @@ require_once($path['src'] . '/html/head.php');
     </div>
 
 </div>
-<?php
-
-    if(isset($_GET['filter'])){
-        getSelectedCategories();
-    }
-
-    function getSelectedCategories(){
-        foreach($_POST['categories'] as $selected_category){
-            array_push($selected_categories, $selected_category);
-        }
-    }
-?>
 <script> 
     $(document).ready(function(){
         $('select').formSelect();
