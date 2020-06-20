@@ -19,6 +19,7 @@ require_once($path['src'] . '/viewModel/UserViewModel.php');
 require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
 require_once($path['src'] . '/viewModel/CategoryViewModel.php');
 require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
+require_once($path['auth'] . '/user_info.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -40,6 +41,13 @@ $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
 $has_picture = $exercise->get_picture() == "" ? false : true;
 
+$activeUser = getActiveUser();
+if ($activeUser == null) {
+    $is_author = false;
+} else {
+    $is_author = $activeUser->get_id() == $exercise->get_user_id();
+}
+
 $username = $user->get_username();
 
 $site_name = $exercise->get_title();
@@ -57,17 +65,19 @@ require_once($path['src'] . '/html/header.php');
     <div class="container">
         <div class="header">
             <h3><?= $exercise->get_title() ?></h3>
-            <div class="edit_icon waves-effect waves-light btn">
+            <?php if ($is_author) { ?>
                 <a href="<?= $path['server'] ?>index.php">
-                    <!--TODO update link -->
-                    <i class="material-icons">create</i>
+                    <div class="edit_icon waves-effect waves-light btn">
+                        <!--TODO update link -->
+                        <i class="material-icons">create</i>
+                    </div>
                 </a>
-            </div>
-            <div class="delete_icon waves-effect waves-light btn">
                 <a href="<?= $path['src'] . '/inc/delete_exercise.php?id=' . $exercise->get_id() ?>">
-                    <i class="material-icons">delete</i>
+                    <div class="delete_icon waves-effect waves-light btn">
+                        <i class="material-icons">delete</i>
+                    </div>
                 </a>
-            </div>
+            <?php } ?>
         </div>
 
         <hr>
