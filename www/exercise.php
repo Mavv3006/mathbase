@@ -27,7 +27,11 @@ $difficultyViewModel = new DifficultyViewModel();
 $subcategoryViewModel = new SubCategoryViewModel();
 $categoryViewModel = new CategoryViewModel();
 
-$exercise = $exerciseViewModel->get_by_id($_GET['id']);
+try {
+    $exercise = $exerciseViewModel->get_by_id($_GET['id']);
+} catch (Exception $e) {
+    redirectToUrl($path['src'].'/error/404.php', true);
+}
 
 if ($exercise->get_id() < 0) {
     redirectToUrl($path['www'] . '/index.php');
