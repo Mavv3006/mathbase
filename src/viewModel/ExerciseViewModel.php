@@ -44,7 +44,7 @@ class ExerciseViewModel extends ViewModel
     /**
      * Inserts an Exercise into the database and returns the ID of it.
      *
-     * @param Exercise $model The Exercise to to insert
+     * @param Exercise $model The Exercise to insert
      * @return int|null The ID of the database entry. Returns Null on error
      */
     public function create(Exercise $model)
@@ -59,8 +59,17 @@ class ExerciseViewModel extends ViewModel
         }
     }
 
-    public function update(Exercise $model): void
+    /**
+     * Updates an existing exercise. 
+     *
+     * @param array $exercise The Exercise to update
+     * @return boolean True on success, False on failure
+     */
+    public function update(Exercise $model): bool
     {
+        $array = $model->toArray();
+        $array['id'] = $model->get_id();
+        return $this->database->update($array);
     }
 
     protected function fetchData(PDOStatement $stmt): array

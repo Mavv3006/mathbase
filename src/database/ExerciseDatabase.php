@@ -46,6 +46,35 @@ class ExerciseDatabase extends Database
     }
 
     /**
+     * Updates an existing exercise. 
+     *
+     * @param array $exercise An array representation of an exercise object
+     * @return boolean True on success, False on failure
+     */
+    public function update(array $exercise): bool
+    {
+        extract($exercise);
+
+        $query = '
+            UPDATE ' . $this->tablename . '
+            SET description=:description, solution=:solution, title=:title, category=:category, subcategory=:subcategory, difficulty=:difficulty
+            WHERE id=:id
+        ';
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":solution", $solution);
+        $stmt->bindParam(":title", $title);
+        $stmt->bindParam(":category", $category);
+        $stmt->bindParam(":subcategory", $subcategory);
+        $stmt->bindParam(":difficulty", $difficulty);
+
+        return $stmt->execute();
+    }
+
+    /**
      * Updates the picture of the exercise with the ID.
      *
      * @param integer $id The ID of the exercise
@@ -54,12 +83,12 @@ class ExerciseDatabase extends Database
      */
     public function insertPicture(int $id, string $picture)
     {
-        $query = 'UPDATE '.$this->tablename.' SET picture = :picture WHERE id = :id';
+        $query = 'UPDATE ' . $this->tablename . ' SET picture = :picture WHERE id = :id';
 
         $stmt = $this->connection->prepare($query);
 
-        $stmt->bindParam(":id",$id);
-        $stmt->bindParam(":picture",$picture);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":picture", $picture);
 
         $stmt->execute();
     }
