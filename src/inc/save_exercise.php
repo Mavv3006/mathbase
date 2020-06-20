@@ -24,14 +24,16 @@ if ($user == null) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
-    if (!isAllowedMIMEType($_FILES['file']['type'])) {
+    if (!isAllowedMIMEType($_FILES['file']['type']) && $_FILES['files']['name'] != "") {
         http_response_code(400); // Bad Request
         die();
     }
     moveFileToTemp($_POST['user_id']);
     $id = insertExercise();
-    moveFileToExercise($_POST['user_id'], $id);
-    insertFilePathIntoDB($id);
+    if ($_FILES['file']['name'] != "") {
+        moveFileToExercise($_POST['user_id'], $id);
+        insertFilePathIntoDB($id);
+    }
     redirectToUrl("../../www/exercise.php?id=" . $id);
 } else {
     http_response_code(405); // Method Not Allowed
