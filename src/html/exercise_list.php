@@ -49,7 +49,7 @@ require_once($path['src'] . '/html/head.php');
                 <label>Unterkategorie</label>
             </div>
             <div class="col s12 m2">
-                <input type='submit' name='submit' value="Filtern" class="waves-effect waves-light btn">
+                <input type='submit' name='submit' value="Filtern" class="waves-effect waves-light btn" id="filter-button">
             </div>
         </form>
     </div>
@@ -61,26 +61,24 @@ require_once($path['src'] . '/html/head.php');
         $selected_categories = array();
         $selected_subcategories = array();
 
-        
+        if(isset($_POST['submit'])){
+            if(isset($_POST['categories'])){
+                foreach($_POST['categories'] as $selected_category){
+                    array_push($selected_categories, $selected_category);
+                }
+            }
+
+            if(isset($_POST['subcategories'])){
+                foreach($_POST['subcategories'] as $selected_subcategory){
+                    array_push($selected_subcategories, $selected_subcategory);
+                }
+            }
+        }
 
         foreach ($exercises as $exercise) {
             $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
             $category = $categoryViewModel->get_by_id($exercise->get_category());
             $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
-
-            if(isset($_POST['submit'])){
-                if(isset($_POST['categories'])){
-                    foreach($_POST['categories'] as $selected_category){
-                        array_push($selected_categories, $selected_category);
-                    }
-                }
-    
-                if(isset($_POST['subcategories'])){
-                    foreach($_POST['subcategories'] as $selected_subcategory){
-                        array_push($selected_subcategories, $selected_subcategory);
-                    }
-                }
-            }
             
             if((count($selected_categories) == 0 || in_array($category->get_id(), $selected_categories) && 
                 (count($selected_subcategories) == 0 || in_array($subcategory->get_id(), $selected_subcategories)))){

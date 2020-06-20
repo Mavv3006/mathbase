@@ -22,8 +22,9 @@ h1, .title {
     color: var(--dark-blue-color);
 }
 
-.filter-options{
-    overflow: auto;
+#filter-button{
+    color: white;
+    font-weight: bold;
 }
 
 .exercise-grid {
