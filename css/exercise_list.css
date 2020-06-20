@@ -22,6 +22,10 @@ h1, .title {
     color: var(--dark-blue-color);
 }
 
+.filter-options{
+    overflow: auto;
+}
+
 .exercise-grid {
     display: grid;
     grid-row-gap: 35px;
