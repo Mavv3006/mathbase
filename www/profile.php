@@ -53,7 +53,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                                 </div>
                                 <br>
                                 <div class="file-path-wrapper">
-                                    <input type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
+                                    <input disabled type="text" class="file-path validate" placeholder="Keine Datei ausgewählt.">
                                 </div>
                             </div>
 
@@ -72,9 +72,6 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                                 <input disabled id="username" name="username" type="text" class="validate" value="<?= $username ?>">
                                 <label for="username">Benutzername</label>
                             </div>
-                            <a class="edit-button waves-effect waves-light btn" onclick="disableInput('username')">
-                                <i class="material-icons">create</i>
-                            </a>
                             <div class="input-field col s10">
                                 <input id="new_password" type="password" class="validate">
                                 <label for="new_password">Neues Passwort</label>

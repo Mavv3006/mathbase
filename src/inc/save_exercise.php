@@ -14,14 +14,20 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 require_once($path['auth'] . '/user_info.php');
 require_once($path['src'] . '/viewModel/ExerciseViewModel.php');
+require_once('./check_type.php');
 
 $user = getActiveUser();
 
 if ($user == null) {
-    http_response_code(401);
+    http_response_code(401); // Unauthorized
+    die();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
+    if (!isAllowedMIMEType($_FILES['file']['type'])) {
+        http_response_code(400); // Bad Request
+        die();
+    }
     moveFileToTemp($_POST['user_id']);
     $id = insertExercise();
     if ($_FILES['file']['name'] != "") {
@@ -30,10 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && testUserInput()) {
     }
     redirectToUrl("../../www/exercise.php?id=" . $id);
 } else {
-    http_response_code(405);
+    http_response_code(405); // Method Not Allowed
+    die();
 }
-
-insertFilePathIntoDB(1);
 
 /**
  * Inserts the path to the exercise picture into the database.
