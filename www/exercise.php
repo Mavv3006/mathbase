@@ -30,7 +30,7 @@ $categoryViewModel = new CategoryViewModel();
 try {
     $exercise = $exerciseViewModel->get_by_id($_GET['id']);
 } catch (Exception $e) {
-    redirectToUrl($path['src'].'/error/404.php', true);
+    redirectToUrl($path['src'] . '/error/404.php', true);
 }
 
 if ($exercise->get_id() < 0) {
@@ -130,7 +130,6 @@ require_once($path['src'] . '/html/header.php');
         $('#show_solution').on('click', function() {
             let value = document.getElementById('solution').value;
             let solution = document.solutionForm.elements['correct_solution'].value
-            console.log(solution);
             document.getElementById('solution_label').className = "active";
             document.getElementById('solution').value = solution;
         });

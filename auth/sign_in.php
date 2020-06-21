@@ -10,6 +10,8 @@ It uses $_POST['email'], $_POST['password'], $_POST['remember']
 require_once('auth.php');
 require_once($path['config'] . '/config.php');
 
+header('Content-Type: application/json');
+
 try {
     if (!isset($_POST['remember'])) {
         // do not keep logged in after session ends
@@ -23,13 +25,27 @@ try {
     }
 
     $auth->login($_POST['email'], $_POST['password'], $rememberDuration);
-    redirect();
+    echo json_encode(array(
+        "login" => "true",
+    ));
 } catch (\Delight\Auth\InvalidEmailException $e) {
-    die('Wrong email address');
+    echo json_encode(array(
+        "login" => "false",
+        "error" => "Wrong email address",
+    ));
 } catch (\Delight\Auth\InvalidPasswordException $e) {
-    die('Wrong password');
+    echo json_encode(array(
+        "login" => "false",
+        "error" => "Wrong password",
+    ));
 } catch (\Delight\Auth\EmailNotVerifiedException $e) {
-    die('Email not verified');
+    echo json_encode(array(
+        "login" => "false",
+        "error" => "Email not verified",
+    ));
 } catch (\Delight\Auth\TooManyRequestsException $e) {
-    die('Too many requests');
+    echo json_encode(array(
+        "login" => "false",
+        "error" => "Too many requests",
+    ));
 }

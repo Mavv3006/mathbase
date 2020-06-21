@@ -4,5 +4,10 @@ require_once('auth.php');
 require_once('../config/routes.php');
 
 $auth->logOut();
-// TODO: redirect from profile.php to index.php on logout
-redirect();
+
+header('Content-Type: application/json');
+echo json_encode(array(
+    "logout" => "true"
+));
+
+redirectToUrl("../../www/main.php");
