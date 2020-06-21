@@ -49,7 +49,7 @@ $user = getActiveUser();
         }).done((e) => {
             if (e['logout'] == "true") {
                 location.replace("<?= $path['www'] ?>/");
-            } else {}
+            }
         });
     }
 
