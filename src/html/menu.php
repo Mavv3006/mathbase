@@ -32,14 +32,31 @@ $user = getActiveUser();
         <li><a href="/www/new_exercise.php">Aufgabe erstellen</a></li>
         <li><a href="profile.php">Profil</a></li>
         <li class="divider"></li>
-        <li><a href="<?= '../auth/logout.php' ?>">Ausloggen</a></li>
+        <li><a href="#" onclick="logout()">Ausloggen</a></li>
     <?php
     }
     ?>
 </ul>
 
-
 <script>
+    /**
+     * Logs the user out.
+     */
+    function logout() {
+        $.ajax({
+            type: "POST",
+            url: "/auth/logout.php"
+        }).done((e) => {
+            console.log(e);
+            if (e['logout'] == "true") {
+                console.log("Ausloggen geglückt");
+                location.replace("<?= $path['www'] ?>/");
+            } else {
+                console.log("Ausloggen fehlgeschlagen");
+            }
+        });
+    }
+
     $(document).ready(function() {
         $(".dropdown-trigger").dropdown({
             coverTrigger: false
@@ -50,4 +67,3 @@ $user = getActiveUser();
         $('.sidenav').sidenav();
     });
 </script>
-
