@@ -76,7 +76,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                                 <input id="new_password" type="password" class="validate">
                                 <label for="new_password">Neues Passwort</label>
                                 <br>
-                                <span class="error" id="profile_error" data-error="wrong" data-success="right"></span>
+                                <span class="error" id="profile_error" data-error="wrong" data-success="right" style="white-space: pre-line"></span>
                             </div>
                             <div class="input-field col s10">
                                 <input id="old_password" type="password" class="validate">
@@ -128,7 +128,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
         }
 
         if (!validatePassword(newPassword) && newPassword.length > 0) {
-            $('#profile_error').text("Das neue Passwort ist nicht valide").removeClass('hidden');
+            $('#profile_error').text("Dein Passwort muss folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl").removeClass('hidden');
             return;
         }
 
