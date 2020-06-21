@@ -43,4 +43,4 @@ Auch in PhpStorm muss die PHP Version auf `7.4` gesetzt werden. Hierfür wird be
 </project>
 ```
 ### Datenbank
-Für die Datenbank wird phpMyAdmin genutzt. Dort sollte das Skript, welches unter `sql/mysql-script.sql` zu finden ist, importiert werden.
+Für die Datenbank wird [phpMyAdmin](http://localhost/phpmyadmin/index.php) genutzt. Dort sollte das Skript, welches unter `sql/mysql-script.sql` zu finden ist, importiert werden.
