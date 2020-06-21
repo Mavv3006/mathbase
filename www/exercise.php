@@ -70,7 +70,7 @@ require_once($path['src'] . '/html/header.php');
         <div class="header">
             <h3><?= $exercise->get_title() ?></h3>
             <?php if ($is_author) { ?>
-                <a href="<?= $path['server'] ?>index.php">
+                <a href="<?= $path['www'] . '/edit_exercise.php?id=' . $_GET['id'] ?>">
                     <div class="edit_icon waves-effect waves-light btn">
                         <!--TODO update link -->
                         <i class="material-icons">create</i>
