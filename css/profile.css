@@ -58,3 +58,7 @@
     float: right;
     margin-top: 40px;
 }
+
+.file-field .file-path-wrapper {
+    overflow: visible;
+}
