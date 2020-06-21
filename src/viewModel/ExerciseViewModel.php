@@ -64,7 +64,13 @@ class ExerciseViewModel extends ViewModel
     public function update(Exercise $model): void
     {
     }
-
+    /**
+     * Turns the result of the query into an array of exercises.
+     * For each line, an exercise is fetched and pushed into the array.
+     *
+     * @param PDOStatement Database Query
+     * @return array All exercises in an array
+     */
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();
