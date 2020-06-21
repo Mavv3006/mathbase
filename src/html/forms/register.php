@@ -79,7 +79,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
                     message.push("Passwörter stimmen nicht überein.");
                 }
                 if (!validatePassword(password)) {
-                    message.push("Dein Passwort muss folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl");
+                    message.push("Dein Passwort muss mindestens 6 Zeichen lang sein\nund folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl");
                 }
                 if (message.length > 0) {
                     error.innerText = message.join("\n");

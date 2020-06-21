@@ -128,7 +128,7 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
         }
 
         if (!validatePassword(newPassword) && newPassword.length > 0) {
-            $('#profile_error').text("Dein Passwort muss folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl").removeClass('hidden');
+            $('#profile_error').text("Dein Passwort muss mindestens 6 Zeichen lang sein\nund folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl").removeClass('hidden');
             return;
         }
 
