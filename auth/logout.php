@@ -9,3 +9,5 @@ header('Content-Type: application/json');
 echo json_encode(array(
     "logout" => "true"
 ));
+
+redirectToUrl("../../www/main.php");
