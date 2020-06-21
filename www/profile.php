@@ -75,6 +75,8 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
                             <div class="input-field col s10">
                                 <input id="new_password" type="password" class="validate">
                                 <label for="new_password">Neues Passwort</label>
+                                <br>
+                                <span class="error" id="profile_error" data-error="wrong" data-success="right"></span>
                             </div>
                             <div class="input-field col s10">
                                 <input id="old_password" type="password" class="validate">
