@@ -42,3 +42,5 @@ Auch in PhpStorm muss die PHP Version auf `7.4` gesetzt werden. Hierfür wird be
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
 </project>
 ```
+### Datenbank
+Für die Datenbank wird phpMyAdmin genutzt. Dort sollte das Skript, welches unter `sql/mysql-script.sql` zu finden ist, importiert werden.
