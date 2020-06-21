@@ -23,8 +23,8 @@ h1, .title {
 }
 
 #filter-button{
-    color: white;
-    font-weight: bold;
+    color: white !important;
+    font-weight: bold !important;
 }
 
 .exercise-grid {
