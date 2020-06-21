@@ -65,6 +65,11 @@ class UserViewModel extends ViewModel
         return $this->returnModel($user_array);
     }
     
+    /**
+     * Queries the database and return all the Users.
+     *
+     * @return array An array containing all the users
+     */
     public function get_all(): array
     {
         $stmt = $this->database->query_all();

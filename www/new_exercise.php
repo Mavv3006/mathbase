@@ -133,8 +133,8 @@ include_once($path['src'] . '/html/header.php');
 require_once($path['src'] . '/html/footer.php');
 ?>
 
+<script src="<?= $path['js'] ?>/isValidType.js"></script>
 <script>
-        
     $(document).ready(function() {
         $('select').formSelect();
         $('.tooltipped').tooltip();
@@ -187,21 +187,4 @@ require_once($path['src'] . '/html/footer.php');
             $("#error").removeClass("hidden");
         }
     });
-
-    function isValidType(file_name) {
-        if (file_name.includes(".")) {
-            let endung = file_name.split(".")[1];
-            switch (endung) {
-                case 'gif':
-                case 'png':
-                case 'jpg':
-                case 'jped':
-                    return true;
-                default:
-                    return false;
-            }
-        } else {
-            return false;
-        }
-    }
 </script>

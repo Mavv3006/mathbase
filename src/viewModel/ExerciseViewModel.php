@@ -94,7 +94,7 @@ class ExerciseViewModel extends ViewModel
      * @param array $array An array with Tasks
      * @return Exercise Returns only one Exercise. If there are more or less than 
      * one element in the array the method
-     * @throws Exception Throws an `NoDatabaseEntryException` if the database 
+     * @throws NoDatabaseEntryException Throws an `NoDatabaseEntryException` if the database 
      * query returns with an empty table
      */
     protected function returnModel(array $array): Exercise

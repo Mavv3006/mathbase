@@ -60,6 +60,13 @@ function getPage(): string
         return $_SESSION[USER_LOCATION];
     }
 }
+
+/**
+ * Adds the query parameter to the redirect URL.
+ *
+ * @param string $page The URL to redirect to
+ * @return string The URL with the query parameter from the `USER_LOCATION`
+ */
 function concatParam(string $page): string
 {
     $pos = strpos($_SESSION[USER_LOCATION], "?");
@@ -70,6 +77,11 @@ function concatParam(string $page): string
     }
 }
 
+/**
+ * Redirects to the last known position of the user.
+ *
+ * @return void
+ */
 function redirect()
 {
     $user_location = getPage();
@@ -86,6 +98,13 @@ function redirect()
     }
 }
 
+/**
+ * Redirects to a specific URL.
+ *
+ * @param string $url The URL to redirect to 
+ * @param boolean $permanent [Optional] Whether the redirect is permanent, `false` on default
+ * @return void
+ */
 function redirectToUrl(string $url, bool $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
@@ -93,6 +112,12 @@ function redirectToUrl(string $url, bool $permanent = false)
     exit();
 }
 
+/**
+ * Redirects to a value in the `PAGE` array.
+ *
+ * @param string $page The key in the array to redirect to
+ * @return void
+ */
 function redirectToPage(string $page)
 {
     redirectToUrl("../" . PAGE[$page]);

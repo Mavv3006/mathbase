@@ -18,7 +18,7 @@ class SubCategoryViewModel extends ViewModel
     }
 
     /**
-     * Queries the database and returns the Category with the given ID
+     * Queries the database and returns the Subcategory with the given ID
      *
      * @param integer $id The ID of the Category in the database
      * @return Subcategory The queried Category
@@ -29,12 +29,24 @@ class SubCategoryViewModel extends ViewModel
         $task_array = $this->fetchData($stmt);
         return $this->returnModel($task_array);
     }
+
+    /**
+     * Queries the database and returns every Subcategory.
+     *
+     * @return array An array containing all the Subcategories
+     */
     public function get_all(): array
     {
         $stmt = $this->database->query_all();
         return $this->fetchData($stmt);
     }
 
+    /**
+     * Mapps the `PDOStatement` from the database into an array of Subcategories.
+     *
+     * @param PDOStatement $stmt The result of an database query
+     * @return array An array of Subcategories
+     */
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();
