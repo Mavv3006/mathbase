@@ -13,6 +13,7 @@ function isAllowedMIMEType(string $mimeType): bool
         case 'image/jpeg':
         case 'image/png':
         case 'image/gif':
+        case '':
             return true;
         default:
             return false;

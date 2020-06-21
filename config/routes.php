@@ -9,6 +9,7 @@ define(
         "index" => 'www/index.php',
         "show" => 'www/exercise.php',
         "create" => 'www/new_exercise.php',
+        "edit" => "www/edit_exercise.php",
     )
 );
 
