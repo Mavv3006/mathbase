@@ -26,19 +26,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
             <div class="custom_error hidden" id="login_error"></div>
 
-            <p>
-                <a href="#">
-                    Ich habe mein Passwort vergessen...
-                </a>
-            </p>
-
             <button class="btn waves-effect waves-light" type="submit" name="action">Einloggen</button>
 
-            <p>
-                <a href="#">
-                    Noch kein Mitglied? <b>Jetzt registrieren!</b>
-                </a>
-            </p>
         </form>
     </div>
 </div>
@@ -60,28 +49,22 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
                     "password": password,
                 }
             }).done((e) => {
-                console.log(e);
                 if (e['login'] == "true") {
-                    console.log("Einloggen geglückt");
                     location.reload();
                 } else {
-                    console.log("Falsches Passwort");
-                    error.innerText = "Das eingegebene Passwort ist falsch";
+                    error.innerText = "Das eingegebene Passwort ist falsch.";
                     error.classList.remove('hidden');
                 }
             });
         } else {
             message = [];
             if (email === "") {
-                console.log("email leer");
                 message.push("Bitte geben Sie eine E-Mail-Adresse ein.");
             }
             if (password === "") {
-                console.log("passwort leer");
                 message.push("Bitte geben Sie ein Passwort ein.");
             } else if (!validatePassword(password)) {
-                console.log("passwort nicht valide");
-                message.push("Bitte geben Sie ein valides Passwort ein");
+                message.push("Das eingegebene Passwort ist falsch.");
             }
             if (message.length > 0) {
                 error.innerText = message.join("\n");

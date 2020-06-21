@@ -36,7 +36,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 
             <div class="error hidden" id="register_error"></div>
 
-            <button class="btn waves-effect waves-light" type="submit" name="action">Registrieren</button>
+            <button class="btn waves-effect waves-light" id="btn-register" type="submit" name="action">Registrieren</button>
 
         </form>
     </div>
@@ -64,9 +64,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
                         "username": username
                     }
                 }).done((e) => {
-                    console.log(e);
                     if (e['sign_up'] = "true") {
-                        console.log("Registrieren geglückt");
                         location.reload();
                     } else {
                         error.innerText = e['error'];
@@ -79,7 +77,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
                     message.push("Passwörter stimmen nicht überein.");
                 }
                 if (!validatePassword(password)) {
-                    message.push("Dein Passwort muss mindestens 6 Zeichen lang sein\nund folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl");
+                    message.push("Dein Passwort muss mindestens 6 Zeichen lang sein und folgendes enthalten:\n- 1 Großbuchstabe\n- 1 Kleinbuchstabe\n- 1 Zahl");
                 }
                 if (message.length > 0) {
                     error.innerText = message.join("\n");

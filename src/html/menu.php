@@ -47,13 +47,9 @@ $user = getActiveUser();
             type: "POST",
             url: "/auth/logout.php"
         }).done((e) => {
-            console.log(e);
             if (e['logout'] == "true") {
-                console.log("Ausloggen geglückt");
                 location.replace("<?= $path['www'] ?>/");
-            } else {
-                console.log("Ausloggen fehlgeschlagen");
-            }
+            } else {}
         });
     }
 
