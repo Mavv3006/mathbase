@@ -6,9 +6,15 @@ It uses $_POST['id']
 */
 
 require_once('auth.php');
-
+header('Content-Type: application/json');
 try {
     $auth->admin()->deleteUserById($_POST['id']);
+    echo json_encode(array(
+        "delete" => "true"
+    ));
 } catch (\Delight\Auth\UnknownIdException $e) {
-    die('Unknown ID');
+    echo json_encode(array(
+        "delete" => "false",
+        "error" => "unknown ID",
+    ));
 }
