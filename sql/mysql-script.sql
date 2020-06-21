@@ -184,7 +184,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `status`, `verified`, `resettable`, `roles_mask`, `registered`, `last_login`, `force_logout`, `picture`) VALUES
 (1, 'test@test.com', '$2y$10$vjy4etSzA2v4d2m85kyNU.DdjBQur.n/JPJM.2Jhc.k/UgNq7urCK', 'test', 0, 1, 1, 0, 1589789784, 1589801622, 0, ''), -- password: Test1234
 (2, 'bla@bla.com', '$2y$10$3k94puBXnaLIuhwAIHsP/uXshbQJIAlCzFiNv1/z.r4uecvRnIDN2', 'bla', 0, 1, 1, 0, 1589791282, NULL, 0, ''), -- password: Bla1234
-(3, 'user@user.de', '$2y$10$ZWz1Po2eBvDXl60bpqlYZezlr98sjnHwrWGEP3J3MwZVw4A8mmWxW', 'User', 0, 1, 1, 0, 1589209770, 1589813450, 0, ''); -- password: sh7up#KT!
+(3, 'user@user.de', '$2y$10$ZWz1Po2eBvDXl60bpqlYZezlr98sjnHwrWGEP3J3MwZVw4A8mmWxW', 'User', 0, 1, 1, 0, 1589209770, 1589813450, 0, 'profilepic/3.jpg'); -- password: sh7up#KT!
 
 -- --------------------------------------------------------
 
