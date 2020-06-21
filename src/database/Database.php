@@ -76,7 +76,7 @@ abstract class Database
      * @param string $query the SQL query to be executed
      * @return PDOStatement The Statement returned from querying the database
      */
-    public function query(string $query):PDOStatement
+    public function query(string $query): PDOStatement
     {
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
@@ -104,7 +104,7 @@ abstract class Database
     }
 
     /**
-     * Undocumented function
+     * Connects to the database
      *
      * @return PDO An active connection
      */
@@ -118,5 +118,22 @@ abstract class Database
         }
 
         return $this->connection;
+    }
+
+    /**
+     * Delets a row with the given ID.
+     *
+     * @param integer $id The ID to be deleted
+     * @return bool True on success. False otherwise
+     */
+    public function deleteById(int $id): bool
+    {
+        $query = "DELETE FROM " . $this->tablename . " WHERE id=:id";
+
+        $stmt = $this->connection->prepare($query);
+
+        $stmt->bindParam(":id", $id);
+
+        return $stmt->execute();
     }
 }

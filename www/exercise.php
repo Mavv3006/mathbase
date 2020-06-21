@@ -19,6 +19,7 @@ require_once($path['src'] . '/viewModel/UserViewModel.php');
 require_once($path['src'] . '/viewModel/DifficultyViewModel.php');
 require_once($path['src'] . '/viewModel/CategoryViewModel.php');
 require_once($path['src'] . '/viewModel/SubcategoryViewModel.php');
+require_once($path['auth'] . '/user_info.php');
 
 $exerciseViewModel = new ExerciseViewModel();
 $userViewModel = new UserViewModel();
@@ -26,13 +27,30 @@ $difficultyViewModel = new DifficultyViewModel();
 $subcategoryViewModel = new SubCategoryViewModel();
 $categoryViewModel = new CategoryViewModel();
 
-$exercise = $exerciseViewModel->get_by_id($_GET['id']);
+try {
+    $exercise = $exerciseViewModel->get_by_id($_GET['id']);
+} catch (Exception $e) {
+    redirectToUrl($path['src'].'/error/404.php', true);
+}
+
+if ($exercise->get_id() < 0) {
+    redirectToUrl($path['www'] . '/index.php');
+}
+
 $user = $userViewModel->get_by_id($exercise->get_user_id());
 $difficulty = $difficultyViewModel->get_by_id($exercise->get_difficulty());
 $category = $categoryViewModel->get_by_id($exercise->get_category());
 $subcategory = $subcategoryViewModel->get_by_id($exercise->get_subcategory());
 
+
 $has_picture = $exercise->get_picture() == "" ? false : true;
+
+$activeUser = getActiveUser();
+if ($activeUser == null) {
+    $is_author = false;
+} else {
+    $is_author = $activeUser->get_id() == $exercise->get_user_id();
+}
 
 $username = $user->get_username();
 
@@ -51,13 +69,18 @@ require_once($path['src'] . '/html/header.php');
     <div class="container">
         <div class="header">
             <h3><?= $exercise->get_title() ?></h3>
-            <?php if ($user->get_id() == $exercise->get_user_id()) { ?>
-                <div class="edit_icon waves-effect waves-light btn">
-                    <a href="<?= $path['www'] ?>/edit_exercise.php?id=<?= $exercise->get_id() ?>">
+            <?php if ($is_author) { ?>
+                <a href="<?= $path['server'] ?>index.php">
+                    <div class="edit_icon waves-effect waves-light btn">
                         <!--TODO update link -->
                         <i class="material-icons">create</i>
-                    </a>
-                </div>
+                    </div>
+                </a>
+                <a href="<?= $path['src'] . '/inc/delete_exercise.php?id=' . $exercise->get_id() ?>">
+                    <div class="delete_icon waves-effect waves-light btn">
+                        <i class="material-icons">delete</i>
+                    </div>
+                </a>
             <?php } ?>
         </div>
 
