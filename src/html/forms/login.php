@@ -59,7 +59,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
                     "email": email,
                     "password": password,
                 }
-            }).done(function(e) {
+            }).done((e) => {
                 console.log(e);
                 if (e['login'] == "true") {
                     console.log("Einloggen geglückt");

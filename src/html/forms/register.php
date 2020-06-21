@@ -15,12 +15,12 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
         <form method="POST" action="<?= '../auth/sign_up.php' ?>" id="register_form">
 
             <div class="input-field">
-                <input name="email" type="email">
+                <input name="email" type="email" id="register_email">
                 <label for="email">E-Mail-Addresse</label>
             </div>
 
             <div class="input-field">
-                <input name="username" type="text">
+                <input name="username" type="text" id="register_username">
                 <label for="username">Benutername</label>
             </div>
 
@@ -45,23 +45,63 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/src/inc/config.php");
 <script src="<?= $path['js'] ?>/validatePassword.js"></script>
 <script>
     $('#register_form').submit((e) => {
-        if ($('#register_password').val() !== $('#register_password_confirm').val()) {
-            e.preventDefault();
-            console.log("Passwörter stimmen nicht überein: " + $('#register_password').val() + ", " + $('#register_password_confirm').val());
-            $('#register_error').text("Die Passwörter stimmen nicht überein").removeClass('hidden');
-            return;
+        e.preventDefault();
+        let email = $('#register_email').val();
+        let username = $('#register_username').val();
+        let password = $('#register_password').val();
+        let password_confirm = $('#register_password_confirm').val();
+        let error = document.getElementById('register_error');
+
+        if (email !== "" && username !== "" && password !== "" && password_confirm !== "") {
+            if (password == password_confirm && validatePassword(password)) {
+                error.classList.add('hidden');
+                $.ajax({
+                    type: "POST",
+                    url: "/auth/sign_up.php",
+                    data: {
+                        "email": email,
+                        "password": password,
+                        "username": username
+                    }
+                }).done((e) => {
+                    console.log(e);
+                    if (e['sign_up'] = "true") {
+                        console.log("Registrieren geglückt");
+                        location.reload();
+                    } else {
+                        error.innerText = e['error'];
+                        error.classList.remove('hidden');
+                    }
+                });
+            } else {
+                message = [];
+                if (password != password_confirm) {
+                    message.push("Passwörter stimmen nicht überein.");
+                }
+                if (!validatePassword(password)) {
+                    message.push("Passwörter sind nicht valide.");
+                }
+                if (message.length > 0) {
+                    error.innerText = message.join("\n");
+                    error.classList.remove('hidden');
+                }
+            }
+        } else {
+            message = [];
+            if (email === "") {
+                message.push("Bitte geben Sie eine E-Mail-Adresse ein.");
+            }
+            if (username === "") {
+                message.push("Bitte geben Sie einen Benutzernamen ein.");
+            }
+            if (password === "" || password_confirm === "") {
+                message.push("Bitte geben Sie ein Passwort und wiederholen es.");
+            }
+            if (message.length > 0) {
+                error.innerText = message.join("\n");
+                error.classList.remove('hidden');
+            }
         }
-
-        if (!validatePassword($('#register_password').val())) {
-            e.preventDefault();
-            console.log("Passwort ist nicht valide: " + $('#register_password').val());
-            $('#register_error').text("Gebe ein valides Passwort ein").removeClass('hidden');
-            return;
-        }
-
-        console.log("alles ist gut");
-
-        $('#register_error').addClass('hidden');
     });
 
     document.addEventListener('DOMContentLoaded', function() {

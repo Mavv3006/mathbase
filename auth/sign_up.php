@@ -18,21 +18,21 @@ try {
 } catch (\Delight\Auth\InvalidEmailException $e) {
     echo json_encode(array(
         "sign_up" => "false",
-        "error" => "Invalid email address",
+        "error" => "Ungültige E-Mail-Adresse",
     ));
 } catch (\Delight\Auth\InvalidPasswordException $e) {
     echo json_encode(array(
         "sign_up" => "false",
-        "error" => "Invalid password",
+        "error" => "Ungültiges Passwort",
     ));
 } catch (\Delight\Auth\UserAlreadyExistsException $e) {
     echo json_encode(array(
         "sign_up" => "false",
-        "error" => "User already exists",
+        "error" => "User existiert bereits",
     ));
 } catch (\Delight\Auth\TooManyRequestsException $e) {
     echo json_encode(array(
         "sign_up" => "false",
-        "error" => "Too many requests",
+        "error" => "Zu viele Requests",
     ));
 }
