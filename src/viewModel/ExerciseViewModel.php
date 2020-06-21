@@ -73,7 +73,13 @@ class ExerciseViewModel extends ViewModel
         $array['id'] = $model->get_id();
         return $this->database->update($array);
     }
-
+    /**
+     * Turns the result of the query into an array of exercises.
+     * For each line, an exercise is fetched and pushed into the array.
+     *
+     * @param PDOStatement Database Query
+     * @return array All exercises in an array
+     */
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();
@@ -103,7 +109,7 @@ class ExerciseViewModel extends ViewModel
      * @param array $array An array with Tasks
      * @return Exercise Returns only one Exercise. If there are more or less than 
      * one element in the array the method
-     * @throws Exception Throws an `NoDatabaseEntryException` if the database 
+     * @throws NoDatabaseEntryException Throws an `NoDatabaseEntryException` if the database 
      * query returns with an empty table
      */
     protected function returnModel(array $array): Exercise

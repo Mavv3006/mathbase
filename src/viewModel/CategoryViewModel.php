@@ -28,11 +28,23 @@ class CategoryViewModel extends ViewModel
         $task_array = $this->fetchData($stmt);
         return $this->returnModel($task_array);
     }
+    /**
+     * Queries the database and returns every category
+     *
+     * @return array All categories in an array
+     */
     public function get_all(): array
     {
         $stmt = $this->database->query_all();
         return $this->fetchData($stmt);
     }
+    /**
+     * Turns the result of the query into an array of categories.
+     * For each line, a category is fetched and pushed into the array.
+     *
+     * @param PDOStatement Database Query
+     * @return array All categories in an array
+     */
     protected function fetchData(PDOStatement $stmt): array
     {
         $task_array = array();

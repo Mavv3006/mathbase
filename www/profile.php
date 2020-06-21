@@ -97,15 +97,11 @@ $action_path = $path['src'] . '/inc/save_profilepic.php';
 </body>
 
 <script src="<?= $path['js'] ?>/validatePassword.js"></script>
+<script src="<?= $path['js'] ?>/disableInput.js"></script>
 <script>
-    function disableInput(element) {
-        if (document.getElementById(element).disabled) {
-            document.getElementById(element).disabled = false;
-        } else {
-            document.getElementById(element).disabled = true;
-        }
-    }
-
+    /**
+     * Saves the data provided in the form.
+     */
     function saveData() {
         var newEmail = $('#email').val();
         var newPassword = $('#new_password').val();

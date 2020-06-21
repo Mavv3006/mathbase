@@ -61,6 +61,12 @@ function getPage(): string
         return $_SESSION[USER_LOCATION];
     }
 }
+/**
+ * Concatinates the get parameters with the location string.
+ *
+ * @param string $page the key from the PAGE array
+ * @return string the combined string
+ */
 function concatParam(string $page): string
 {
     $pos = strpos($_SESSION[USER_LOCATION], "?");
@@ -70,7 +76,10 @@ function concatParam(string $page): string
         return $page;
     }
 }
-
+/**
+ * Redirect to a page
+ * @return void
+ */
 function redirect()
 {
     $user_location = getPage();
@@ -86,14 +95,25 @@ function redirect()
         redirectToUrl("../www/");
     }
 }
-
+/**
+ * Redirect to an URL
+ *
+ * @param string $url URL of the page, to be redirected to
+ * @param bool $permanent Is the URL permanent?
+ * @return void
+ */
 function redirectToUrl(string $url, bool $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
 
     exit();
 }
-
+/**
+ * Redirect to a page
+ *
+ * @param string $page the key from the PAGE array
+ * @return void
+ */
 function redirectToPage(string $page)
 {
     redirectToUrl("../" . PAGE[$page]);
